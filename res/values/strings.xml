@@ -45,5 +45,7 @@
     <string name="user_ps_id">ID :</string>
     <string name="user_ps_publish">Return to Main Page</string>
     <string name="user_ps_score">Mark :</string>
+    <string name="settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
 
 </resources>

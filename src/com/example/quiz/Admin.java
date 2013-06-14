@@ -61,6 +61,18 @@ public class Admin extends Activity {
 				//finish();				
 			}
 		});
+		
+		Button b3 = (Button) findViewById(R.id.button3);
+		
+		b3.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				
+				
+			}
+		});
 	}
 
 	@Override

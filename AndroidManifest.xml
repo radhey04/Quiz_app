@@ -58,6 +58,10 @@
             android:name="com.example.quiz.User_publish"
             android:label="@string/title_activity_user_publish" >
         </activity>
+        <activity
+            android:name="com.example.quiz.Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>
