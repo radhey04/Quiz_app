@@ -114,6 +114,9 @@ public class scoresDBAdapter {
 		String query="DELETE FROM ";
 		query=query.concat(TAB_NAME);
 		db.execSQL(query);
+		// Setting the autoincrementing qno to zero. and the id is ++qno.
+		query="UPDATE SQLITE_SEQUENCE SET qno = 0 WHERE name = ";
+		query=query.concat(TAB_NAME);
 		Log.d("Debug","Dropped scoresheet");
 	}
 }
