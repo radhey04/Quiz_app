@@ -50,6 +50,7 @@ public class Admin_base extends Activity {
 				Intent intent3 = new Intent(getApplicationContext(), Admin_chkq.class);
 				startActivity(intent3);
 				finish();
+				Log.d("Debug","Checking question");
 			}
 		});
 

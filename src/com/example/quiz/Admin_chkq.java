@@ -63,7 +63,7 @@ public class Admin_chkq extends Activity {
 					Qs=Qs.concat(c.getString(5));
 					Qs=Qs.concat("\n Correct Answer => ");
 					Qs=Qs.concat(c.getString(6));
-					
+					Log.d("Debug","Got the answer");
 					t1.setText(Qs);
 				}
 			}
