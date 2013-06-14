@@ -39,6 +39,7 @@ public class Admin_login extends Activity {
 			        intent.putExtras(b);
 			        //start the DisplayActivity
 			        startActivity(intent);
+			        finish();
 			    }
 		        else
 		        {

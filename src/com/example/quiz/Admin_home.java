@@ -80,6 +80,7 @@ public class Admin_home extends Activity {
 			        //Toast.makeText(getApplicationContext(), "Done.", Toast.LENGTH_SHORT).show();
 			        //start the DisplayActivity
 			        startActivity(intent);
+			        finish();
 			    }		        
 			}
 		});

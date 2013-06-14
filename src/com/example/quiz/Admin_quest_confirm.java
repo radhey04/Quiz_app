@@ -63,6 +63,7 @@ public class Admin_quest_confirm extends Activity {
 		        
 				Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 	        	startActivity(intent);
+	        	finish();
 			}
 		});
 	}

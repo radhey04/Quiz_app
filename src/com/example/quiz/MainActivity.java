@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
 				Toast.makeText(getApplicationContext(), "Continue", Toast.LENGTH_SHORT).show();
 				Intent i=new Intent(getApplicationContext(), Admin.class);
 				startActivity(i);
+				finish();
 			}
 		});
 		

@@ -45,6 +45,7 @@ public class MyDBAdapter {
 		bag.put("optb", optb);
 		bag.put("optc", optc);
 		bag.put("optd", optd);
+		bag.put("option",option);
 		
 		open();
 		//Insert into the table qbank the contents of the bag.

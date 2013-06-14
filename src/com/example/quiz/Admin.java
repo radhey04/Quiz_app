@@ -25,7 +25,7 @@ public class Admin extends Activity {
 				Toast.makeText(getApplicationContext(), "Begin your Quiz", Toast.LENGTH_SHORT).show();
 				Intent i = new Intent(getApplicationContext(), Mainquiz.class);
 				startActivity(i);
-				
+				finish();
 			}
 		});
 		
@@ -37,7 +37,7 @@ public class Admin extends Activity {
 				Toast.makeText(getApplicationContext(), "Admin", Toast.LENGTH_SHORT).show();
 				Intent j = new Intent(getApplicationContext(), Admin_login.class);
 				startActivity(j);
-				
+				finish();				
 			}
 		});
 	}

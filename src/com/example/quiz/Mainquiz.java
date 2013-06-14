@@ -46,11 +46,7 @@ public class Mainquiz extends Activity {
 	    t5.setText(c1.getString(5));
 	    
 	    Button submit=(Button) findViewById(R.id.button1);
-	    /*String ans = "";
-	    Log.d("Debug",c1.getString(1));
-	    ans=ans.concat(c1.getString(6));
-		Log.d("Debug","Going to c ans");
-	    Log.d("Debug",ans);*/
+	   
 	    Log.d("Debug",c1.getString(1));
 	    String ans=c1.getString(6).toString();
 	    Log.d("Debug","Going to c ans");
@@ -103,6 +99,7 @@ public class Mainquiz extends Activity {
 			        
 			        //start the DisplayActivity
 			        //startActivity(intent);
+		        	//finish();
 			    }		        
 			    Log.d("Debug","Bye");
 			    

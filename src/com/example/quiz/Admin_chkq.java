@@ -46,13 +46,13 @@ public class Admin_chkq extends Activity {
 				Qs=Qs.concat(c.getString(1));
 				Qs=Qs.concat("\n");
 				Qs=Qs.concat(c.getString(2));
-				Qs=Qs.concat(" ");
+				Qs=Qs.concat("\n");
 				Qs=Qs.concat(c.getString(3));
-				Qs=Qs.concat(" ");
+				Qs=Qs.concat("\n");
 				Qs=Qs.concat(c.getString(4));
-				Qs=Qs.concat(" ");
+				Qs=Qs.concat("\n");
 				Qs=Qs.concat(c.getString(5));
-				Qs=Qs.concat(" ");
+				Qs=Qs.concat("\n Correct Answer => ");
 				Qs=Qs.concat(c.getString(6));
 				
 				t1.setText(Qs);
@@ -65,6 +65,7 @@ public class Admin_chkq extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 	        	startActivity(intent);
+	        	finish();
 			}
 		});
 		

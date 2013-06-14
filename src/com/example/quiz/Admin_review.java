@@ -48,6 +48,7 @@ public class Admin_review extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 				startActivity(intent);
+				finish();
 			}
 		});
 	}
