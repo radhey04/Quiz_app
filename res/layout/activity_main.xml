@@ -15,26 +15,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="61dip"
-        android:layout_marginRight="52dip"
+        android:layout_marginBottom="37dp"
+        android:layout_marginRight="63dp"
         android:text="@string/begin" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="116dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="150dp"
         android:text="TextView" />
 
     <ImageView
@@ -43,11 +34,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dip"
-        android:minHeight="50dip"
-		android:minWidth="50dip"
-		android:maxHeight="150dip"
-		android:maxWidth="150dip"
+        android:layout_marginTop="40dp"
         android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="21dp"
+        android:text="TextView" />
 
 </RelativeLayout>
