@@ -23,7 +23,6 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				
-				Toast.makeText(getApplicationContext(), "Continue", Toast.LENGTH_SHORT).show();
 				Intent i=new Intent(getApplicationContext(), Admin.class);
 				startActivity(i);
 				finish();

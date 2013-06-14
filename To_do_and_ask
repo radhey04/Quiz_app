@@ -1,0 +1,33 @@
+Abraham
+=======
+1. Keep track of choices
+2. Keep track of scores
+3. Publish activity
+
+Ankit
+=====
+1. Timer
+2. Background changes
+3. Layout
+
+No Man's Land
+=============
+1. Send out the results via HTTPPost to google
+		Page must have
+			1. Timestamp
+			2. Name
+			3. Id
+			4. Score
+			5. Options marked..not necessary
+2. Support pdf solutions (viewable only at the end)
+3. Review question option
+4. Cash on admin properties
+5. Credits page (Authors + AADL +Dorm)
+6. Change App Name
+7. Notification for loaded quizzes
+8. Test options for admin
+
+Done
+====
+1. Iron out user quiz problems			Abraham
+2. MCQ compatibility					Abraham

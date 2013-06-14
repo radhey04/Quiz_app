@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Admin_chkq extends Activity {
 	
@@ -40,7 +41,15 @@ public class Admin_chkq extends Activity {
 				
 				Integer qno=Integer.parseInt(e1.getText().toString());
 				
-				Cursor c=ad.getQno(qno);
+				Cursor c=ad.getAllQs();
+				Integer n=c.getCount();
+				
+				if((qno>n)||(!qno))
+				{
+					Toast.makeText(getApplicationContext(), "Invalid question no", Toast.LENGTH_SHORT).show();
+				}
+					
+				c=ad.getQno(qno);
 				
 				String Qs="";
 				Qs=Qs.concat(c.getString(0));

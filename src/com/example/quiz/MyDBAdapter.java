@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 public class MyDBAdapter {
 	
@@ -15,6 +16,8 @@ public class MyDBAdapter {
 	// Do most of the communication
 	// db_helper is just to do the upper-level 
 	SQLiteDatabase db;
+	
+	Integer N=0;			//The total count
 	
 	public MyDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
@@ -51,6 +54,7 @@ public class MyDBAdapter {
 		//Insert into the table qbank the contents of the bag.
 		db.insert("qbank", null, bag);
 		close();
+		N=N+1;
 	}
 	
 	public void deleteFruit(String fruit2bdeleted)
@@ -72,20 +76,23 @@ public class MyDBAdapter {
 	public Cursor getQno(Integer QN)
 	{
 		open();
-		//Cursor c1 = db.rawQuery("SELECT FROM qbank WHERE Qno = ?", new String[]{QN.toString()});
 		Cursor c1 = null;
-		Cursor cw=getAllQs();
-		Integer QNt=0;
-		while(cw.moveToNext())
+		if(!((QN>N)||(QN==0)))
 		{
-			QNt=cw.getInt(0);
-			if(QNt==QN)
+			Cursor cw=getAllQs();
+			Integer QNt=0;
+			while(cw.moveToNext())
 			{
-				c1=cw;
-				break;
+				QNt=cw.getInt(0);
+				if(QNt==QN)
+				{
+					c1=cw;
+					break;
+				}
 			}
+			return c1;
 		}
-		return c1;
+		return null;
 	}
 	
 	
