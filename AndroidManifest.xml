@@ -54,6 +54,10 @@
             android:name="com.example.quiz.Admin_chkq"
             android:label="@string/title_activity_admin_chkq" >
         </activity>
+        <activity
+            android:name="com.example.quiz.User_publish"
+            android:label="@string/title_activity_user_publish" >
+        </activity>
     </application>
 
 </manifest>

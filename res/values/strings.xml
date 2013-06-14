@@ -40,7 +40,10 @@
     <string name="admin_chkq_hint">See your question here</string>
     <string name="admin_chkq_title">Type the question no.</string>
     <string name="admin_base_chkq">Check Question</string>
-
-    
+    <string name="title_activity_user_publish">User_publish</string>
+    <string name="user_ps_name">&amp;nbsp&amp;nbspName      :</string>
+    <string name="user_ps_id">ID :</string>
+    <string name="user_ps_publish">Return to Main Page</string>
+    <string name="user_ps_score">Score :</string>
 
 </resources>

@@ -157,7 +157,7 @@ public class Mainquiz extends Activity {
 			    	{
 			    		Toast.makeText(getApplicationContext(), "Congrats", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Quiz Over! Congrats");
-		        		Intent i=new Intent(getApplicationContext(), Admin.class);
+		        		Intent i=new Intent(getApplicationContext(), User_publish.class);
 						startActivity(i);
 						finish();
 			    	}

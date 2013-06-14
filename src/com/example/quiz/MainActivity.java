@@ -24,7 +24,8 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				
 				Toast.makeText(getApplicationContext(), "Continue", Toast.LENGTH_SHORT).show();
-				Intent i=new Intent(getApplicationContext(), Admin.class);
+				//Intent i=new Intent(getApplicationContext(), Admin.class);
+				Intent i=new Intent(getApplicationContext(), User_publish.class);
 				startActivity(i);
 				finish();
 			}
