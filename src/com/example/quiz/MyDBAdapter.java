@@ -17,7 +17,7 @@ public class MyDBAdapter {
 	// db_helper is just to do the upper-level 
 	SQLiteDatabase db;
 	
-	Integer N=0;			//The total count
+	public Integer N=0;			//The total count
 	
 	public MyDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub

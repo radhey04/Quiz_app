@@ -41,32 +41,31 @@ public class Admin_chkq extends Activity {
 				
 				Integer qno=Integer.parseInt(e1.getText().toString());
 				
-				Cursor c=ad.getAllQs();
-				Integer n=c.getCount();
+				Cursor c=ad.getQno(qno);
 				
-				if((qno>n)||(!qno))
+				if(c==null)
 				{
 					Toast.makeText(getApplicationContext(), "Invalid question no", Toast.LENGTH_SHORT).show();
 				}
+				else
+				{
+					String Qs="";
+					Qs=Qs.concat(c.getString(0));
+					Qs=Qs.concat(" ");
+					Qs=Qs.concat(c.getString(1));
+					Qs=Qs.concat("\n");
+					Qs=Qs.concat(c.getString(2));
+					Qs=Qs.concat("\n");
+					Qs=Qs.concat(c.getString(3));
+					Qs=Qs.concat("\n");
+					Qs=Qs.concat(c.getString(4));
+					Qs=Qs.concat("\n");
+					Qs=Qs.concat(c.getString(5));
+					Qs=Qs.concat("\n Correct Answer => ");
+					Qs=Qs.concat(c.getString(6));
 					
-				c=ad.getQno(qno);
-				
-				String Qs="";
-				Qs=Qs.concat(c.getString(0));
-				Qs=Qs.concat(" ");
-				Qs=Qs.concat(c.getString(1));
-				Qs=Qs.concat("\n");
-				Qs=Qs.concat(c.getString(2));
-				Qs=Qs.concat("\n");
-				Qs=Qs.concat(c.getString(3));
-				Qs=Qs.concat("\n");
-				Qs=Qs.concat(c.getString(4));
-				Qs=Qs.concat("\n");
-				Qs=Qs.concat(c.getString(5));
-				Qs=Qs.concat("\n Correct Answer => ");
-				Qs=Qs.concat(c.getString(6));
-				
-				t1.setText(Qs);
+					t1.setText(Qs);
+				}
 			}
 		});
 		back.setOnClickListener(new OnClickListener() {
