@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -15,6 +15,11 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		TextView t1 = (TextView) findViewById(R.id.textView1);
+		TextView t2 = (TextView) findViewById(R.id.textView2);
+		t1.setText("Designed by Ankit and Abraham");
+		t2.setText("With the help of Insane Labs and AADL");
 		
 		Button b1 = (Button) findViewById(R.id.button1);
 		
