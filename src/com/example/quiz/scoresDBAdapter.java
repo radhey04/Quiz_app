@@ -109,10 +109,11 @@ public class scoresDBAdapter {
 		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
 		close();
 	}
-	
 	public void dropsheet()
 	{
-		db.delete(TAB_NAME,null,null);
+		String query="DELETE FROM ";
+		query=query.concat(TAB_NAME);
+		db.execSQL(query);
 		Log.d("Debug","Dropped scoresheet");
 	}
 }
