@@ -41,16 +41,18 @@ public class scoresDBAdapter {
 	   }	
 	
 	
-	public void insertans(String act_ans,String corr_ans,Integer correct)
+	public void insertans(Integer qno, String act_ans,String corr_ans,Integer correct)
 	{
 		// ContentValues which is like bundle
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
+		bag.put("qno", qno);
 		bag.put("act_ans", act_ans);
 		bag.put("corr_ans", corr_ans);
 		bag.put("correct", correct);
-		Log.d("Debug","Inserting act_ans/corr_ans/correct");
+		Log.d("Debug","Inserting qno/act_ans/corr_ans/correct");
+		Log.d("Debug",qno.toString());
 		Log.d("Debug",act_ans);
 		Log.d("Debug",corr_ans);
 		Log.d("Debug",correct.toString());
@@ -78,16 +80,18 @@ public class scoresDBAdapter {
 		Cursor c1 = db.rawQuery(query, null);
 		Integer score=0,qno=0,score_temp=0;
 		perf="";
+		Log.d("Debug","Fetching scoresheet");
 		while(c1.moveToNext())
 		{
-			qno=c1.getInt(0);
+			qno=c1.getInt(1);
+			Log.d("Debug",qno.toString());
 			perf=perf.concat(qno.toString());
 			perf=perf.concat(". ");
-			perf=perf.concat(c1.getString(1));
-			perf=perf.concat("\t\t\t\t");
 			perf=perf.concat(c1.getString(2));
 			perf=perf.concat("\t\t\t\t");
-			score_temp=c1.getInt(3);
+			perf=perf.concat(c1.getString(3));
+			perf=perf.concat("\t\t\t\t");
+			score_temp=c1.getInt(4);
 			score=score+score_temp;
 			if(score_temp!=0)
 			{
@@ -114,9 +118,6 @@ public class scoresDBAdapter {
 		String query="DELETE FROM ";
 		query=query.concat(TAB_NAME);
 		db.execSQL(query);
-		// Setting the autoincrementing qno to zero. and the id is ++qno.
-		query="UPDATE SQLITE_SEQUENCE SET qno = 0 WHERE name = ";
-		query=query.concat(TAB_NAME);
 		Log.d("Debug","Dropped scoresheet");
 	}
 }

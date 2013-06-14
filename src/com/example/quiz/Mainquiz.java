@@ -184,13 +184,13 @@ public class Mainquiz extends Activity {
 		        	{
 		        		Toast.makeText(getApplicationContext(), "You are correct", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Correct");
-		        		ads.insertans(option,answ,1);
+		        		ads.insertans(qno,option,answ,1);
 		        	}
 		        	else 
 		        	{		        		
 		        		Toast.makeText(getApplicationContext(), "You are wrong", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Incorrect");
-		        		ads.insertans(option,answ,0);
+		        		ads.insertans(qno,option,answ,0);
 		        	}
 			    	qno=qno+1;
 			    	if(!isquizover())
