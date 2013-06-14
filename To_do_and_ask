@@ -6,9 +6,11 @@ Abraham
 
 Ankit
 =====
-1. Timer
+1. Landing page
 2. Background changes
 3. Layout
+4. Review questions page edittext->textview
+5. Credits
 
 No Man's Land
 =============
@@ -22,16 +24,16 @@ No Man's Land
 2. Support pdf solutions (viewable only at the end)
 3. Review question option
 4. Cash on admin properties
-5. Credits page (Authors + AADL +Dorm)
 6. Change App Name
 7. Notification for loaded quizzes
 8. Test options for admin
-
+9. Publish question
+10.Delete one and all questions
 Done
 ====
 1. Iron out user quiz problems			Abraham
 2. MCQ compatibility					Abraham
-
+1. Timer
 
 To ask
 ======
