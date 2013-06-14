@@ -69,7 +69,9 @@ public class Admin extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				
+				Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+				Intent k = new Intent(getApplicationContext(), Settings.class);
+				startActivity(k);
 				
 			}
 		});

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class SettingsDBAdapter {
 	
@@ -45,23 +46,23 @@ public class SettingsDBAdapter {
 		bag.put("Timer", Timer);
 		open();
 		//Insert into the table qbank the contents of the bag.
-		db.insert("settings", null, bag);
+		db.insert("sett", null, bag);
 		close();
 	}
 	
-	public void deleteset()
+	public void dropsheet()
 	{
-		open();
-		//Insert into the table fruits the contents of the bag.
-		db.delete("settings",null,null);
-		close();
+		String query="DELETE FROM ";
+		query=query.concat("sett");
+		db.execSQL(query);
+		Log.d("Debug","Dropped scoresheet");
 	}
 	
 	public Cursor getAllSet()
 	{
 		open();
 		// SELECT NAME FROM fruits WHERE NAME=?
-		Cursor c1 = db.rawQuery("SELECT * FROM settings", null);
+		Cursor c1 = db.rawQuery("SELECT * FROM sett", null);
 		return c1;
 	}
 }
