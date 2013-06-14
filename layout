@@ -41,4 +41,10 @@ settings
 	Settings:
 	
 
-
+Databases
+=========
+1. Settings database
+2. qbank
+QNO|Question|opta|optb|optc|optd|option
+3. Scoresheet
+QNO|Marked|Actual
