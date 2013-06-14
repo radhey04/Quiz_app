@@ -14,6 +14,7 @@ public class MyDBAdapter {
 	MyDBHelper db_helper;
 	// Database naming
 	String DB_NAME="values";
+	String TAB_NAME="qbank";
 	// Do most of the communication
 	// db_helper is just to do the upper-level 
 	SQLiteDatabase db;
@@ -60,14 +61,14 @@ public class MyDBAdapter {
 		N=N+1;
 	}
 	
-	public void deleteFruit(String fruit2bdeleted)
+	public void deleteEntry(Integer QN)
 	{
 		open();
 		//Insert into the table fruits the contents of the bag.
-		db.delete("qbank","qno = ?", new String[]{fruit2bdeleted});
+		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
 		close();
 	}
-	
+		
 	public Cursor getAllQs()
 	{
 		open();

@@ -2,6 +2,7 @@ package com.example.quiz;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 public class User_publish extends Activity {
 
+	Context context=this;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,7 +26,16 @@ public class User_publish extends Activity {
 		
 		t3.setText("Abraham");
 		t4.setText("EE09B044");
-		t6.setText("10/10");
+		
+		scoresDBAdapter ad=new scoresDBAdapter(context);
+		
+		Integer N=ad.N;
+		Integer Score=ad.getscore();
+		String res=Score.toString();
+		res=res.concat("/");
+		res=res.concat(N.toString());
+		t6.setText(res);
+		
 		t7.setText("You rock dude");
 		
 		Button ret=(Button) findViewById(R.id.button1);

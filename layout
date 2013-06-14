@@ -47,4 +47,4 @@ Databases
 2. qbank
 QNO|Question|opta|optb|optc|optd|option
 3. Scoresheet
-QNO|Marked|Actual|Correct
+QNO|act_ans|corr_ans|correct

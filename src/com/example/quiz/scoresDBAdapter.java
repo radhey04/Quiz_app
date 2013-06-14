@@ -20,11 +20,11 @@ public class scoresDBAdapter {
 	SQLiteDatabase db;
 	
 	public Integer N=0;			//The total count
-	
+	public String perf="";
 	public scoresDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
 		 db_helper = new scoresDBHelper(context, DB_NAME, null, 1);
-		 Cursor c1=getAllQs();
+		 Cursor c1=getAllans();
 		 N=c1.getCount();			// Initialized
 	}
 	
@@ -41,19 +41,16 @@ public class scoresDBAdapter {
 	   }	
 	
 	
-	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option)
+	public void insertans(String act_ans,String corr_ans,Integer correct)
 	{
 		// ContentValues which is like bundle
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
-		bag.put("quest", quest);
-		bag.put("opta", opta);
-		bag.put("optb", optb);
-		bag.put("optc", optc);
-		bag.put("optd", optd);
-		bag.put("option",option);
-		
+		bag.put("act_ans", act_ans);
+		bag.put("corr_ans", corr_ans);
+		bag.put("correct", correct);
+				
 		open();
 		//Insert into the table qbank the contents of the bag.
 		db.insert(TAB_NAME, null, bag);
@@ -61,52 +58,45 @@ public class scoresDBAdapter {
 		N=N+1;
 	}
 	
-	public void deleteEntry(Integer QN)
+	public Cursor getAllans()
 	{
 		open();
-		//Insert into the table fruits the contents of the bag.
-		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
-		close();
-	}
-	
-	public Cursor getAllQs()
-	{
-		open();
-		// SELECT NAME FROM fruits WHERE NAME=?
-		Cursor c1 = db.rawQuery("SELECT * FROM qbank", null);
+		String query="SELECT * FROM ";
+		query=query.concat(TAB_NAME);
+		Cursor c1 = db.rawQuery(query, null);
 		return c1;
 	}
 	
-	public Cursor getQno(Integer QN)
+	public Integer getscore()
 	{
 		open();
-		Cursor c1 = null;
-		Log.d("Debug","Got to fetch");
-		Log.d("Debug",QN.toString());
-		if ( (QN <= N) && (QN > 0) )
+		String query="SELECT * FROM ";
+		query=query.concat(TAB_NAME);
+		Cursor c1 = db.rawQuery(query, null);
+		Integer score=0,qno=0,score_temp=0;
+		perf="";
+		while(c1.moveToNext())
 		{
-			Cursor cw=getAllQs();
-			Integer QNt=0;
-			while(cw.moveToNext())
+			qno=c1.getInt(0);
+			perf=perf.concat(qno.toString());
+			perf=perf.concat(" ");
+			perf=perf.concat(c1.getString(1));
+			perf=perf.concat(" ");
+			perf=perf.concat(c1.getString(2));
+			score_temp=c1.getInt(3);
+			score=score+score_temp;
+			if(score_temp!=0)
 			{
-				QNt=cw.getInt(0);
-				if(QNt==QN)
-				{
-					c1=cw;
-					Log.d("Debug","Got it");
-					break;
-				}
+				perf=perf.concat(" Correct");				
 			}
-			return c1;
+			else
+			{
+				perf=perf.concat(" Incorrect");				
+			}			
+			perf=perf.concat("\n");
+			
+			
 		}
-		else
-		{
-			Log.d("Debug","Bad luck");			
-			return null;
-		}
+		return score;
 	}
-	
-	
-	
-
 }
