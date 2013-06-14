@@ -1,6 +1,12 @@
 package com.example.quiz;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Handler.Callback;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +24,32 @@ public class Mainquiz extends Activity {
 
 	Context context = this;
 	
+	//Timer
+	TextView time;
+    long starttime = 0;
+    final Handler h = new Handler(new Callback() {
+
+        @Override
+        public boolean handleMessage(Message msg) {
+           long millis = System.currentTimeMillis() - starttime;
+           int seconds = (int) (millis / 1000);
+           int minutes = seconds / 60;
+           seconds     = seconds % 60;
+
+           time.setText(String.format("%d:%02d", minutes, seconds));
+            return false;
+        }
+    });
+
+    class firstTask extends TimerTask {
+
+        @Override
+        public void run() {
+            h.sendEmptyMessage(0);
+        }
+   };
+
+   Timer timer = new Timer();
 	
 	private Integer qno;
     private String answ;
@@ -103,12 +135,14 @@ public class Mainquiz extends Activity {
 		
 		totq=b.getInt("totq");
 		timeleft=b.getString("timeleft");
-		
-		Log.d("Debug","The total number of questions");
-		Log.d("Debug",totq.toString());
-		Log.d("Debug","Time");
-		Log.d("Debug",timeleft);
 	    
+		time = (TextView)findViewById(R.id.textView6);
+        
+        starttime = System.currentTimeMillis();
+        timer = new Timer();
+        timer.schedule(new firstTask(), 0,500);
+
+		
 		Button submit=(Button) findViewById(R.id.button1);
 	    
 	    Initialize();
