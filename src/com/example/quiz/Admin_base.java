@@ -47,7 +47,6 @@ public class Admin_base extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent3 = new Intent(getApplicationContext(), Admin_chkq.class);
 				startActivity(intent3);
-				asdflj
 			}
 		});
 
