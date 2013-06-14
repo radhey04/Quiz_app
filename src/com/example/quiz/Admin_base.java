@@ -46,7 +46,6 @@ public class Admin_base extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent3 = new Intent(getApplicationContext(), Admin_chkq.class);
-				Log.d("DEBUG", "Bye");
 				startActivity(intent3);
 			}
 		});

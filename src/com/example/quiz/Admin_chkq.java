@@ -22,7 +22,6 @@ public class Admin_chkq extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_admin_chkq);
-		Log.d("DEBUG", "Hi");
 		
 		Button sub=(Button) findViewById(R.id.button1);
 		Button back=(Button) findViewById(R.id.button2);
