@@ -35,13 +35,11 @@ public class Admin extends Activity {
 				// Question number stored as qno (int)
 				// Total Questions stored as totq (int)
 				// Time as timeleft (String)
-				// Score as score (int)
-				
+								
 		        b.putInt("qno",1);
 		        b.putInt("totq",totq);
 		        b.putString("timeleft",timeleft);
-		        b.putInt("score",0);
-		        
+		        		        
 		        Intent i = new Intent(getApplicationContext(), Mainquiz.class);
 		        //Add the bundle to the intent.
 		        i.putExtras(b);

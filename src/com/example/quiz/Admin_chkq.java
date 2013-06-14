@@ -26,8 +26,9 @@ public class Admin_chkq extends Activity {
 		Button sub=(Button) findViewById(R.id.button1);
 		Button back=(Button) findViewById(R.id.button2);
 		final TextView t1=(TextView) findViewById(R.id.textView2);
+		final EditText e1=(EditText) findViewById(R.id.editText1);
 		
-		final Integer qno=1;
+		
 		// TODO exception not handled
 		sub.setOnClickListener(new OnClickListener() {
 			
@@ -35,8 +36,9 @@ public class Admin_chkq extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 								
-				//final Integer qno=Integer.parseInt(e1.toString());
 				MyDBAdapter ad=new MyDBAdapter(context);
+				
+				Integer qno=Integer.parseInt(e1.getText().toString());
 				
 				Cursor c=ad.getQno(qno);
 				

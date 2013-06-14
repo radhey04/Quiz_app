@@ -28,12 +28,11 @@ public class Mainquiz extends Activity {
 		Bundle b = getIntent().getExtras();
 		final Integer qno=b.getInt("qno");
 		final Integer totq=b.getInt("totq");
-		final Integer score=b.getInt("score");
 		final String timeleft=b.getString("timeleft");
 		
+		Log.d("Debug","The current values");
 		Log.d("Debug",qno.toString());
 		Log.d("Debug",totq.toString());
-		Log.d("Debug",score.toString());
 		Log.d("Debug",timeleft);
 	    
 		TextView t1=(TextView) findViewById(R.id.textView1);
@@ -51,7 +50,7 @@ public class Mainquiz extends Activity {
 	    t5.setText(c1.getString(5));
 	    final String ans=c1.getString(6).toString();
 	    
-	    
+	    Log.d("Debug","Waiting for a new option");
 	    submit.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -80,16 +79,14 @@ public class Mainquiz extends Activity {
 					option=option.concat("D");
 				}
 		        //Inserts a String value into the mapping of this Bundle
-			    Log.d("Debug",option);
+				Log.d("Debug",option);
 			    if(!option.equals(""))
 			    {
 			    	Bundle bn=new Bundle();
 			    	Integer qnon=qno+1;
-			    	Integer scoren=score;
 		        	if(option.equals(ans))	// Always the order will be A-B-C-D. :)
 		        	{
-		        		Toast.makeText(getApplicationContext(), "You are correct", Toast.LENGTH_SHORT).show();
-		        		scoren=scoren+1;		        		
+		        		Toast.makeText(getApplicationContext(), "You are correct", Toast.LENGTH_SHORT).show();		        				        		
 		        	}
 		        	else 
 		        	{		        		
@@ -98,20 +95,19 @@ public class Mainquiz extends Activity {
 		        	bn.putInt("qno",qnon);
 			        bn.putInt("totq",totq);
 			        bn.putString("time",timeleft);
-			        bn.putInt("score",scoren);
-			        
+			        //Intent i= new Intent(Mainquiz.this,Mainquiz.class);
+			        // Solution given above: 
 			        Intent i = new Intent(getApplicationContext(), Mainquiz.class);
 			        //Add the bundle to the intent.
 			        i.putExtras(bn);
 			        startActivity(i);
-					finish();
-			        
+					finish();			        
 			    }
 				else
 				{
 					Toast.makeText(getApplicationContext(), "You forgot to enter answer.", Toast.LENGTH_SHORT).show();
 				}
-			    Log.d("Debug","Bye");
+			    Log.d("Debug","Question Answered");
 			    
 			}
 		});
