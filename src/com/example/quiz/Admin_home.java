@@ -42,29 +42,25 @@ public class Admin_home extends Activity {
 				String optb_contents = optb.getText().toString();
 				String optc_contents = optc.getText().toString();
 				String optd_contents = optd.getText().toString();
-				String option=null;
-				if(chka.isChecked())
+				String option = "";
+			    if(chka.isChecked())
 				{
-					option="A";
+					option=option.concat("A");
 				}
-				else if(chkb.isChecked())
+				if(chkb.isChecked())
 				{
-					option="B";
+					option=option.concat("B");
 				}
-				else if(chkc.isChecked())
+				if(chkc.isChecked())
 				{
-					option="C";
+					option=option.concat("C");
 				}
-				else if(chkd.isChecked())
+				if(chkd.isChecked())
 				{
-					option="D";
-				}
-				else
-				{
-					Toast.makeText(getApplicationContext(), "You forgot to tell the correct option.", Toast.LENGTH_SHORT).show();
+					option=option.concat("D");
 				}
 		        //Inserts a String value into the mapping of this Bundle
-				if(option.equals("A") || option.equals("B") || option.equals("C") || option.equals("D"))
+				if(!option.equals(""))
 			    {
 		        	Intent intent = new Intent(getApplicationContext(), Admin_quest_confirm.class);
 		        	//Create a bundle object
@@ -81,7 +77,11 @@ public class Admin_home extends Activity {
 			        //start the DisplayActivity
 			        startActivity(intent);
 			        finish();
-			    }		        
+			    }
+				else
+				{
+					Toast.makeText(getApplicationContext(), "You forgot to enter answer.", Toast.LENGTH_SHORT).show();
+				}		        
 			}
 		});
 		
