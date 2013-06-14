@@ -50,7 +50,10 @@ public class scoresDBAdapter {
 		bag.put("act_ans", act_ans);
 		bag.put("corr_ans", corr_ans);
 		bag.put("correct", correct);
-				
+		Log.d("Debug","Inserting act_ans/corr_ans/correct");
+		Log.d("Debug",act_ans);
+		Log.d("Debug",corr_ans);
+		Log.d("Debug",correct.toString());
 		open();
 		//Insert into the table qbank the contents of the bag.
 		db.insert(TAB_NAME, null, bag);
@@ -94,8 +97,6 @@ public class scoresDBAdapter {
 				perf=perf.concat(" Incorrect");				
 			}			
 			perf=perf.concat("\n");
-			
-			
 		}
 		return score;
 	}

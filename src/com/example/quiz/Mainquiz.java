@@ -65,7 +65,7 @@ public class Mainquiz extends Activity {
     TextView optc;
     TextView optd;
     MyDBAdapter ad;
-    
+    scoresDBAdapter ads;
     private void updateactivity()
     {    	
 	    Cursor c1=ad.getQno(qno);
@@ -101,7 +101,8 @@ public class Mainquiz extends Activity {
 		chkc = (CheckBox)findViewById(R.id.checkBox3);
 		chkd = (CheckBox)findViewById(R.id.checkBox4);
 	    ad=new MyDBAdapter(context);
-
+	    ads=new scoresDBAdapter(context);
+	    
 	    qno=1;											//Initialise the question number
 	    answ="";										//Initialise the answ string
 	    
@@ -182,11 +183,13 @@ public class Mainquiz extends Activity {
 		        	{
 		        		Toast.makeText(getApplicationContext(), "You are correct", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Correct");
+		        		ads.insertans(option,answ,1);
 		        	}
 		        	else 
 		        	{		        		
 		        		Toast.makeText(getApplicationContext(), "You are wrong", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Incorrect");
+		        		ads.insertans(option,answ,0);
 		        	}
 			    	qno=qno+1;
 			    	if(!isquizover())
