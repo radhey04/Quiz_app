@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MyDBAdapter {
@@ -22,6 +23,8 @@ public class MyDBAdapter {
 	public MyDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
 		 db_helper = new MyDBHelper(context, DB_NAME, null, 1);
+		 Cursor c1=getAllQs();
+		 N=c1.getCount();			// Initialized
 	}
 	
 	 public void open() throws SQLException 
@@ -77,7 +80,9 @@ public class MyDBAdapter {
 	{
 		open();
 		Cursor c1 = null;
-		if(!((QN>N)||(QN==0)))
+		Log.d("Debug","Got to fetch");
+		Log.d("Debug",QN.toString());
+		if ( (QN <= N) && (QN > 0) )
 		{
 			Cursor cw=getAllQs();
 			Integer QNt=0;
@@ -87,12 +92,17 @@ public class MyDBAdapter {
 				if(QNt==QN)
 				{
 					c1=cw;
+					Log.d("Debug","Got it");
 					break;
 				}
 			}
 			return c1;
 		}
-		return null;
+		else
+		{
+			Log.d("Debug","Bad luck");			
+			return null;
+		}
 	}
 	
 	
