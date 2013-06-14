@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class Admin_review extends Activity {
 
@@ -26,7 +26,7 @@ public class Admin_review extends Activity {
 		
 		Button back=(Button) findViewById(R.id.button1);
 		
-		EditText t=(EditText) findViewById(R.id.editText1);
+		TextView t=(TextView) findViewById(R.id.textView2);
 		
 		Cursor c1 = ad.getAllQs();
 		

@@ -1,7 +1,5 @@
 Abraham
 =======
-1. Keep track of choices
-2. Keep track of scores
 3. Update publish activity
 4. Review questions page edittext->textview
 
@@ -10,6 +8,7 @@ Ankit
 1. Landing page for the user
 2. Background changes
 3. Layout
+4. Timer with upper limit.
 
 
 No Man's Land
@@ -32,10 +31,14 @@ No Man's Land
 
 Done
 ====
-1. Iron out user quiz problems			Abraham
-2. MCQ compatibility					Abraham
-1. Timer								Ankit
-2. Credits								Anki
+Abraham:
+1. Iron out user quiz problems			
+2. MCQ compatibility					
+3. Keep track of choices
+4. Keep track of scores
+Ankit:
+1. Timer
+2. Credits
 
 To ask
 ======
