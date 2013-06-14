@@ -37,17 +37,24 @@ public class Mainquiz extends Activity {
     private void updateactivity()
     {    	
 	    Cursor c1=ad.getQno(qno);
-	    Q.setText(c1.getString(1));
-	    opta.setText(c1.getString(2));
-	    optb.setText(c1.getString(3));
-	    optc.setText(c1.getString(4));
-	    optd.setText(c1.getString(5));
-	    answ=c1.getString(6).toString();
-	    chka.setChecked(false);
-	    chkb.setChecked(false);
-	    chkc.setChecked(false);
-	    chkd.setChecked(false);
-	    Log.d("Debug","Updated");	    
+	    if(c1==null)
+		{
+			Toast.makeText(getApplicationContext(), "Invalid question no", Toast.LENGTH_SHORT).show();
+		}
+	    else
+	    {
+		    Q.setText(c1.getString(1));
+		    opta.setText(c1.getString(2));
+		    optb.setText(c1.getString(3));
+		    optc.setText(c1.getString(4));
+		    optd.setText(c1.getString(5));
+		    answ=c1.getString(6).toString();
+		    chka.setChecked(false);
+		    chkb.setChecked(false);
+		    chkc.setChecked(false);
+		    chkd.setChecked(false);
+		    Log.d("Debug","Updated");
+	    }
     }
     
     private void Initialize()
