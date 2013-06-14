@@ -102,7 +102,7 @@ public class Mainquiz extends Activity {
 		chkd = (CheckBox)findViewById(R.id.checkBox4);
 	    ad=new MyDBAdapter(context);
 	    ads=new scoresDBAdapter(context);
-	    
+	    ads.deleteEntry(1);
 	    qno=1;											//Initialise the question number
 	    answ="";										//Initialise the answ string
 	    

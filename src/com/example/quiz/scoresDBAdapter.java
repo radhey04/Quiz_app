@@ -82,10 +82,11 @@ public class scoresDBAdapter {
 		{
 			qno=c1.getInt(0);
 			perf=perf.concat(qno.toString());
-			perf=perf.concat(" ");
+			perf=perf.concat(". ");
 			perf=perf.concat(c1.getString(1));
-			perf=perf.concat(" ");
+			perf=perf.concat("\t\t\t\t");
 			perf=perf.concat(c1.getString(2));
+			perf=perf.concat("\t\t\t\t");
 			score_temp=c1.getInt(3);
 			score=score+score_temp;
 			if(score_temp!=0)
@@ -99,5 +100,19 @@ public class scoresDBAdapter {
 			perf=perf.concat("\n");
 		}
 		return score;
+	}
+	
+	public void deleteEntry(Integer QN)
+	{
+		open();
+		//Insert into the table fruits the contents of the bag.
+		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
+		close();
+	}
+	
+	public void dropsheet()
+	{
+		db.delete(TAB_NAME,null,null);
+		Log.d("Debug","Dropped scoresheet");
 	}
 }
