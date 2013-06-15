@@ -17,8 +17,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="48dp"
         android:ems="10" 
-        android:hint="@string/settings"/>
-
+        android:hint="@string/settings"
+        android:textColorHint="#555">
+        <requestFocus />
+        </EditText>
+        
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
@@ -27,7 +30,8 @@
         android:layout_below="@+id/editText1"
         android:layout_marginTop="36dp"
         android:ems="10" 
-        android:hint="@string/settings_id"/>
+        android:hint="@string/settings_id"
+        android:textColorHint="#555"/>
 
     <Button
         android:id="@+id/button1"

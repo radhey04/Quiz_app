@@ -17,7 +17,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="18dp"
         android:ems="10"
-        android:hint="@string/settings" />
+        android:hint="@string/settings"
+        android:textColorHint="#555">
+        <requestFocus />
+        </EditText>
 
     <EditText
         android:id="@+id/editText2"
@@ -28,10 +31,10 @@
         android:layout_marginLeft="18dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/settings_id" >
-
+        android:hint="@string/settings_id"
+        android:textColorHint="#555">
         <requestFocus />
-    </EditText>
+        </EditText>
 
     <CheckBox
         android:id="@+id/checkBox1"
