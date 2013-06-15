@@ -24,15 +24,12 @@ public class SettingsDBAdapter {
 	public SettingsDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
 		 db_helper = new SettingsDBHelper(context, DB_NAME, null, 1);
-		 
-		 		 
 	}
 	
 	 public void open() throws SQLException 
 	   {
 	      //open database in reading/writing mode
 	      db = db_helper.getWritableDatabase();
-	      Log.d("Nirmal",db_helper+"  "+db);
 	   } 
 
 	   public void close() 
@@ -45,8 +42,7 @@ public class SettingsDBAdapter {
 	public void updateset(String Name_upd,String ID_upd, Integer Timer)
 	{
 		// ContentValues which is like bundle
-//Log.d("Nirmal",)
-		Log.d("Debug","Updating settings");
+		Log.d("Debug_settings","Updating settings");
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
@@ -61,63 +57,61 @@ public class SettingsDBAdapter {
 		if(c1.getCount()==0)
 		{
 			db.insert("sett",null,bag);
-			Log.d("Debug","Settings inserted");
+			Log.d("Debug_settings","Settings inserted");
 		}
 		else
 		{
 			db.update("sett", bag,loc,null );
-			Log.d("Debug","Settings updated");
+			Log.d("Debug_settings","Settings updated");
 		}
+		Cursor cf=getAllSet();
 		Name=Name_upd;
 		ID=ID_upd;
-		Cursor cf=getAllSet();
-		Log.d("Debug","New values");
-		Log.d("Debug",Name);
-	    Log.d("Debug",ID);
-	   // Log.d("Debug",cf.getString(1));
-	    while(cf.moveToNext())
+		Log.d("Debug_settings","New values");
+		while(cf.moveToNext())
 		{
-	    	Log.d("Debug",cf.getString(1));
+	    	Log.d("Debug_settings",cf.getString(1));
+	    	Log.d("Debug_settings",cf.getString(2));
 		}
 	    close();
 	}
 	
 	public void updatemem()
 	{
-		Log.d("Debug","Updating mem");
+		Log.d("Debug_settings","Updating data members");
 		Integer sno=1;
 		open();
 		Cursor ca=db.rawQuery("SELECT * FROM sett WHERE sno=?", new String[]{sno.toString()});
-		Log.d("Debug","Got text");
 		if(ca.getCount()==0)
 		{
 			Name="";
 			ID="";
-			Log.d("Debug","Table empty");
+			Log.d("Debug_settings","Table empty");
 		}
 		else
 		{
-			ca.moveToNext();
+			ca.moveToNext();				 //Move to the first element
 			Name=ca.getString(1);
 			ID=ca.getString(2);
-			Log.d("Debug","Settings updated");
+			Log.d("Debug_settings","Settings updated");
 		}
 		close();
 	}
 	
 	public void dropset()
 	{
+		open();
 		String query="DELETE FROM ";
 		query=query.concat("sett");
 		db.execSQL(query);
-		Log.d("Debug","Dropped settings");
+		Log.d("Debug_settings","Dropped settings");
+		close();
 	}
 	// Open before calling it and close it after using the cursor.
 	public Cursor getAllSet()
 	{
 		// SELECT NAME FROM fruits WHERE NAME=?
 		Cursor c1 = db.rawQuery("SELECT * FROM sett", null);
-		Log.d("Nirmal",c1+"");
 		return c1;
 	}
 }

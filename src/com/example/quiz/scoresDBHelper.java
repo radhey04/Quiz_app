@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 // Inheritance
 public class scoresDBHelper extends SQLiteOpenHelper {
@@ -22,8 +21,7 @@ public class scoresDBHelper extends SQLiteOpenHelper {
 		// id is an integer as the primary key and autoincrement
 		// Default value of id starting from 0, I suppose
         String createQuery = "CREATE TABLE scores (no integer primary key autoincrement, qno,act_ans,corr_ans,correct);";                 
-        db.execSQL(createQuery);		
-        Log.d("Debug","Created a new table");
+        db.execSQL(createQuery);
 	}
 
 	@Override

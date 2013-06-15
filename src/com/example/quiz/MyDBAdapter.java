@@ -26,7 +26,8 @@ public class MyDBAdapter {
 		 db_helper = new MyDBHelper(context, DB_NAME, null, 1);
 		 Cursor c1=getAllQs();
 		 N=c1.getCount();			// N now has the count
-		 Log.d("Debug_mydbadapter","Total no. of elements =>"+N);			
+		 Log.d("Debug_mydbadapter","Total no. of elements =>"+N);
+		 close();					// Closing the link for Qs();
 	}
 	
 	 public void open() throws SQLException 
