@@ -55,6 +55,7 @@ public class Mainquiz extends Activity {
     private String answ;
     private Integer totq;
     private String timeleft;
+    private boolean Must_answer=false;
     CheckBox chka;
 	CheckBox chkb;
 	CheckBox chkc;
@@ -102,7 +103,6 @@ public class Mainquiz extends Activity {
 		chkd = (CheckBox)findViewById(R.id.checkBox4);
 	    ad=new MyDBAdapter(context);
 	    ads=new scoresDBAdapter(context);
-	    //ads.deleteEntry(1);
 	    ads.dropsheet();
 	    qno=1;											//Initialise the question number
 	    answ="";										//Initialise the answ string
@@ -178,7 +178,9 @@ public class Mainquiz extends Activity {
 				Log.d("Debug",option);
 				Log.d("Debug","Correct answer");
 				Log.d("Debug",answ);
-			    if(!option.equals(""))
+				// Now, even if answers are unchecked Next key will work if  
+				// Must_answer is set to false.
+			    if(!option.equals("")||(Must_answer==false))
 			    {
 			    	if(option.equals(answ))	// Always the order will be A-B-C-D. :)
 		        	{
