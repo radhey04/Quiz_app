@@ -55,5 +55,7 @@
     <string name="title_activity_user_landing">User_landing</string>
     <string name="user_lp_cont">Continue</string>
     <string name="user_lp_text">Press Continue to start the test</string>
+    <string name="delete">Delete</string>
+    <string name="admin_check">Check</string>
 
 </resources>

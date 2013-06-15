@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 public class MyDBAdapter {
 	
@@ -68,9 +69,10 @@ public class MyDBAdapter {
 	{
 		open();
 		//Insert into the table fruits the contents of the bag.
-		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
 		Log.d("Debug_mydbadapter","Deleting an entry");
+		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
 		Log.d("Debug_mydbadapter",QN.toString());
+		N=N-1;
 		close();
 	}
 		
@@ -100,7 +102,7 @@ public class MyDBAdapter {
 		}
 		else
 		{
-			Log.d("Debug_mydbadapter","Bad luck");						
+				Log.d("Debug_mydbadapter","Bad luck");						
 		}
 		close();
 		return c;						// Returns null if failed

@@ -2,7 +2,6 @@ Abraham
 =======
 1. Test options for admin
 2. Previous option in the test and update the data base accordingly.
-3. Delete one and all questions
 4. The exported quiz must contain the facts. 
 	Last line of the database will have the data. 
 5. Publish question
@@ -11,9 +10,13 @@ Abraham
     Storageroomapp.com Mobile CS
     Choose DB method...by extracting the db. exporting db from android app.
 	The exported quiz must contain the facts.
-6. User landing page if questions zero. Lite only. No quiz.
+
 7. Fonts at the quiz section and at admin.
-8. Settings default values
+6. User landing page if questions zero. Lite only. No quiz.
+3. Delete one and all questions
+     Robustness of the chk question page
+     Carry over the layout to others
+     
 9. Admin landing page for creating questions.
   
 Ankit
@@ -64,6 +67,7 @@ Abraham:
 6. Review questions page edittext->textview
 7. Update publish activity...settings still  paining the shit out of me.
 8. No answer option.
+9. Settings default values
 
 Ankit:
 1. Timer
