@@ -16,15 +16,6 @@
         android:text="@string/admin_base_title" />
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonx2"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="50dip"
-        android:text="@string/admin_base_newq" />
-
-    <Button
         android:id="@+id/button2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -34,12 +25,21 @@
         android:text="@string/admin_base_chkq" />
 
     <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="14dp"
+        android:text="@string/admin_base_newq" />
+
+    <Button
         android:id="@+id/buttonx2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="30dip"
+        android:layout_marginTop="22dp"
         android:text="@string/admin_base_revw" />
 
 </RelativeLayout>
