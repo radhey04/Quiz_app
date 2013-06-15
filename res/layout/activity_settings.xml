@@ -16,7 +16,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="48dp"
-        android:ems="10" />
+        android:ems="10" 
+        android:hint="@string/settings"/>
 
     <EditText
         android:id="@+id/editText2"
@@ -25,7 +26,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText1"
         android:layout_marginTop="36dp"
-        android:ems="10" />
+        android:ems="10" 
+        android:hint="@string/settings_id"/>
 
     <Button
         android:id="@+id/button1"

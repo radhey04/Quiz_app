@@ -50,5 +50,10 @@
     <string name="timer">Timer</string>
     <string name="mainquiz_next">Next</string>
     <string name="main_logo">Logo comes here</string>
+    <string name="settings_name">Name</string>
+    <string name="settings_id">ID</string>
+    <string name="title_activity_user_landing">User_landing</string>
+    <string name="user_lp_cont">Continue</string>
+    <string name="user_lp_text">Press Continue to start the test</string>
 
 </resources>

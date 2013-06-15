@@ -16,15 +16,15 @@ public class MyDBAdapter {
 	String TAB_NAME="qbank";
 	// Do most of the communication
 	// db_helper is just to do the upper-level 
-	SQLiteDatabase db;
+	SQLiteDatabase db=null;
 	
-	public Integer N=0;			//The total count
+	public Integer N=1;			//The total count
 	
 	public MyDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
 		 db_helper = new MyDBHelper(context, DB_NAME, null, 1);
 		 Cursor c1=getAllQs();
-		 N=c1.getCount();			// Initialized		
+		 N=c1.getCount();
 	}
 	
 	 public void open() throws SQLException 
@@ -74,9 +74,10 @@ public class MyDBAdapter {
 	public Cursor getAllQs()
 	{
 		open();
-		// SELECT NAME FROM fruits WHERE NAME=?
 		Log.d("Debug","Asked to fetch the entire question bank");
-		Cursor c1 = db.rawQuery("SELECT * FROM qbank",null);
+		String query="SELECT * FROM ";
+		query=query.concat(TAB_NAME);
+		Cursor c1 = db.rawQuery(query, null);
 		Log.d("Debug","Fetched the entire question bank");
 		return c1;
 	}

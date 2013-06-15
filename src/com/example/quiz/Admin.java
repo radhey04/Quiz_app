@@ -40,7 +40,7 @@ public class Admin extends Activity {
 		        b.putInt("totq",totq);
 		        b.putString("timeleft",timeleft);
 		        		        
-		        Intent i = new Intent(getApplicationContext(), Mainquiz.class);
+		        Intent i = new Intent(getApplicationContext(), User_landing.class);
 		        //Add the bundle to the intent.
 		        i.putExtras(b);
 		        startActivity(i);
@@ -71,8 +71,7 @@ public class Admin extends Activity {
 				
 				Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
 				Intent k = new Intent(getApplicationContext(), Settings.class);
-				startActivity(k);
-				
+				startActivity(k);				
 			}
 		});
 	}

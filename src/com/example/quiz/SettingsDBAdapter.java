@@ -12,7 +12,7 @@ public class SettingsDBAdapter {
 	// Calls public void onCreate(SQLiteDatabase db)
 	SettingsDBHelper db_helper;
 	// Database naming
-	String DB_NAME="values";
+	String DB_NAME="SETTINGS";
 	// Do most of the communication
 	// db_helper is just to do the upper-level 
 	SQLiteDatabase db;
@@ -24,7 +24,7 @@ public class SettingsDBAdapter {
 	public SettingsDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
 		 db_helper = new SettingsDBHelper(context, DB_NAME, null, 1);
-		 Log.d("Debug","Created the connection for sett");		 
+		 		 
 	}
 	
 	 public void open() throws SQLException 
@@ -48,6 +48,7 @@ public class SettingsDBAdapter {
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
 		String loc="sno=1";
+
 		bag.put("Name", Name_upd);
 		bag.put("ID", ID_upd);
 		bag.put("Timer", Timer);
@@ -57,14 +58,41 @@ public class SettingsDBAdapter {
 		if(c1.getCount()==0)
 		{
 			db.insert("sett",null,bag);
+			Log.d("Debug","Settings inserted");
 		}
 		else
 		{
 			db.update("sett", bag,loc,null );
+			Log.d("Debug","Settings updated");
 		}
-		Name=Name.concat(Name_upd);
-		ID=ID.concat(ID_upd);
-		Log.d("Debug","Settings updated");
+		Name=Name_upd;
+		ID=ID_upd;
+		Cursor cf=getAllSet();
+		Log.d("Debug","New values");
+		Log.d("Debug",Name);
+	    Log.d("Debug",ID);
+	    Log.d("Debug",cf.getString(1));
+	    close();
+	}
+	
+	public void updatemem()
+	{
+		Log.d("Debug","Updating mem");
+		Integer sno=1;
+		Cursor ca=db.rawQuery("SELECT * FROM sett WHERE sno=?", new String[]{sno.toString()});
+		Log.d("Debug","Got text");
+		if(ca.getCount()==0)
+		{
+			Name="";
+			ID="";
+			Log.d("Debug","Table empty");
+		}
+		else
+		{
+			Name=ca.getString(1);
+			ID=ca.getString(2);
+			Log.d("Debug","Settings updated");
+		}
 		close();
 	}
 	
