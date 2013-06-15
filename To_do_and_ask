@@ -46,7 +46,7 @@ No Man's Land
 	The exported quiz must contain the facts.
 
 4. Develop database storing quizzes available.
-	Quiz|location of db
+	Quiz|location of db|deadline
 	
 5. Importing the exported database.    
 
