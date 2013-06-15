@@ -1,16 +1,24 @@
 Abraham
 =======
-1. 
+1. Test options for admin
+2. Previous option in the test and update the data base accordingly.
+3. Delete one and all questions
+4. No answer option
+ 
 Ankit
 =====
+1. Timer with upper limit.
 2. Background changes
 3. Layout
-4. Timer with upper limit.
+4. Image file in database values table qbank
+	Imageview..
+      onClick
+      pinch and zoom
 
-
-No Man's Land
-=============
-1. Send out the results via HTTPPost to google
+Nikhil
+======
+1. PHP part
+    Send out the results via HTTPPost to google
 		Page must have
 			1. Timestamp
 			2. Name
@@ -18,29 +26,36 @@ No Man's Land
 			4. Score
 			5. Options marked..not necessary
 	Create your PHP website. ADMIN|QUIZ_ID
-2. Support pdf solutions (viewable only at the end)
+2. Uniqueness of attempt
+      Login in the beginning. Authentication from the server.
+
+No Man's Land
+=============
+
+1. Support pdf solutions (viewable only at the end)
 	13 in the 58 slide page
-3. Review question option
-4. Cash on admin properties
-6. Change App Name
-7. Notification for loaded quizzes
+
+2. Notification for loaded quizzes
 	Background service 
-8. Test options for admin
-9. Publish question
+
+3. Publish question
     Transfer data as XML/JSON way.
     Post should be multipath
     Storageroomapp.com Mobile CS
     Choose DB method...by extracting the db. exporting db from android app.
-    
-10.Delete one and all questions
-11. The exported quiz must contain the facts.
-12. Uniqueness of attempt
-      Login in the beginning. Authentication from the server.
-13. Previous option
-14. No answer option
-15. Imageview..
-      onClick
-      pinch and zoom
+	The exported quiz must contain the facts.
+
+4. Develop database storing quizzes available.
+	Quiz|location of db
+	
+5. Importing the exported database.    
+
+
+Ignored
+4. Cash on admin properties
+6. Change App Name
+3. Review question option
+
 
 Done
 ====
@@ -51,7 +66,7 @@ Abraham:
 4. Keep track of scores
 5. Landing page for the user
 6. Review questions page edittext->textview
-Update publish activity...settings still  paining the shit out of me.
+7. Update publish activity...settings still  paining the shit out of me.
 
 Ankit:
 1. Timer
