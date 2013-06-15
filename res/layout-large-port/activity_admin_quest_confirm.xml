@@ -42,24 +42,6 @@
         android:layout_marginTop="20dp"
         android:text="TextView" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="37dp"
-        android:text="@string/admin_quest_upd" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp"
-        android:text="TextView" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="fill_parent"
@@ -77,5 +59,23 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="46dp"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:text="@string/admin_quest_upd" />
 
 </RelativeLayout>

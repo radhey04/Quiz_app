@@ -182,13 +182,13 @@ public class Mainquiz extends Activity {
 			    {
 			    	if(option.equals(answ))	// Always the order will be A-B-C-D. :)
 		        	{
-		        		Toast.makeText(getApplicationContext(), "You are correct", Toast.LENGTH_SHORT).show();
+		        		//Toast.makeText(getApplicationContext(), "You are correct", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Correct");
 		        		ads.insertans(qno,option,answ,1);
 		        	}
 		        	else 
 		        	{		        		
-		        		Toast.makeText(getApplicationContext(), "You are wrong", Toast.LENGTH_SHORT).show();
+		        		//Toast.makeText(getApplicationContext(), "You are wrong", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Incorrect");
 		        		ads.insertans(qno,option,answ,0);
 		        	}

@@ -8,8 +8,6 @@ Abraham
 Ankit
 =====
 1. Timer with upper limit.
-2. Background changes
-3. Layout
 4. Image file in database values table qbank
 	Imageview..
       onClick
@@ -71,6 +69,8 @@ Abraham:
 Ankit:
 1. Timer
 2. Credits
+2. Background changes
+3. Layout
 
 To ask
 ======
