@@ -24,20 +24,21 @@ public class User_publish extends Activity {
 		TextView t6=(TextView) findViewById(R.id.textView6);
 		TextView t7=(TextView) findViewById(R.id.textView7);
 		
-		/*SettingsDBAdapter set = new SettingsDBAdapter(context);
+		SettingsDBAdapter set = new SettingsDBAdapter(context);
 		Log.d("Debug",set.Name);
 		Log.d("Debug",set.ID);
 		Log.d("Debug","Values to be printed on my scoresheet");
 		set.updatemem();
 		t3.setText(set.Name);
-		t4.setText(set.ID);*/
+		t4.setText(set.ID);
+		/*
 		t3.setText("Abraham");
 		t4.setText("EE09B044");
-		/*
+		*/
 		Log.d("Debug",set.Name);
 		Log.d("Debug",set.ID);
 		Log.d("Debug","Values to be printed on my scoresheet");
-		*/
+		/**/
 		scoresDBAdapter ads=new scoresDBAdapter(context);
 		
 		Integer N=ads.N;

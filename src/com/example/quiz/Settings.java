@@ -14,6 +14,7 @@ import android.widget.EditText;
 public class Settings extends Activity {
 
 	Context context=this;
+	
 	private Integer Timer = 0;
 	String Name="";
 	String ID="";

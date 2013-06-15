@@ -24,6 +24,7 @@ public class SettingsDBAdapter {
 	public SettingsDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
 		 db_helper = new SettingsDBHelper(context, DB_NAME, null, 1);
+		 
 		 		 
 	}
 	
@@ -31,6 +32,7 @@ public class SettingsDBAdapter {
 	   {
 	      //open database in reading/writing mode
 	      db = db_helper.getWritableDatabase();
+	      Log.d("Nirmal",db_helper+"  "+db);
 	   } 
 
 	   public void close() 
@@ -43,6 +45,7 @@ public class SettingsDBAdapter {
 	public void updateset(String Name_upd,String ID_upd, Integer Timer)
 	{
 		// ContentValues which is like bundle
+//Log.d("Nirmal",)
 		Log.d("Debug","Updating settings");
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
@@ -52,8 +55,8 @@ public class SettingsDBAdapter {
 		bag.put("Name", Name_upd);
 		bag.put("ID", ID_upd);
 		bag.put("Timer", Timer);
-		open();
 		//Insert into the table qbank the contents of the bag.
+		open();
 		Cursor c1=getAllSet();
 		if(c1.getCount()==0)
 		{
@@ -71,7 +74,11 @@ public class SettingsDBAdapter {
 		Log.d("Debug","New values");
 		Log.d("Debug",Name);
 	    Log.d("Debug",ID);
-	    Log.d("Debug",cf.getString(1));
+	   // Log.d("Debug",cf.getString(1));
+	    while(cf.moveToNext())
+		{
+	    	Log.d("Debug",cf.getString(1));
+		}
 	    close();
 	}
 	
@@ -79,6 +86,7 @@ public class SettingsDBAdapter {
 	{
 		Log.d("Debug","Updating mem");
 		Integer sno=1;
+		open();
 		Cursor ca=db.rawQuery("SELECT * FROM sett WHERE sno=?", new String[]{sno.toString()});
 		Log.d("Debug","Got text");
 		if(ca.getCount()==0)
@@ -89,6 +97,7 @@ public class SettingsDBAdapter {
 		}
 		else
 		{
+			ca.moveToNext();
 			Name=ca.getString(1);
 			ID=ca.getString(2);
 			Log.d("Debug","Settings updated");
@@ -103,12 +112,12 @@ public class SettingsDBAdapter {
 		db.execSQL(query);
 		Log.d("Debug","Dropped settings");
 	}
-	
+	// Open before calling it and close it after using the cursor.
 	public Cursor getAllSet()
 	{
-		open();
 		// SELECT NAME FROM fruits WHERE NAME=?
 		Cursor c1 = db.rawQuery("SELECT * FROM sett", null);
+		Log.d("Nirmal",c1+"");
 		return c1;
 	}
 }
