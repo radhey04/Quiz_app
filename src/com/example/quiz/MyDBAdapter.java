@@ -20,11 +20,13 @@ public class MyDBAdapter {
 	
 	public Integer N=1;			//The total count
 	
-	public MyDBAdapter(Context context) {
+	public MyDBAdapter(Context context) 
+	{
 		// TODO Auto-generated constructor stub
 		 db_helper = new MyDBHelper(context, DB_NAME, null, 1);
 		 Cursor c1=getAllQs();
-		 N=c1.getCount();
+		 N=c1.getCount();			// N now has the count
+		 Log.d("Debug_mydbadapter","Total no. of elements =>"+N);			
 	}
 	
 	 public void open() throws SQLException 
@@ -56,9 +58,9 @@ public class MyDBAdapter {
 		open();
 		//Insert into the table qbank the contents of the bag.
 		db.insert("qbank", null, bag);
-		Log.d("Debug","Inserting an entry");
+		Log.d("Debug_mydbadapter","Inserted an entry");
 		close();
-		N=N+1;
+		N=N+1;								// Update N
 	}
 	
 	public void deleteEntry(Integer QN)
@@ -66,48 +68,40 @@ public class MyDBAdapter {
 		open();
 		//Insert into the table fruits the contents of the bag.
 		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
-		Log.d("Debug","Deleting an entry");
-		Log.d("Debug",QN.toString());
+		Log.d("Debug_mydbadapter","Deleting an entry");
+		Log.d("Debug_mydbadapter",QN.toString());
 		close();
 	}
 		
 	public Cursor getAllQs()
 	{
 		open();
-		Log.d("Debug","Asked to fetch the entire question bank");
+		Log.d("Debug_mydbadapter","Asked to fetch the entire question bank");
 		String query="SELECT * FROM ";
 		query=query.concat(TAB_NAME);
 		Cursor c1 = db.rawQuery(query, null);
-		Log.d("Debug","Fetched the entire question bank");
+		Log.d("Debug_mydbadapter","Fetched the entire question bank");
 		return c1;
 	}
 	
 	public Cursor getQno(Integer QN)
 	{
 		open();
-		Cursor c1 = null;
-		Log.d("Debug","Got to fetch");
-		Log.d("Debug",QN.toString());
+		Log.d("Debug_mydbadapter","Got to fetch");
+		Log.d("Debug_mydbadapter",QN.toString());
+		String query="SELECT * FROM "+TAB_NAME+" WHERE Qno=?";
+		Cursor c=null;
 		if ( (QN <= N) && (QN > 0) )
 		{
-			Cursor cw=getAllQs();
-			Integer QNt=0;
-			while(cw.moveToNext())
-			{
-				QNt=cw.getInt(0);
-				if(QNt==QN)
-				{
-					c1=cw;
-					Log.d("Debug","Got it");
-					break;
-				}
-			}
-			return c1;
+			c=db.rawQuery(query, new String[]{QN.toString()});
+			c.moveToNext();				// Moving the cursor forward
+			Log.d("Debug_mydbadapter","Got it");
 		}
 		else
 		{
-			Log.d("Debug","Bad luck");			
-			return null;
+			Log.d("Debug_mydbadapter","Bad luck");						
 		}
+		close();
+		return c;						// Returns null if failed
 	}
 }

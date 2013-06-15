@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 		
 		TextView t1 = (TextView) findViewById(R.id.textView1);
 		TextView t2 = (TextView) findViewById(R.id.textView2);
-		t1.setText("Designed by Ankit & Abraham");
+		t1.setText("Designed by Ankit, Abraham & Nikhil");
 		t2.setText("With the help of Insane Labs and AADL");
 		
 		Button b1 = (Button) findViewById(R.id.button1);

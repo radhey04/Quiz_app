@@ -3,8 +3,16 @@ Abraham
 1. Test options for admin
 2. Previous option in the test and update the data base accordingly.
 3. Delete one and all questions
-4. No answer option
- 
+4. The exported quiz must contain the facts. 
+	Last line of the database will have the data. 
+5. Publish question
+    Transfer data as XML/JSON way.
+    Post should be multipath
+    Storageroomapp.com Mobile CS
+    Choose DB method...by extracting the db. exporting db from android app.
+	The exported quiz must contain the facts.
+6. User landing page if questions zero. Lite only. No quiz.
+  
 Ankit
 =====
 1. Timer with upper limit.
@@ -16,14 +24,8 @@ Ankit
 Nikhil
 ======
 1. PHP part
-    Send out the results via HTTPPost to google
-		Page must have
-			1. Timestamp
-			2. Name
-			3. Id
-			4. Score
-			5. Options marked..not necessary
-	Create your PHP website. ADMIN|QUIZ_ID
+	Check the layout_php file
+    
 2. Uniqueness of attempt
       Login in the beginning. Authentication from the server.
 
@@ -36,17 +38,10 @@ No Man's Land
 2. Notification for loaded quizzes
 	Background service 
 
-3. Publish question
-    Transfer data as XML/JSON way.
-    Post should be multipath
-    Storageroomapp.com Mobile CS
-    Choose DB method...by extracting the db. exporting db from android app.
-	The exported quiz must contain the facts.
-
-4. Develop database storing quizzes available.
+3. Develop database storing quizzes available.
 	Quiz|location of db|deadline
 	
-5. Importing the exported database.    
+4. Importing the exported database.    
 
 
 Ignored
@@ -65,16 +60,10 @@ Abraham:
 5. Landing page for the user
 6. Review questions page edittext->textview
 7. Update publish activity...settings still  paining the shit out of me.
+8. No answer option.
 
 Ankit:
 1. Timer
 2. Credits
 2. Background changes
 3. Layout
-
-To ask
-======
-1. SQL query to get a row
-2. HTTP response possible???
-3. Fonts...done
-4. Settings pain...done
