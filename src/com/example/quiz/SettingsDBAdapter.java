@@ -17,9 +17,14 @@ public class SettingsDBAdapter {
 	// db_helper is just to do the upper-level 
 	SQLiteDatabase db;
 	
+	public String Name="";
+	public String ID="";
+	
+	
 	public SettingsDBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
 		 db_helper = new SettingsDBHelper(context, DB_NAME, null, 1);
+		 Log.d("Debug","Created the connection for sett");		 
 	}
 	
 	 public void open() throws SQLException 
@@ -35,27 +40,40 @@ public class SettingsDBAdapter {
 	   }	
 	
 	
-	public void insertset(String Name,String ID, Integer Timer)
+	public void updateset(String Name_upd,String ID_upd, Integer Timer)
 	{
 		// ContentValues which is like bundle
+		Log.d("Debug","Updating settings");
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
-		bag.put("Name", Name);
-		bag.put("ID", ID);
+		String loc="sno=1";
+		bag.put("Name", Name_upd);
+		bag.put("ID", ID_upd);
 		bag.put("Timer", Timer);
 		open();
 		//Insert into the table qbank the contents of the bag.
-		db.insert("sett", null, bag);
+		Cursor c1=getAllSet();
+		if(c1.getCount()==0)
+		{
+			db.insert("sett",null,bag);
+		}
+		else
+		{
+			db.update("sett", bag,loc,null );
+		}
+		Name=Name.concat(Name_upd);
+		ID=ID.concat(ID_upd);
+		Log.d("Debug","Settings updated");
 		close();
 	}
 	
-	public void dropsheet()
+	public void dropset()
 	{
 		String query="DELETE FROM ";
 		query=query.concat("sett");
 		db.execSQL(query);
-		Log.d("Debug","Dropped scoresheet");
+		Log.d("Debug","Dropped settings");
 	}
 	
 	public Cursor getAllSet()

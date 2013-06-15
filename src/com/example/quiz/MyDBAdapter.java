@@ -24,7 +24,7 @@ public class MyDBAdapter {
 		// TODO Auto-generated constructor stub
 		 db_helper = new MyDBHelper(context, DB_NAME, null, 1);
 		 Cursor c1=getAllQs();
-		 N=c1.getCount();			// Initialized
+		 N=c1.getCount();			// Initialized		
 	}
 	
 	 public void open() throws SQLException 
@@ -56,6 +56,7 @@ public class MyDBAdapter {
 		open();
 		//Insert into the table qbank the contents of the bag.
 		db.insert("qbank", null, bag);
+		Log.d("Debug","Inserting an entry");
 		close();
 		N=N+1;
 	}
@@ -65,6 +66,8 @@ public class MyDBAdapter {
 		open();
 		//Insert into the table fruits the contents of the bag.
 		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
+		Log.d("Debug","Deleting an entry");
+		Log.d("Debug",QN.toString());
 		close();
 	}
 		
@@ -72,7 +75,9 @@ public class MyDBAdapter {
 	{
 		open();
 		// SELECT NAME FROM fruits WHERE NAME=?
-		Cursor c1 = db.rawQuery("SELECT * FROM qbank", null);
+		Log.d("Debug","Asked to fetch the entire question bank");
+		Cursor c1 = db.rawQuery("SELECT * FROM qbank",null);
+		Log.d("Debug","Fetched the entire question bank");
 		return c1;
 	}
 	
@@ -104,8 +109,4 @@ public class MyDBAdapter {
 			return null;
 		}
 	}
-	
-	
-	
-
 }

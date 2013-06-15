@@ -2,6 +2,7 @@ package com.example.quiz;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -12,7 +13,11 @@ import android.widget.EditText;
 
 public class Settings extends Activity {
 
+	Context context=this;
 	private int Timer = 0;
+	String Name="";
+	String ID="";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,26 +27,10 @@ public class Settings extends Activity {
 		EditText id = (EditText) findViewById(R.id.editText2);
 		CheckBox timer = (CheckBox) findViewById(R.id.checkBox1);
 		Button sub = (Button) findViewById(R.id.button1);
+		//Shifted the commented section here below
 		
-		/*SettingsDBAdapter set1 = new SettingsDBAdapter(getApplicationContext());
-		Cursor c = null;
-		c=set1.getAllSet();
-		Integer n = c.getCount();
-		if(n>0){
-			name.setHint(c.getString(1));
-			id.setHint(c.getString(2));
-			int t=c.getInt(3);
-			if(t>0){
-				timer.setChecked(true);
-			}
-		}
-		else{
-			name.setHint("Enter Name");
-			id.setHint("Enter ID");
-		}*/
-		
-		final String Name = name.getText().toString();
-		final String ID = id.getText().toString();
+		Name = name.getText().toString();
+		ID = id.getText().toString();
 		
 		if(timer.isChecked()) {
 			Timer = 1;
@@ -55,15 +44,8 @@ public class Settings extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				
-				SettingsDBAdapter set = new SettingsDBAdapter(getApplicationContext());
-				//set.deleteset();
-				//if(set!=null){
-				//	set.dropsheet();
-				//}
-				set = new SettingsDBAdapter(getApplicationContext());
-				set.insertset(Name, ID, Timer);
-				Intent i = new Intent(getApplicationContext(), Admin.class);
-				startActivity(i);
+				SettingsDBAdapter set = new SettingsDBAdapter(context);
+				set.updateset(Name, ID, Timer);
 				finish();
 			}
 		});
@@ -79,3 +61,20 @@ public class Settings extends Activity {
 	}
 
 }
+
+/*SettingsDBAdapter set1 = new SettingsDBAdapter(getApplicationContext());
+Cursor c = null;
+c=set1.getAllSet();
+Integer n = c.getCount();
+if(n>0){
+	name.setHint(c.getString(1));
+	id.setHint(c.getString(2));
+	int t=c.getInt(3);
+	if(t>0){
+		timer.setChecked(true);
+	}
+}
+else{
+	name.setHint("Enter Name");
+	id.setHint("Enter ID");
+}*/

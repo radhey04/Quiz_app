@@ -23,8 +23,10 @@ public class User_publish extends Activity {
 		TextView t6=(TextView) findViewById(R.id.textView6);
 		TextView t7=(TextView) findViewById(R.id.textView7);
 		
-		t3.setText("Abraham");
-		t4.setText("EE09B044");
+		SettingsDBAdapter set = new SettingsDBAdapter(context);
+		
+		t3.setText(set.Name);
+		t4.setText(set.ID);
 		
 		scoresDBAdapter ads=new scoresDBAdapter(context);
 		

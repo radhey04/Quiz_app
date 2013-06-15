@@ -27,6 +27,7 @@ public class Admin_base extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), Admin_home.class);
 		        startActivity(intent);
+		        Log.d("Debug","Kickstart newq");
 		        finish();
 			}
 		});
@@ -38,7 +39,8 @@ public class Admin_base extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent2 = new Intent(getApplicationContext(), Admin_review.class);
 				startActivity(intent2);
-				finish();
+		        Log.d("Debug","Kickstart revw");
+		        finish();
 			}
 		});
 		
@@ -49,8 +51,8 @@ public class Admin_base extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent3 = new Intent(getApplicationContext(), Admin_chkq.class);
 				startActivity(intent3);
-				finish();
 				Log.d("Debug","Checking question");
+				finish();				
 			}
 		});
 
