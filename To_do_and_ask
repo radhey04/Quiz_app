@@ -14,12 +14,11 @@ Abraham
 6. User landing page if questions zero. Lite only. No quiz.
 3. Delete one and all questions
      Robustness of the chk question page
-     Carry over the layout to others
+    Done Carry over the layout to others
      Question number re-ordering     
 9. Admin landing page for creating questions.
 
 Post lunch work
--1. Delete functionality in other pages.
 0. Checkout into a new branch.
 1. qbank has independent question number column. Get the whole app working with new db
 2. delete functionality now doesn't destroy the question numbering.
