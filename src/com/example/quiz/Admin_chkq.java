@@ -44,19 +44,20 @@ public class Admin_chkq extends Activity {
 		{
 			Log.d("Debug_admin_chkq","Valid qno");
 			String Qs="";
-			Qs=Qs.concat(c.getString(0));
-			Qs=Qs.concat(" ");
-			Qs=Qs.concat(c.getString(1));
-			Qs=Qs.concat("\n");
+			Integer qnotemp=c.getInt(1);
+			Qs=Qs.concat(qnotemp.toString());
+			Qs=Qs.concat(". ");
 			Qs=Qs.concat(c.getString(2));
+			Qs=Qs.concat("\n\n");
+			Qs=Qs.concat("A -> "+c.getString(3));
 			Qs=Qs.concat("\n");
-			Qs=Qs.concat(c.getString(3));
+			Qs=Qs.concat("B -> "+c.getString(4));
 			Qs=Qs.concat("\n");
-			Qs=Qs.concat(c.getString(4));
+			Qs=Qs.concat("C -> "+c.getString(5));
 			Qs=Qs.concat("\n");
-			Qs=Qs.concat(c.getString(5));
-			Qs=Qs.concat("\n Correct Answer => ");
-			Qs=Qs.concat(c.getString(6));
+			Qs=Qs.concat("D -> "+c.getString(6));
+			Qs=Qs.concat("\n\n Correct Answer => ");
+			Qs=Qs.concat(c.getString(7));
 			t1.setText(Qs);
 			Log.d("Debug_admin_chkq","Got the answer");			
 		}

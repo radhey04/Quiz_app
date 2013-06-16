@@ -58,5 +58,6 @@
     <string name="delete">Delete</string>
     <string name="admin_check">Check</string>
     <string name="admin_chkq_edh">Type the question no.</string>
+    <string name="TextView">TextView</string>
 
 </resources>

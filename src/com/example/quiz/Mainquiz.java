@@ -76,12 +76,12 @@ public class Mainquiz extends Activity {
 		}
 	    else
 	    {
-		    Q.setText(c1.getString(1));
-		    opta.setText(c1.getString(2));
-		    optb.setText(c1.getString(3));
-		    optc.setText(c1.getString(4));
-		    optd.setText(c1.getString(5));
-		    answ=c1.getString(6).toString();
+		    Q.setText(c1.getString(2));
+		    opta.setText(c1.getString(3));
+		    optb.setText(c1.getString(4));
+		    optc.setText(c1.getString(5));
+		    optd.setText(c1.getString(6));
+		    answ=c1.getString(7).toString();
 		    chka.setChecked(false);
 		    chkb.setChecked(false);
 		    chkc.setChecked(false);

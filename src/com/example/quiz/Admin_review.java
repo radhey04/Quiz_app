@@ -25,18 +25,16 @@ public class Admin_review extends Activity {
 		MyDBAdapter ad = new MyDBAdapter(context);
 		
 		Button back=(Button) findViewById(R.id.button1);
-		
 		TextView t=(TextView) findViewById(R.id.textView2);
 		
 		Cursor c1 = ad.getAllQs();
-		
 		String Qs="";
 		
 		while(c1.moveToNext())
 		{
-			Qs = Qs.concat(c1.getString(0));
-			Qs = Qs.concat(" ");
-			Qs = Qs.concat(c1.getString(1));
+			Qs = Qs.concat(c1.getString(1));	// Can fetch int as string.
+			Qs = Qs.concat(". ");
+			Qs = Qs.concat(c1.getString(2));
 			Qs = Qs.concat("\n");
 		}
 		t.setText(Qs);

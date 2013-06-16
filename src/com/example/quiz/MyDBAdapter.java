@@ -49,6 +49,8 @@ public class MyDBAdapter {
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
+		
+		bag.put("Qno", N+1);
 		bag.put("quest", quest);
 		bag.put("opta", opta);
 		bag.put("optb", optb);
@@ -64,17 +66,60 @@ public class MyDBAdapter {
 		N=N+1;								// Update N
 	}
 	
+	public void updateQ(Integer Qprev, Integer Qno, String quest,String opta,String optb,String optc,String optd,String option)
+	{
+		// ContentValues which is like bundle
+		ContentValues bag = new ContentValues();
+		// Order matters. It should be as same as the columns
+		// Contents of the bag will increase with every put statement
+		bag.put("Qno", Qno);
+		bag.put("quest", quest);
+		bag.put("opta", opta);
+		bag.put("optb", optb);
+		bag.put("optc", optc);
+		bag.put("optd", optd);
+		bag.put("option",option);
+		
+		open();
+		//Insert into the table qbank the contents of the bag.
+		db.update(TAB_NAME,bag,"Qno=?",new String []{Qprev.toString()});
+		Log.d("Debug_mydbadapter","Updated "+Qprev+" to "+Qno);
+		close();		
+	}
+	
 	public void deleteEntry(Integer QN)
 	{
 		open();
 		//Insert into the table fruits the contents of the bag.
 		Log.d("Debug_mydbadapter","Deleting an entry");
 		db.delete(TAB_NAME,"qno = ?", new String[]{QN.toString()});
+		preparedel(QN);
 		Log.d("Debug_mydbadapter",QN.toString());
 		N=N-1;
 		close();
 	}
+	
+	void preparedel(Integer QN)
+	{
+		open();
+		Cursor c=getAllQs();
+		Integer qtemp=0;
 		
+		while(c.moveToNext())
+		{
+			qtemp=c.getInt(1);
+			if(qtemp>QN)
+			{
+				updateQ(qtemp,qtemp-1,
+						c.getString(2),
+						c.getString(3),
+						c.getString(4),
+						c.getString(5),
+						c.getString(6),
+						c.getString(7));
+			}
+		}
+	}
 	public Cursor getAllQs()
 	{
 		open();

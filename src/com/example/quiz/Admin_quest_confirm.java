@@ -20,7 +20,8 @@ public class Admin_quest_confirm extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_admin_quest_confirm);
-
+		final MyDBAdapter ad = new MyDBAdapter(context);
+		
 		Button upd = (Button)findViewById(R.id.button1);
 
 
@@ -41,12 +42,12 @@ public class Admin_quest_confirm extends Activity {
 		final String ans = b.getCharSequence("option").toString();
 		String corans="Correct Option: ";
 		corans=corans.concat(ans);
-				 
-		t2.setText(quest);
-		t3.setText(opta);
-		t4.setText(optb);
-		t5.setText(optc);
-		t6.setText(optd);
+		Integer qn=ad.N+1;
+		t2.setText(qn.toString()+". "+quest);
+		t3.setText("A -> "+opta);
+		t4.setText("B -> "+optb);
+		t5.setText("C -> "+optc);
+		t6.setText("D -> "+optd);
 		t7.setText(corans);
 		
 		upd.setOnClickListener(new OnClickListener() {
@@ -54,7 +55,6 @@ public class Admin_quest_confirm extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				MyDBAdapter ad = new MyDBAdapter(context);
 				
 				// Add entry
 				ad.insertQ(quest,opta,optb,optc,optd,ans);

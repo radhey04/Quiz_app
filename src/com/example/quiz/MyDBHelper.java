@@ -20,7 +20,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		// id is an integer as the primary key and autoincrement
 		// Default value of id starting from 0, I suppose
-        String createQuery = "CREATE TABLE qbank (Qno integer primary key autoincrement, quest,opta,optb,optc,optd,option);";                 
+        String createQuery = "CREATE TABLE qbank (sno integer primary key autoincrement,Qno integer,quest,opta,optb,optc,optd,option);";                 
         db.execSQL(createQuery);		
 		
 	}
