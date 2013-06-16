@@ -1,0 +1,82 @@
+Abraham
+=======
+1. Update the master branch
+2. Previous option in the test and update the data base accordingly.
+4. The exported quiz must contain the facts. 
+	Last line of the database will have the data. 
+5. Publish question
+    Transfer data as XML/JSON way.
+    Post should be multipath
+    Storageroomapp.com Mobile CS
+    Choose DB method...by extracting the db. exporting db from android app.
+	The exported quiz must contain the facts.
+7. Fonts at the quiz section and at admin.
+6. User landing page if questions zero. Lite only. No quiz.
+9. Admin landing page for creating questions.
+
+Ankit
+=====
+
+1. Timer with upper limit.xrth
+4. Image file in database values table qbank
+	Imageview..
+      onClick
+      pinch and zoom
+
+Nikhil
+======
+1. Build activity to completely take care of php talking.
+
+No Man's Land
+=============
+
+1. Support pdf solutions (viewable only at the end)
+	13 in the 58 slide page
+2. Notification for loaded quizzes
+	Background service 
+3. Develop database storing quizzes available.
+	Quiz|location of db|deadline
+4. Importing the exported database.
+
+To check
+========
+1. Delete functionality+layout in tab    
+
+
+Ignored
+=======
+1. Test options for admin not required as user mode is sufficient.
+4. Cash on admin properties
+6. Change App Name
+3. Review question option
+
+
+Done
+====
+Abraham:
+1. Iron out user quiz problems			
+2. MCQ compatibility					
+3. Keep track of choices
+4. Keep track of scores
+5. Landing page for the user
+6. Review questions page edittext->textview
+7. Update publish activity...settings still  paining the shit out of me.
+8. No answer option.
+9. Settings default values
+10. Delete one and all questions
+     Robustness of the chk question page
+     Done Carry over the layout to others
+     Question number re-ordering     
+
+Ankit:
+1. Timer
+	1. Timer with upper limit.
+
+2. Credits
+2. Background changes
+3. Layout
+
+Nikhil:
+1. PHP part ->	Check the layout_php file
+2. Uniqueness of attempt ->      Login in the beginning. Authentication from the server.
+

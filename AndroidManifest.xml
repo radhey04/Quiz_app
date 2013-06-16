@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.quiz"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.quiz.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin"
+            android:label="@string/title_activity_admin" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Mainquiz"
+            android:label="@string/title_activity_mainquiz" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin_login"
+            android:label="@string/title_activity_admin_login" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin_base"
+            android:label="@string/title_activity_admin_base" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin_home"
+            android:label="@string/title_activity_admin_home" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin_quest_confirm"
+            android:label="@string/title_activity_admin_quest_confirm" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin_review"
+            android:label="@string/title_activity_admin_review" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin_chkq"
+            android:label="@string/title_activity_admin_chkq" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.User_publish"
+            android:label="@string/title_activity_user_publish" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.User_landing"
+            android:label="@string/title_activity_user_landing" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.Admin_cp"
+            android:label="@string/title_activity_admin_cp" >
+        </activity>
+    </application>
+
+</manifest>
