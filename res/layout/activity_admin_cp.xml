@@ -88,13 +88,21 @@
         android:layout_alignBottom="@+id/textView4"
 		android:inputType="number"/>
 
-    <DatePicker
-        android:id="@+id/datePicker1"
+<!--     <DatePicker -->
+<!--         android:id="@+id/datePicker1" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignLeft="@+id/editText1" -->
+<!--         android:layout_alignBottom="@+id/textView5"/> -->
+	<Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dip"
         android:layout_alignLeft="@+id/editText1"
-        android:layout_alignBottom="@+id/textView5"/>
-
+        android:layout_alignBaseline="@+id/textView5"
+        android:text="@string/admin_cp_date"/>
+    
     <EditText
         android:id="@+id/editText4"
         android:layout_width="150dip"

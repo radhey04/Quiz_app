@@ -68,5 +68,6 @@
     <string name="admin_cp_deadl">Deadline :</string>
     <string name="admin_cp_syllabus">Syllabus :</string>
     <string name="title_activity_admin_crp">Admin_crp</string>
+    <string name="admin_cp_date">Set Date</string>
 
 </resources>
