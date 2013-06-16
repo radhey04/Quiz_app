@@ -24,11 +24,7 @@ Ankit
 
 Nikhil
 ======
-1. PHP part
-	Check the layout_php file
-    
-2. Uniqueness of attempt
-      Login in the beginning. Authentication from the server.
+1. Build activity to completely take care of php talking.
 
 No Man's Land
 =============
@@ -76,3 +72,8 @@ Ankit:
 2. Credits
 2. Background changes
 3. Layout
+
+Nikhil:
+1. PHP part ->	Check the layout_php file
+2. Uniqueness of attempt ->      Login in the beginning. Authentication from the server.
+

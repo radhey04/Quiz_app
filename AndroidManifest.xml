@@ -66,6 +66,10 @@
             android:name="com.example.quiz.User_landing"
             android:label="@string/title_activity_user_landing" >
         </activity>
+        <activity
+            android:name="com.example.quiz.Admin_cp"
+            android:label="@string/title_activity_admin_cp" >
+        </activity>
     </application>
 
 </manifest>

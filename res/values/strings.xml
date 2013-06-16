@@ -60,5 +60,13 @@
     <string name="admin_chkq_edh">Type the question no.</string>
     <string name="TextView">TextView</string>
     <string name="delete_all">Delete All</string>
+    <string name="title_activity_admin_cp">Admin_cp</string>
+    <string name="admin_cp_instr">Hi. Please enter the quiz details to get started.</string>
+    <string name="admin_cp_name">Quiz Name :</string>
+    <string name="admin_cp_qn"># of Qs :</string>
+    <string name="admin_cp_time">Duration :</string>
+    <string name="admin_cp_deadl">Deadline :</string>
+    <string name="admin_cp_syllabus">Syllabus :</string>
+    <string name="title_activity_admin_crp">Admin_crp</string>
 
 </resources>
