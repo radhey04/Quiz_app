@@ -1,0 +1,12 @@
+Branching fundaes
+================
+
+Create a branch @ local repository. ref/HEAD/Firstversion or master
+Pull method merge.
+
+Commit your changes and push. (Automatically a local branch is created and updated)
+
+Once you are done, checkout to firstversion
+Pull
+Merge the branch into firstversion.
+Commit and push 
