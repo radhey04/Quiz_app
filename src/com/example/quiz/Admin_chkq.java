@@ -116,10 +116,12 @@ public class Admin_chkq extends Activity {
 			    	    public void onClick(DialogInterface dialog, int which) {			      	
 			    	    	//Yes button clicked, do something
 			    	    	Log.d("Debug_admin_chkq","Prepare the dialog");
-							Toast.makeText(getApplicationContext(), "Yes button pressed", 
+							Toast.makeText(getApplicationContext(), "Deleted the question", 
 			                               Toast.LENGTH_SHORT).show();
 							Log.d("Debug_admin_chkq","Prepare the dialog");
 							ad.deleteEntry(qno);
+							t1.setText(R.string.admin_chkq_hint);
+							e1.setText("");
 			    	    }
 			    	});
 			    	builder.setNegativeButton("No", null);

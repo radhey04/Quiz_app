@@ -26,7 +26,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dip"
         android:ems="10" 
-        android:inputType="number">
+        android:inputType="number"
+        android:hint="@string/admin_chkq_edh">
         <requestFocus />
     </EditText>
 	

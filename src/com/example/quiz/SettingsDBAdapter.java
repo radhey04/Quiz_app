@@ -46,8 +46,7 @@ public class SettingsDBAdapter {
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
-		String loc="sno=1";
-
+		String loc="sno=1";			//sno is not autoincremented :)
 		bag.put("Name", Name_upd);
 		bag.put("ID", ID_upd);
 		bag.put("Timer", Timer);
@@ -70,8 +69,8 @@ public class SettingsDBAdapter {
 		Log.d("Debug_settings","New values");
 		while(cf.moveToNext())
 		{
-	    	Log.d("Debug_settings",cf.getString(1));
-	    	Log.d("Debug_settings",cf.getString(2));
+	    	Log.d("Debug_settings",cf.getString(1)+" "+cf.getString(2)+"");
+	    	Log.d("Debug_settings",Name+" "+ID+" ");
 		}
 	    close();
 	}
@@ -79,9 +78,8 @@ public class SettingsDBAdapter {
 	public void updatemem()
 	{
 		Log.d("Debug_settings","Updating data members");
-		Integer sno=1;
 		open();
-		Cursor ca=db.rawQuery("SELECT * FROM sett WHERE sno=?", new String[]{sno.toString()});
+		Cursor ca=getAllSet();
 		if(ca.getCount()==0)
 		{
 			Name="";
@@ -93,6 +91,7 @@ public class SettingsDBAdapter {
 			ca.moveToNext();				 //Move to the first element
 			Name=ca.getString(1);
 			ID=ca.getString(2);
+			Log.d("Debug_settings",Name+" "+ID+' ');
 			Log.d("Debug_settings","Settings updated");
 		}
 		close();

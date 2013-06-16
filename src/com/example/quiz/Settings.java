@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Settings extends Activity {
 
@@ -29,7 +30,7 @@ public class Settings extends Activity {
 		final EditText id = (EditText) findViewById(R.id.editText2);
 		final CheckBox timer = (CheckBox) findViewById(R.id.checkBox1);
 		Button sub = (Button) findViewById(R.id.button1);
-		set.dropset();
+		//set.dropset();
 		set.updatemem();
 		if(set.Name.equals(""))
 		{
@@ -38,6 +39,7 @@ public class Settings extends Activity {
 		else
 		{
 			name.setText(set.Name);
+			//Log.d("Debug_settings",set.Name);
 		}
 		if(set.ID.equals(""))
 		{
@@ -46,6 +48,7 @@ public class Settings extends Activity {
 		else
 		{
 			id.setText(set.ID);
+			//Log.d("Debug_settings",set.ID);
 		}
 		//Shifted the commented section here below
 		
@@ -53,18 +56,34 @@ public class Settings extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
-				
-				
+								
 				Name = name.getText().toString();
 				ID = id.getText().toString();
 				if(timer.isChecked()) {
 					Timer = 1;
 				}
-				else {
+				else 
+				{
 					Timer = 0;
 				}
-				set.updateset(Name, ID, Timer);
-				finish();
+				if(Name.equals("") && ID.equals(""))
+				{
+					Toast.makeText(getApplicationContext(), "You can't leave the fields empty!!!", Toast.LENGTH_SHORT).show();			
+				}
+				else if(Name.equals(""))
+				{
+					Toast.makeText(getApplicationContext(), "You can't leave the Name field empty!!!", Toast.LENGTH_SHORT).show();			
+				}
+				else if(ID.equals(""))
+				{
+					Toast.makeText(getApplicationContext(), "You can't leave the ID field empty!!!", Toast.LENGTH_SHORT).show();			
+				}
+				else
+				{
+					set.updateset(Name, ID, Timer);
+					Toast.makeText(getApplicationContext(), "Settings updated", Toast.LENGTH_SHORT).show();
+					finish();
+				}
 			}
 		});
 		

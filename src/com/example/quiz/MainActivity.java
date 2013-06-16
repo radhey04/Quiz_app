@@ -2,15 +2,21 @@ package com.example.quiz;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+	Context context=this;
+	SettingsDBAdapter set;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,10 +33,25 @@ public class MainActivity extends Activity {
 			
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				
-				Intent i=new Intent(getApplicationContext(), Admin.class);
-				startActivity(i);
-				finish();
+				set=new SettingsDBAdapter(context);
+				set.updatemem();
+				if(set.Name.equals(""))
+				{
+					Toast.makeText(context,"Please fill in the details.",Toast.LENGTH_SHORT).show();
+					Intent i=new Intent(getApplicationContext(), Admin.class);
+					startActivity(i);
+					//Inception level. :D Finally you will see settings on top.
+					i=new Intent(getApplicationContext(), Settings.class);
+					startActivity(i);
+					// Control will come back here. So wait till name has come.
+					finish();					
+				}
+				else // If name already there
+				{
+					Intent i=new Intent(getApplicationContext(), Admin.class);
+					startActivity(i);
+					finish();
+				}
 			}
 		});
 		

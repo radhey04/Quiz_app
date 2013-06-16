@@ -57,5 +57,6 @@
     <string name="user_lp_text">Press Continue to start the test</string>
     <string name="delete">Delete</string>
     <string name="admin_check">Check</string>
+    <string name="admin_chkq_edh">Type the question no. here</string>
 
 </resources>

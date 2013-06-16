@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="48dp"
         android:ems="10" 
-        android:hint="@string/settings"
+        android:hint="@string/settings_name"
         android:textColorHint="#555">
         <requestFocus />
         </EditText>
