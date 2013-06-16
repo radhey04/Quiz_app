@@ -1,6 +1,5 @@
 Abraham
 =======
-1. Test options for admin
 2. Previous option in the test and update the data base accordingly.
 4. The exported quiz must contain the facts. 
 	Last line of the database will have the data. 
@@ -18,6 +17,15 @@ Abraham
      Carry over the layout to others
      Question number re-ordering     
 9. Admin landing page for creating questions.
+
+Post lunch work
+-1. Delete functionality in other pages.
+0. Checkout into a new branch.
+1. qbank has independent question number column. Get the whole app working with new db
+2. delete functionality now doesn't destroy the question numbering.
+2. Admin landing page updates the first line of the question bank with info. qno=0
+3. User landing page reads the qno=0 and updates the page. Layout to be changed
+4. 
   
 Ankit
 =====
@@ -40,17 +48,20 @@ No Man's Land
 
 1. Support pdf solutions (viewable only at the end)
 	13 in the 58 slide page
-
 2. Notification for loaded quizzes
 	Background service 
-
 3. Develop database storing quizzes available.
 	Quiz|location of db|deadline
-	
-4. Importing the exported database.    
+4. Importing the exported database.
+
+To check
+========
+1. Delete functionality+layout in tab    
 
 
 Ignored
+=======
+1. Test options for admin not required as user mode is sufficient.
 4. Cash on admin properties
 6. Change App Name
 3. Review question option

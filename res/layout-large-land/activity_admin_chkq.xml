@@ -31,15 +31,6 @@
         <requestFocus />
     </EditText>
     
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dip"
-        android:text="@string/submit" />
-	
 	<TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -58,4 +49,20 @@
         android:layout_marginTop="20dip"
         android:text="@string/admin_back" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_marginTop="10dip"
+        android:text="@string/admin_check" />
+	<Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignRight="@+id/editText1"
+        android:text="@string/delete" />
+    
 </RelativeLayout>

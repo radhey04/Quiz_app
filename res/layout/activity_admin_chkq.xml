@@ -54,8 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText1"
-        android:layout_marginTop="23dip"
-        android:layout_marginLeft="40dip"
+        android:layout_marginTop="20dip"
+        android:layout_alignLeft="@+id/editText1"
         android:text="@string/admin_check" />
 
     <Button
@@ -63,9 +63,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_alignParentRight="true"
         android:layout_alignBaseline="@+id/button1"
-        android:layout_marginRight="40dip"
+        android:layout_alignRight="@+id/editText1"
         android:text="@string/delete" />
 
 </RelativeLayout>
