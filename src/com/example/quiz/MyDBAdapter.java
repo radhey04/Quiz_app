@@ -120,6 +120,17 @@ public class MyDBAdapter {
 			}
 		}
 	}
+	
+	public void deleteall()
+	{
+		open();
+		String query="DELETE FROM ";
+		query=query.concat(TAB_NAME);
+		db.execSQL(query);
+		Log.d("Debug_settings","Dropped the question paper");
+		close();
+	}
+	
 	public Cursor getAllQs()
 	{
 		open();

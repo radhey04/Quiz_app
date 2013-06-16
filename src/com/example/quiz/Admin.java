@@ -54,7 +54,7 @@ public class Admin extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
-				Toast.makeText(getApplicationContext(), "Admin", Toast.LENGTH_SHORT).show();
+//				Toast.makeText(getApplicationContext(), "Admin", Toast.LENGTH_SHORT).show();
 				Intent j = new Intent(getApplicationContext(), Admin_base.class);
 				startActivity(j);
 				// Commenting it out so that it acts as the safety net
@@ -69,7 +69,7 @@ public class Admin extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+//				Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
 				Intent k = new Intent(getApplicationContext(), Settings.class);
 				startActivity(k);				
 			}

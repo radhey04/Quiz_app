@@ -20,8 +20,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/buttonx2"
-        android:layout_marginTop="30dip"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="20dip"
         android:text="@string/admin_base_chkq" />
 
     <Button
@@ -38,8 +38,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button2"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="22dp"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="20dp"
         android:text="@string/admin_base_revw" />
 
 </RelativeLayout>

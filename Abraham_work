@@ -22,6 +22,7 @@ Abraham
 Post lunch work
 ===============
 1. Delete all questions button
+      Carry the layout work
 2. Admin landing page updates the first line of the question bank with info. qno=0
 3. User landing page reads the qno=0 and updates the page. Layout to be changed
 
