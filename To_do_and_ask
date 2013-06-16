@@ -19,8 +19,7 @@ Abraham
 9. Admin landing page for creating questions.
 
 Post lunch work
-0. Checkout into a new branch.Testing merging.Failed
-0. Try 2. My change in first version
+0. Checkout into a new branch.Branch3
 1. qbank has independent question number column. Get the whole app working with new db
 2. delete functionality now doesn't destroy the question numbering.
 2. Admin landing page updates the first line of the question bank with info. qno=0
