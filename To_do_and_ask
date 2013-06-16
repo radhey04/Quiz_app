@@ -10,23 +10,10 @@ Abraham
     Storageroomapp.com Mobile CS
     Choose DB method...by extracting the db. exporting db from android app.
 	The exported quiz must contain the facts.
-
 7. Fonts at the quiz section and at admin.
 6. User landing page if questions zero. Lite only. No quiz.
-3. Delete one and all questions
-     Robustness of the chk question page
-    Done Carry over the layout to others
-     Question number re-ordering     
 9. Admin landing page for creating questions.
 
-Post lunch work
-0. Checkout into a new branch.
-1. qbank has independent question number column. Get the whole app working with new db
-2. delete functionality now doesn't destroy the question numbering.
-2. Admin landing page updates the first line of the question bank with info. qno=0
-3. User landing page reads the qno=0 and updates the page. Layout to be changed
-4. 
-  
 Ankit
 =====
 1. Timer with upper limit.
@@ -79,6 +66,10 @@ Abraham:
 7. Update publish activity...settings still  paining the shit out of me.
 8. No answer option.
 9. Settings default values
+10. Delete one and all questions
+     Robustness of the chk question page
+     Done Carry over the layout to others
+     Question number re-ordering     
 
 Ankit:
 1. Timer
