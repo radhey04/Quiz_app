@@ -26,6 +26,7 @@ public class Mainquiz extends Activity {
 	
 	//Timer
 	TextView time;
+	int Tottime;
     long starttime = 0;
     final Handler h = new Handler(new Callback() {
 
@@ -35,9 +36,21 @@ public class Mainquiz extends Activity {
            int seconds = (int) (millis / 1000);
            int minutes = seconds / 60;
            seconds     = seconds % 60;
-
-           time.setText(String.format("%d:%02d", minutes, seconds));
-            return false;
+           
+           int seconds_left = 59 - seconds;
+           int minutes_left = Tottime - minutes - 1;
+           
+           if(minutes_left==0 && seconds_left==0){
+        	   
+        	   timer.cancel();
+        	   timer.purge();
+        	   Toast.makeText(getApplicationContext(), "Time up", Toast.LENGTH_SHORT).show();
+       		   Intent j=new Intent(getApplicationContext(), User_publish.class);
+       		   startActivity(j);
+       		   finish();
+           }
+           time.setText(String.format("%d:%02d", minutes_left, seconds_left));
+           return false;
         }
     });
 
@@ -137,8 +150,11 @@ public class Mainquiz extends Activity {
 		
 		totq=b.getInt("totq");
 		timeleft=b.getString("timeleft");
-	    
+		
+		
 		time = (TextView)findViewById(R.id.textView6);
+		//Tottime = Integer.parseInt(timeleft);
+		Tottime = 1;
         
         starttime = System.currentTimeMillis();
         timer = new Timer();
@@ -202,7 +218,7 @@ public class Mainquiz extends Activity {
 			    	}
 			    	else
 			    	{
-			    		Toast.makeText(getApplicationContext(), "Congrats", Toast.LENGTH_SHORT).show();
+			    		Toast.makeText(getApplicationContext(), "Quiz Over", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Quiz Over! Congrats");
 		        		Intent i=new Intent(getApplicationContext(), User_publish.class);
 						startActivity(i);
@@ -226,4 +242,5 @@ public class Mainquiz extends Activity {
 	}
 
 }
+
 

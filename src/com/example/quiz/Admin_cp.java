@@ -61,6 +61,6 @@ public class Admin_cp extends Activity {
     public void updateLabel()
     {
     	Toast.makeText(getApplicationContext(), "Yes", Toast.LENGTH_SHORT).show();
-    	setd.setText(formatDateTime.format(dateTime.get());    	
+//    	setd.setText(formatDateTime.format(dateTime.get());    	
     }
 }
