@@ -1,6 +1,5 @@
 Abraham
 =======
-1. Update the master branch
 2. Previous option in the test and update the data base accordingly.
 4. The exported quiz must contain the facts. 
 	Last line of the database will have the data. 
@@ -12,7 +11,6 @@ Abraham
 	The exported quiz must contain the facts.
 7. Fonts at the quiz section and at admin.
 6. User landing page if questions zero. Lite only. No quiz.
-9. Admin landing page for creating questions.
 
 Ankit
 =====
@@ -67,6 +65,8 @@ Abraham:
      Robustness of the chk question page
      Done Carry over the layout to others
      Question number re-ordering     
+11. Update the master branch
+12. Admin landing page for creating questions.
 
 Ankit:
 1. Timer

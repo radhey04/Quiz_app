@@ -1,6 +1,5 @@
 Abraham
 =======
-1. Update the master branch
 2. Previous option in the test and update the data base accordingly.
 4. Publish question database
     Transfer data as XML/JSON way.
@@ -8,23 +7,17 @@ Abraham
     Storageroomapp.com Mobile CS
     Choose DB method...by extracting the db. exporting db from android app.
 	The exported quiz must contain the facts.
-5. Fonts at the quiz section and at admin.
-6. User landing page if questions zero. Lite only. No quiz.
-7. Admin landing page for creating questions.
 
-Post lunch work
-===============
-1. Admin landing page updates the first line of the question bank with info. qno=0
-0.
-	1. Quiz Name:
-	2.  # of Qs: 40 questions
-	3. Duration: 30 minutes
-	4. Syllabus:
-	6. Deadline:
+5. Fonts at the quiz section and at admin.
 
 2. User landing page reads the qno=0 and updates the page. Layout to be changed
-3. The exported quiz must contain the facts. 
-	Last line of the database will have the data. 
+6. User landing page if questions zero. Lite only. No quiz.
+
+3:35 -> copy layouts
+3:45 -> User landing page.
+4:10 -> Edit button in review.
+	
+
 
 Done
 0. Checkout into a new branch.

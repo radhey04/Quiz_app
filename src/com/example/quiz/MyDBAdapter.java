@@ -25,7 +25,7 @@ public class MyDBAdapter {
 		// TODO Auto-generated constructor stub
 		 db_helper = new MyDBHelper(context, DB_NAME, null, 1);
 		 Cursor c1=getAllQs();
-		 N=c1.getCount();			// N now has the count
+		 N=c1.getCount()-1;			// N now has the count
 		 Log.d("Debug_mydbadapter","Total no. of elements =>"+N);
 		 close();					// Closing the link for Qs();
 	}
@@ -49,7 +49,6 @@ public class MyDBAdapter {
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
 		// Contents of the bag will increase with every put statement
-		
 		bag.put("Qno", N+1);
 		bag.put("quest", quest);
 		bag.put("opta", opta);

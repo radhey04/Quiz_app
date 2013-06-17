@@ -32,26 +32,26 @@ public class MainActivity extends Activity {
 			
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-//				set=new SettingsDBAdapter(context);
-//				set.updatemem();
-//				if(set.Name.equals(""))
-//				{
-//					Toast.makeText(context,"Please fill in the details.",Toast.LENGTH_SHORT).show();
-//					Intent i=new Intent(getApplicationContext(), Admin.class);
-//					startActivity(i);
-//					//Inception level. :D Finally you will see settings on top.
-//					i=new Intent(getApplicationContext(), Settings.class);
-//					startActivity(i);
-//					// Control will come back here. So wait till name has come.
-//					finish();					
-//				}
-//				else // If name already there
-//				{
-				Intent i=new Intent(getApplicationContext(), Admin_cp.class);
-//					Intent i=new Intent(getApplicationContext(), Admin.class);
+				set=new SettingsDBAdapter(context);
+				set.updatemem();
+				if(set.Name.equals(""))
+				{
+					Toast.makeText(context,"Please fill in the details.",Toast.LENGTH_SHORT).show();
+					Intent i=new Intent(getApplicationContext(), Admin.class);
+					startActivity(i);
+					//Inception level. :D Finally you will see settings on top.
+					i=new Intent(getApplicationContext(), Settings.class);
+					startActivity(i);
+					// Control will come back here. So wait till name has come.
+					finish();					
+				}
+				else // If name already there
+				{
+//				Intent i=new Intent(getApplicationContext(), Admin_cp.class);
+					Intent i=new Intent(getApplicationContext(), Admin.class);
 					startActivity(i);
 					finish();
-//				}
+				}
 			}
 		});
 		

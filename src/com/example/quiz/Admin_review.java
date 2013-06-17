@@ -34,8 +34,11 @@ public class Admin_review extends Activity {
 		final TextView t=(TextView) findViewById(R.id.textView2);
 		
 		Cursor c1 = ad.getAllQs();
-		String Qs="";
-		
+		String Qs="Question Paper => ";
+		c1.moveToNext();
+		Qs = Qs.concat(c1.getString(2));
+		Qs = Qs.concat("\n");
+	
 		while(c1.moveToNext())
 		{
 			Qs = Qs.concat(c1.getString(1));	// Can fetch int as string.

@@ -31,9 +31,20 @@ public class Admin_base extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), Admin_home.class);
-		        startActivity(intent);
-		        Log.d("Debug","Kickstart newq");
+				Boolean k=(ad.N==-1);
+				Log.d("Debug",k.toString());
+				if(ad.N==-1)
+				{
+					Intent intent = new Intent(getApplicationContext(), Admin_cp.class);
+			        startActivity(intent);
+			        Log.d("Debug","Registering the test");
+				}
+				else
+				{
+					Intent intent = new Intent(getApplicationContext(), Admin_home.class);
+			        startActivity(intent);
+			        Log.d("Debug","Kickstart newq");
+				}
 		        finish();
 			}
 		});
@@ -43,17 +54,17 @@ public class Admin_base extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(ad.N>0)
+				if(ad.N==-1)
+				{
+					Log.d("Debug","No kickstart revw as no q");
+					Toast.makeText(context,"No questions in the question bank",Toast.LENGTH_SHORT).show();
+				}
+				else
 				{
 					Intent intent2 = new Intent(getApplicationContext(), Admin_review.class);
 					startActivity(intent2);
 			        Log.d("Debug","Kickstart revw");
-			        finish();
-				}
-				else
-				{
-					Log.d("Debug","No kickstart revw as no q");
-					Toast.makeText(context,"No questions in the question bank",Toast.LENGTH_SHORT).show();
+			        finish();			        
 				}
 			}
 		});
