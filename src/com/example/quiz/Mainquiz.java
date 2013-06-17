@@ -89,7 +89,7 @@ public class Mainquiz extends Activity {
 		}
 	    else
 	    {
-		    Q.setText(c1.getString(2));
+		    Q.setText(c1.getString(1)+". "+c1.getString(2));
 		    opta.setText(c1.getString(3));
 		    optb.setText(c1.getString(4));
 		    optc.setText(c1.getString(5));
@@ -155,7 +155,6 @@ public class Mainquiz extends Activity {
 		
 		time = (TextView)findViewById(R.id.textView6);
 		Tottime = Integer.parseInt(timeleft);
-		//Tottime = 1;
         
         starttime = System.currentTimeMillis();
         timer = new Timer();

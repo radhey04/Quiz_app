@@ -17,6 +17,7 @@ public class MyDBAdapter {
 	// Do most of the communication
 	// db_helper is just to do the upper-level 
 	SQLiteDatabase db=null;
+	String Q_Name,Admin_ID;
 	
 	public Integer N=1;			//The total count
 	
@@ -155,6 +156,8 @@ public class MyDBAdapter {
 		{
 			Log.d("Debug_mydbadapter","No question bank");						
 		}
+		Q_Name=c.getString(2);
+		Admin_ID=c.getString(7);
 		close();
 		return c;						// Returns null if failed
 	}

@@ -1,20 +1,19 @@
 Abraham
 =======
 1. User sanity check
-2. Date limit
-3. Date recasting
-4. Previous option in the test and update the data base accordingly.
+3. Previous option in the test and update the data base accordingly.
+4. Editing questions and qbank settings.
 5. Publish question
     Transfer data as XML/JSON way.
     Post should be multipath
     Storageroomapp.com Mobile CS
     Choose DB method...by extracting the db. exporting db from android app.
 	The exported quiz must contain the facts.
-6. Fonts at the quiz section and at admin.xy
+6. Fonts at the quiz section and at admin.
 
 Ankit
 =====
-
+1. Killing timer
 4. Image file in database values table qbank
 	Imageview..
       onClick
@@ -65,6 +64,8 @@ Abraham:
      Question number re-ordering     
 11. Update the master branch
 12. Admin landing page for creating questions.
+13. Date recasting
+14. Date limit
 
 Ankit:
 1. Timer
