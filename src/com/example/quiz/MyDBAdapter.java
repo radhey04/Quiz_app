@@ -22,7 +22,6 @@ public class MyDBAdapter {
 	
 	public MyDBAdapter(Context context) 
 	{
-		// TODO Auto-generated constructor stub
 		 db_helper = new MyDBHelper(context, DB_NAME, null, 1);
 		 Cursor c1=getAllQs();
 		 N=c1.getCount()-1;			// N now has the count
@@ -30,18 +29,17 @@ public class MyDBAdapter {
 		 close();					// Closing the link for Qs();
 	}
 	
-	 public void open() throws SQLException 
-	   {
-	      //open database in reading/writing mode
-	      db = db_helper.getWritableDatabase();
-	   } 
+	public void open() throws SQLException 
+    {
+       //open database in reading/writing mode
+       db = db_helper.getWritableDatabase();
+    } 
 
-	   public void close() 
-	   {
-	      if (db != null)
-	         db.close();
-	   }	
-	
+	public void close() 
+	{
+	   if (db != null)
+		   db.close();
+	}	
 	
 	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option)
 	{
@@ -139,6 +137,26 @@ public class MyDBAdapter {
 		Cursor c1 = db.rawQuery(query, null);
 		Log.d("Debug_mydbadapter","Fetched the entire question bank");
 		return c1;
+	}
+	
+	public Cursor getQBset()
+	{
+		open();
+		Log.d("Debug_mydbadapter","Got to fetch the settings");
+		String query="SELECT * FROM "+TAB_NAME+" WHERE Qno=0";
+		Cursor c=null;
+		if ( N >= 0 )
+		{
+			c=db.rawQuery(query,null);
+			c.moveToNext();				// Moving the cursor forward
+			Log.d("Debug_mydbadapter","Got the settings");
+		}
+		else
+		{
+			Log.d("Debug_mydbadapter","No question bank");						
+		}
+		close();
+		return c;						// Returns null if failed
 	}
 	
 	public Cursor getQno(Integer QN)

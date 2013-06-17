@@ -63,7 +63,7 @@ public class Mainquiz extends Activity {
    };
 
    Timer timer = new Timer();
-	
+    Button submit;
 	private Integer qno;
     private String answ;
     private Integer totq;
@@ -100,6 +100,10 @@ public class Mainquiz extends Activity {
 		    chkc.setChecked(false);
 		    chkd.setChecked(false);
 		    Log.d("Debug","Updated");
+	    }
+	    if(ad.N==qno)
+	    {
+	    	submit.setText("Finish");
 	    }
     }
     
@@ -153,15 +157,15 @@ public class Mainquiz extends Activity {
 		
 		
 		time = (TextView)findViewById(R.id.textView6);
-		//Tottime = Integer.parseInt(timeleft);
-		Tottime = 1;
+		Tottime = Integer.parseInt(timeleft);
+		//Tottime = 1;
         
         starttime = System.currentTimeMillis();
         timer = new Timer();
         timer.schedule(new firstTask(), 0,500);
 
 		
-		Button submit=(Button) findViewById(R.id.button1);
+		submit=(Button) findViewById(R.id.button1);
 	    
 	    Initialize();
 	    updateactivity();
@@ -218,7 +222,7 @@ public class Mainquiz extends Activity {
 			    	}
 			    	else
 			    	{
-			    		Toast.makeText(getApplicationContext(), "Quiz Over", Toast.LENGTH_SHORT).show();
+//			    		Toast.makeText(getApplicationContext(), "Quiz Over", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Quiz Over! Congrats");
 		        		Intent i=new Intent(getApplicationContext(), User_publish.class);
 						startActivity(i);

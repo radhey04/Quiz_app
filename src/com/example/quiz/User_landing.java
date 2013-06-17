@@ -2,7 +2,9 @@ package com.example.quiz;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,23 +13,41 @@ import android.widget.TextView;
 
 public class User_landing extends Activity {
 
+	Context context=this;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_landing);
-		final Bundle bund = getIntent().getExtras();
 		
 		Button b=(Button) findViewById(R.id.button1);
 		TextView t=(TextView) findViewById(R.id.textView1);
 		
-		String a="No. of questions :";
-		Integer z=bund.getInt("totq");
-		a=a.concat(z.toString());
-		a=a.concat("\n  Time allowed :");
-		a=a.concat(bund.getString("timeleft"));
+		final MyDBAdapter ad=new MyDBAdapter(context);
+		Cursor c = ad.getQBset();
 		
-		t.setText(a);
+		String details="Hi. The following are the details of " +
+				"the quiz you are about to take.";
+		details=details.concat("\n\n Quiz Name: "+c.getString(2));
+		details=details.concat("\n\n # of Qs: "+c.getString(3));
+		details=details.concat("\n\n Duration: "+c.getString(4)+" mins");
+		details=details.concat("\n\n Deadline: "+c.getString(6));
+		details=details.concat("\n\n Syllabus:\n"+c.getString(5));
+		t.setText(details);
 		
+		
+		Integer totq= Integer.parseInt(c.getString(3));
+		String timeleft=c.getString(4);
+		final Bundle bund = new Bundle();
+		
+		// Bundle containing
+		// Total Questions stored as totq (int)
+		// Time as timeleft (String)
+						
+        bund.putInt("totq",totq);
+        bund.putString("timeleft",timeleft);
+        		        
+        
 		b.setOnClickListener(new OnClickListener() {
 			
 			@Override

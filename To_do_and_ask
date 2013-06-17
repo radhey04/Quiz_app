@@ -1,21 +1,20 @@
 Abraham
 =======
-2. Previous option in the test and update the data base accordingly.
-4. The exported quiz must contain the facts. 
-	Last line of the database will have the data. 
+1. User sanity check
+2. Date limit
+3. Date recasting
+4. Previous option in the test and update the data base accordingly.
 5. Publish question
     Transfer data as XML/JSON way.
     Post should be multipath
     Storageroomapp.com Mobile CS
     Choose DB method...by extracting the db. exporting db from android app.
 	The exported quiz must contain the facts.
-7. Fonts at the quiz section and at admin.
-6. User landing page if questions zero. Lite only. No quiz.
+6. Fonts at the quiz section and at admin.
 
 Ankit
 =====
 
-1. Timer with upper limit.xrth
 4. Image file in database values table qbank
 	Imageview..
       onClick

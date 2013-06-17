@@ -79,8 +79,8 @@ public class Admin_cp extends Activity {
 				// TODO Auto-generated method stub
 				Toast.makeText(getApplicationContext(), "Filled it! Plz tick a box.", Toast.LENGTH_SHORT).show();
 				e1.setText("Test QP");
-				e2.setText("3");
-				e3.setText("20");
+				e2.setText("2");
+				e3.setText("2");
 				e4.setText("This paper covers portions from different parts of Electrical Engineering.");				
 			}
 		});
