@@ -2,8 +2,7 @@ Abraham
 =======
 1. User sanity check
 2. Date limit
-3. Date recasting
-4. Previous option in the test and update the data base accordingly.
+3. Previous option in the test and update the data base accordingly.
 5. Publish question
     Transfer data as XML/JSON way.
     Post should be multipath
@@ -65,6 +64,7 @@ Abraham:
      Question number re-ordering     
 11. Update the master branch
 12. Admin landing page for creating questions.
+13. Date recasting
 
 Ankit:
 1. Timer

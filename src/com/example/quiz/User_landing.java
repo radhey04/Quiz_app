@@ -1,6 +1,10 @@
 package com.example.quiz;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +19,7 @@ public class User_landing extends Activity {
 
 	Context context=this;
 	
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,12 +31,22 @@ public class User_landing extends Activity {
 		final MyDBAdapter ad=new MyDBAdapter(context);
 		Cursor c = ad.getQBset();
 		
+		String dates=c.getString(6);
+		Date expiry=null;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+	    try {
+	        expiry = formatter.parse(dates);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    String datef=new SimpleDateFormat("dd MMM yyyy").format(expiry.getTime());    
+		
 		String details="Hi. The following are the details of " +
 				"the quiz you are about to take.";
 		details=details.concat("\n\n Quiz Name: "+c.getString(2));
 		details=details.concat("\n\n # of Qs: "+c.getString(3));
 		details=details.concat("\n\n Duration: "+c.getString(4)+" mins");
-		details=details.concat("\n\n Deadline: "+c.getString(6));
+		details=details.concat("\n\n Deadline: "+datef);
 		details=details.concat("\n\n Syllabus:\n"+c.getString(5));
 		t.setText(details);
 		
