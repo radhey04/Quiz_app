@@ -3,6 +3,7 @@ package com.example.quiz;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -114,7 +115,24 @@ public class Admin_cp extends Activity {
     public void updateLabel()
     {
     	datef=new SimpleDateFormat("yyyyMMdd").format(dateTime.getTime());
-    	String datedisp=new SimpleDateFormat("dd MMM yyyy").format(dateTime.getTime());
-    	setd.setText(datedisp);
+        Integer datefint=Integer.parseInt(datef);
+
+        Date d = new Date();
+        String datet = new SimpleDateFormat("yyyyMMdd").format(d.getTime());
+        Integer datetint=Integer.parseInt(datet);
+    	
+        Log.d("Debug_admin_cp","New date => "+datefint);
+        Log.d("Debug_admin_cp","Date 2dy => "+datetint);
+        if(datefint<datetint)
+        {
+    		Toast.makeText(context, "Please provide correct deadline", Toast.LENGTH_LONG).show();
+    		datef="";
+    		setd.setText("Set Date");
+        }
+    	else
+    	{
+    		String datedisp=new SimpleDateFormat("dd MMM yyyy").format(dateTime.getTime());
+            setd.setText(datedisp);
+    	}
     }
 }

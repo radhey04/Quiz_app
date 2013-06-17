@@ -1,8 +1,8 @@
 Abraham
 =======
 1. User sanity check
-2. Date limit
 3. Previous option in the test and update the data base accordingly.
+4. Editing questions and qbank settings.
 5. Publish question
     Transfer data as XML/JSON way.
     Post should be multipath
@@ -65,6 +65,7 @@ Abraham:
 11. Update the master branch
 12. Admin landing page for creating questions.
 13. Date recasting
+14. Date limit
 
 Ankit:
 1. Timer
