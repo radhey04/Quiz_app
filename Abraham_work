@@ -23,6 +23,4 @@ Done
 0. Checkout into a new branch.
 1. qbank has independent question number column. Get the whole app working with new db
 2. delete functionality now doesn't destroy the question numbering.
-
-Nikhil test
   
