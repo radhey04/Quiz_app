@@ -174,8 +174,6 @@ public class Mainquiz extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-			    
 			    String option = "";
 			    if(chka.isChecked())
 				{

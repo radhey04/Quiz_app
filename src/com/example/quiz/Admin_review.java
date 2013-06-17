@@ -52,7 +52,6 @@ public class Admin_review extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Log.d("Debug_admin_review","Deleting the paper");
 				builder.setTitle("Delete the entire question paper?");
 				builder.setMessage("Are you sure? You will lose the settings too.");
@@ -76,7 +75,6 @@ public class Admin_review extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 				startActivity(intent);
 				finish();

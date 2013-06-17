@@ -54,8 +54,6 @@ public class Admin_quest_confirm extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
 				// Add entry
 				ad.insertQ(quest,opta,optb,optc,optd,ans);
 				

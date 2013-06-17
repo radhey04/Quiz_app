@@ -31,7 +31,6 @@ public class MainActivity extends Activity {
 		b1.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
 				set=new SettingsDBAdapter(context);
 				set.updatemem();
 				if(set.Name.equals(""))

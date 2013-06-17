@@ -56,7 +56,6 @@ public class User_publish extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				// Intent intent = new Intent(getApplicationContext(), Admin.class);
 	        	// startActivity(intent);
 				// Safety net is there. So NO need to create another activity.

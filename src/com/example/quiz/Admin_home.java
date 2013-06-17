@@ -36,7 +36,6 @@ public class Admin_home extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				String quest_contents= quest.getText().toString();
 				String opta_contents = opta.getText().toString();
 				String optb_contents = optb.getText().toString();
@@ -89,7 +88,6 @@ public class Admin_home extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Toast.makeText(getApplicationContext(), "Filled it! Plz tick a box.", Toast.LENGTH_SHORT).show();
 				quest.setText("Test Question");
 				opta.setText("Optiona");

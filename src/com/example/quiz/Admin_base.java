@@ -30,7 +30,6 @@ public class Admin_base extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Boolean k=(ad.N==-1);
 				Log.d("Debug",k.toString());
 				if(ad.N==-1)
@@ -53,7 +52,6 @@ public class Admin_base extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				if(ad.N==-1)
 				{
 					Log.d("Debug","No kickstart revw as no q");
@@ -73,7 +71,6 @@ public class Admin_base extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				if(ad.N>0)
 				{
 					Intent intent3 = new Intent(getApplicationContext(), Admin_chkq.class);

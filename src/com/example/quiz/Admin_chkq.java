@@ -78,13 +78,10 @@ public class Admin_chkq extends Activity {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(context);
     	
 		
-		// TODO exception not handled
 		sub.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-								
 				if(updatespace(e1,t1)==0)
 				{
 					Toast.makeText(getApplicationContext(), "Invalid Question no.", Toast.LENGTH_SHORT).show();					
@@ -95,7 +92,6 @@ public class Admin_chkq extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 	        	startActivity(intent);
 	        	finish();
@@ -105,7 +101,6 @@ public class Admin_chkq extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				final Integer qno=updatespace(e1,t1);
 				if((qno<=ad.N)&&(qno>0))
 				{

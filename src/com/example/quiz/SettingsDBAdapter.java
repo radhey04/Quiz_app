@@ -22,7 +22,6 @@ public class SettingsDBAdapter {
 	
 	
 	public SettingsDBAdapter(Context context) {
-		// TODO Auto-generated constructor stub
 		 db_helper = new SettingsDBHelper(context, DB_NAME, null, 1);
 	}
 	

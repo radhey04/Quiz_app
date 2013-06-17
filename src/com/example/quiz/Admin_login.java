@@ -26,7 +26,6 @@ public class Admin_login extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				String pwd_contents = pwd.getText().toString();
 		        //Inserts a String value into the mapping of this Bundle
 		        if(pwd_contents.equals("a"))

@@ -49,7 +49,6 @@ public class Admin_cp extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				chooseDate();
 			}
 		});
@@ -57,7 +56,6 @@ public class Admin_cp extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				if(allset())
 				{
 					ad.insertQ(e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"");
@@ -76,7 +74,6 @@ public class Admin_cp extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Toast.makeText(getApplicationContext(), "Filled it! Plz tick a box.", Toast.LENGTH_SHORT).show();
 				e1.setText("Test QP");
 				e2.setText("2");

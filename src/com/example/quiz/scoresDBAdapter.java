@@ -21,7 +21,6 @@ public class scoresDBAdapter {
 	public Integer N=0;			//The total count
 	public String perf="";
 	public scoresDBAdapter(Context context) {
-		// TODO Auto-generated constructor stub
 		 db_helper = new scoresDBHelper(context, DB_NAME, null, 1);
 // Below code not required for the first run as anyways we are going to 
 // drop the sheet. :) But since we are going to call it in user_publish, we

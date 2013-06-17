@@ -11,13 +11,11 @@ public class scoresDBHelper extends SQLiteOpenHelper {
 	public scoresDBHelper(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version);
-		// TODO Auto-generated constructor stub
 		
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
 		// id is an integer as the primary key and autoincrement
 		// Default value of id starting from 0, I suppose
         String createQuery = "CREATE TABLE scores (no integer primary key autoincrement, qno,act_ans,corr_ans,correct);";                 
@@ -26,7 +24,6 @@ public class scoresDBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
 		// Write the version control code. :) If you want.
 		
 	}
