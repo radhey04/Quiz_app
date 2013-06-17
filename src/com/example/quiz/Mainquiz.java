@@ -155,6 +155,7 @@ public class Mainquiz extends Activity {
 		
 		time = (TextView)findViewById(R.id.textView6);
 		Tottime = Integer.parseInt(timeleft);
+		//Tottime = 1;
         
         starttime = System.currentTimeMillis();
         timer = new Timer();
