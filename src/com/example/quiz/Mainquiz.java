@@ -131,11 +131,8 @@ public class Mainquiz extends Activity {
     	if(qno>totq)
     	{
     		Log.d("Debug","Quiz Over.");
-    		return true;
-    	}
-    	else if(timeleft.equals(""))
-    	{
-    		Log.d("Debug","Time up.");
+    		timer.cancel();
+    		timer.purge();
     		return true;
     	}
     	else
