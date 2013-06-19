@@ -14,11 +14,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class User_landing extends Activity {
 
 	Context context=this;
-	
+	boolean flag=false;
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +62,29 @@ public class User_landing extends Activity {
 						
         bund.putInt("totq",totq);
         bund.putString("timeleft",timeleft);
-        		        
+        b.setText("Authenticate & Continue");		        
         
 		b.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i= new Intent(getApplicationContext(),Mainquiz.class);
-				i.putExtras(bund);
-				startActivity(i);
-				finish();
+//				 Nikhil's authenticate
+//				if(auth)
+//				{
+//				
+//					Intent i= new Intent(getApplicationContext(),Mainquiz.class);
+//					i.putExtras(bund);
+//					startActivity(i);
+//				}
+//				else
+//				{
+//					Toast.makeText(context,"You have already taken the test!",Toast.LENGTH_SHORT).show();
+//					Intent i= new Intent(getApplicationContext(),Admin.class);
+//					i.putExtras(bund);
+//					startActivity(i);
+//
+//				}
+//				finish();
 			}
 		});
 	}
