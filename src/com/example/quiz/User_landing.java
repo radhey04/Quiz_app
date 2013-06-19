@@ -83,6 +83,7 @@ public class User_landing extends Activity {
 				String Deadline = c.getString(6);
 				QuizName= QuizName.replace(" ", "");
 				name=name.replace(" ","");
+				studentID=studentID.replace(" ","");
 				
 				Log.d("DEBUG", "SpaceRemoved:"+QuizName);
 								
