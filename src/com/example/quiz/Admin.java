@@ -22,7 +22,7 @@ public class Admin extends Activity {
 				
 //				Toast.makeText(getApplicationContext(), "Begin your Quiz", Toast.LENGTH_SHORT).show();
 				
-				Intent i = new Intent(getApplicationContext(), User_landing.class);
+				Intent i = new Intent(getApplicationContext(), User_base.class);
 				startActivity(i);
 				// Commenting it out so that it acts as the safety net
 				//finish();

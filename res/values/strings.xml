@@ -72,5 +72,7 @@
     <string name="title_activity_user_base">User_base</string>
     <string name="title_activity_user_score">User_score</string>
     <string name="title_activity_user_import">User_import</string>
-
+	<string name="user_landing_take">Take a Quiz</string>
+	<string name="user_landing_scr">View scores</string>
+	<string name="user_landing_imp">Import a Quiz</string>
 </resources>
