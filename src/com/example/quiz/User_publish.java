@@ -1,5 +1,14 @@
 package com.example.quiz;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class User_publish extends Activity {
 
@@ -53,6 +63,27 @@ public class User_publish extends Activity {
 		Cursor c=ad.getQBset();
 		// Duration is given by c.getString(4);
 		// Nikhil's score code comes here
+		String student_ID = set.ID;
+		final String studentID = student_ID.replace(" ", "");
+		String name_ = set.Name;
+		final String name=name_.replace(" ", "");
+		String quiz_Name = c.getString(2);
+		final String QuizName=quiz_Name.replace(" ", "");
+		final String score = ads.getscore().toString();
+		final String TimeLimit = c.getString(4)+"00";
+		
+		DownloadWebPageTask task = new DownloadWebPageTask();
+		
+		String Student_ID = "Student_ID='"+studentID+"'";
+		String Name = "Name='"+name+"'";
+		String Quiz_Name = "Quiz_Name='"+QuizName+"'";
+		String Scre  = "Score="+score;
+		String Time_Limit = "TimeLimit="+TimeLimit;
+		
+		String url = "http://10.0.0.2/app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
+		Log.d("DEBUG", url);
+		task.execute(url);
+		
 		
 		ret.setOnClickListener(new OnClickListener() {
 			
@@ -71,6 +102,42 @@ public class User_publish extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.user_publish, menu);
 		return true;
+	}
+	
+	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected String doInBackground(String... urls) {
+			Log.d("DEBUG", "Inside dwp");
+			String response = "";
+			for (String url : urls) {
+				DefaultHttpClient client = new DefaultHttpClient();
+				HttpGet httpGet = new HttpGet(url);
+				try {
+					HttpResponse execute = client.execute(httpGet);
+					InputStream content = execute.getEntity().getContent();
+
+					BufferedReader buffer = new BufferedReader(
+							new InputStreamReader(content));
+					String s = "";
+					while ((s = buffer.readLine()) != null) {
+						response += s;
+						Log.d("DEBUG", s);
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					Log.d("DEBUG", "Exception");
+				}
+			}
+			Log.d("DEBUG", "Done dwp");
+			return response;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			Log.d("DEBUG", "onPostExecute");
+			//Toast.makeText(context,  result, Toast.LENGTH_LONG).show();
+		}
 	}
 
 }

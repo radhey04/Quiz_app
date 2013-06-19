@@ -89,10 +89,10 @@ public class User_landing extends Activity {
 								
 				String Student_ID = "Student_ID='"+studentID+"'";
 				String Name = "Name='"+name+"'";
-				String Deads= "Deadline='"+Deadline+"'";
+				String Deads= "Deadline='"+Deadline+"235959'";
 				String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 								
-				String url = "http://10.0.0.4/app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
+				String url = "http://10.0.0.2/app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				task.execute(url);
 			}

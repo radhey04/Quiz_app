@@ -6,11 +6,11 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 //mysql_select_db("quiz"); 
-
+$Quiz_Name = $_GET["Quiz_Name"];
 $Score = $_GET["Score"];
 $Time_Limit = $_GET["TimeLimit"];
 $currTime = date("YmdHis");
-$Student_ID = $_GET["Student_ID"];echo "<br>"; echo $Student_ID;
+$Student_ID = $_GET["Student_ID"];//echo "<br>"; echo $Student_ID;
 $result = mysqli_query($con,"SELECT * FROM scores
 WHERE Student_ID = $Student_ID");
 
@@ -23,19 +23,20 @@ else
 while($row = mysqli_fetch_array($result))
   {
   $StartTime = $row['StartingTime'];
-  echo $StartTime;
-  echo "<br>";
+  //echo $StartTime;
+  //echo "<br>";
   }
-echo $Score;
-echo "<br>";
-echo $Time_Limit;
-echo "<br>";
-echo ($currTime - $StartTime);
+//echo $Score;
+//echo "<br>";
+//echo $Time_Limit;
+//echo "<br>";
+//echo ($currTime - $StartTime);
 
 if( $currTime - $StartTime < $Time_Limit)
   {
   mysqli_query($con,"UPDATE scores SET Score=$Score
-  WHERE Student_ID = $Student_ID ");
+  WHERE Student_ID = $Student_ID AND Quiz_Name = $Quiz_Name ");
+  echo "Scores Updated";
   }
 else
   {
