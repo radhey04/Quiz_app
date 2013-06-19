@@ -70,6 +70,18 @@
             android:name="com.example.quiz.Admin_cp"
             android:label="@string/title_activity_admin_cp" >
         </activity>
+        <activity
+            android:name="com.example.quiz.User_base"
+            android:label="@string/title_activity_user_base" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.User_score"
+            android:label="@string/title_activity_user_score" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.User_import"
+            android:label="@string/title_activity_user_import" >
+        </activity>
     </application>
 
 </manifest>
