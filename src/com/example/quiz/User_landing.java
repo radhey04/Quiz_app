@@ -80,23 +80,20 @@ public class User_landing extends Activity {
 				MyDBAdapter ad=new MyDBAdapter(context);
 				Cursor c=ad.getQBset();
 				String QuizName = c.getString(2);
+				String Deadline = c.getString(6);
 				QuizName= QuizName.replace(" ", "");
+				name=name.replace(" ","");
 				
 				Log.d("DEBUG", "SpaceRemoved:"+QuizName);
 								
 				String Student_ID = "Student_ID='"+studentID+"'";
 				String Name = "Name='"+name+"'";
+				String Deads= "Deadline='"+Deadline+"'";
 				String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 								
-				String url = "http://10.0.0.4/app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name;
+				String url = "http://10.0.0.4/app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				task.execute(url);
-				Integer blah=0;
-				while(blah<10000)
-				{
-					blah=blah+1;
-				}
-				finish();
 			}
 		});
 	}
@@ -150,7 +147,7 @@ public class User_landing extends Activity {
 		        bund.putInt("totq",totq);
 		        bund.putString("timeleft",timeleft);
 		        
-		        Toast.makeText(context,  "The test will start now. All the best!!!", Toast.LENGTH_SHORT).show();
+		        //Toast.makeText(context,  "The test will start now. All the best!!!", Toast.LENGTH_SHORT).show();
 				Intent i= new Intent(getApplicationContext(),Mainquiz.class);
 				i.putExtras(bund);
 				startActivity(i);
@@ -160,6 +157,7 @@ public class User_landing extends Activity {
 				Toast.makeText(context,  "You have already taken the test. You being sent back to the previous page", Toast.LENGTH_LONG).show();
 				// Calling finish will take you back to admin.java
 			}
+			finish();
 		}
 	}
 }
