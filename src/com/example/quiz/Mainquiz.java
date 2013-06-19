@@ -89,7 +89,7 @@ public class Mainquiz extends Activity {
 		}
 	    else
 	    {
-		    Q.setText(c1.getString(2));
+		    Q.setText(c1.getString(1)+". "+c1.getString(2));
 		    opta.setText(c1.getString(3));
 		    optb.setText(c1.getString(4));
 		    optc.setText(c1.getString(5));
@@ -131,11 +131,8 @@ public class Mainquiz extends Activity {
     	if(qno>totq)
     	{
     		Log.d("Debug","Quiz Over.");
-    		return true;
-    	}
-    	else if(timeleft.equals(""))
-    	{
-    		Log.d("Debug","Time up.");
+    		timer.cancel();
+    		timer.purge();
     		return true;
     	}
     	else
