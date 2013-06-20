@@ -65,9 +65,20 @@ while($row = mysqli_fetch_array($result))
   $exists = $row['COUNT(Student_ID)'];
   //echo "<br>";
   }
+  
+  $Deadline = str_replace("'", "", $Deadline);
+  //echo $Deadline;
+  $timestamp = strtotime($Deadline);
+  $Deads = date('YmdHis', $timestamp);
+  $Deads = $Deads+235959;
+  /*echo "<br>";
+  echo $Deads;
+  echo "<br>";
+  echo $StartTime;
+  echo "<br>";*/
 //echo $exists;
 //$ret=mysqli_query($con,"INSERT INTO `quiz`.`scores` (`SNo`, `Student_ID`, `Name`, `StartingTime`, `Quiz_Name`, `Score`) VALUES (NULL,$Student_ID, $Name, $StartTime, $Quiz_Name, NULL)");
-if( $exists == '0' && $Deadline>$StartTime)
+if( $exists == '0' && $Deads>$StartTime)
 {
   //mysqli_query($con,"INSERT INTO `quiz`.`scores` (`SNo`, `Student_ID`, `Name`, `StartingTime`, `Quiz_Name`, `Score`) VALUES (NULL, $Student_ID, $Name, $StartTime, $Quiz_Name, NULL)");//NULL,NULL, NULL, NULL)");
   mysqli_query($con,"INSERT INTO `quiz`.`scores` (`SNo`, `Student_ID`, `Name`, `StartingTime`, `Quiz_Name`, `Score`) VALUES (NULL, $Student_ID, $Name, $StartTime, $Quiz_Name, NULL)");

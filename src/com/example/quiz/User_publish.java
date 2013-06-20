@@ -135,6 +135,18 @@ public class User_publish extends Activity {
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute");
 			//Toast.makeText(context,  result, Toast.LENGTH_LONG).show();
+			if(result.equals("1"))
+			{
+				Toast.makeText(context,  "Scores Updated",Toast.LENGTH_SHORT).show();
+			}
+			else if(result.equals("0"))
+			{
+				Toast.makeText(context,  "Your quiz is timed out",Toast.LENGTH_SHORT).show();
+			}
+			else
+			{
+				Toast.makeText(context,  "Connection to the server could not be established", Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 

@@ -36,11 +36,11 @@ if( $currTime - $StartTime < $Time_Limit)
   {
   mysqli_query($con,"UPDATE scores SET Score=$Score
   WHERE Student_ID = $Student_ID AND Quiz_Name = $Quiz_Name ");
-  echo "Scores Updated";
+  echo "1";
   }
 else
   {
-  echo "Invalid Entry";
+  echo "0";
   }
 }
 mysqli_close($con);

@@ -50,7 +50,7 @@ public class User_landing extends Activity {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    String datef=new SimpleDateFormat("dd MMM yyyy").format(expiry.getTime());    
+	    final String datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());    
 		
 		String details="Hi. The following are the details of " +
 				"the quiz you are about to take.";
@@ -80,7 +80,7 @@ public class User_landing extends Activity {
 				MyDBAdapter ad=new MyDBAdapter(context);
 				Cursor c=ad.getQBset();
 				String QuizName = c.getString(2);
-				String Deadline = c.getString(6);
+				String Deadline = datef;
 				QuizName= QuizName.replace(" ", "");
 				name=name.replace(" ","");
 				studentID=studentID.replace(" ","");
@@ -89,9 +89,11 @@ public class User_landing extends Activity {
 								
 				String Student_ID = "Student_ID='"+studentID+"'";
 				String Name = "Name='"+name+"'";
-				String Deads= "Deadline='"+Deadline+"235959'";
+				String Deads= "Deadline='"+Deadline+"'";
 				String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 								
+				Log.d("DEBUG", "Deadline:"+Deads);
+				
 				String url = "http://10.0.0.2/app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				task.execute(url);
@@ -153,10 +155,14 @@ public class User_landing extends Activity {
 				i.putExtras(bund);
 				startActivity(i);
 			}
-			else
+			else if(result.equals("0"))
 			{
 				Toast.makeText(context,  "You have already taken the test. You being sent back to the previous page", Toast.LENGTH_LONG).show();
 				// Calling finish will take you back to admin.java
+			}
+			else
+			{
+				Toast.makeText(context,  "The website cannot be reached", Toast.LENGTH_LONG).show();
 			}
 			finish();
 		}
