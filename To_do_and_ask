@@ -7,6 +7,7 @@ Abraham
 7. Fonts at the quiz section and at admin.
     1. Layouts for user_base,user_import,user_score needs to be updated.
     2. User base buttons to be made fill parent.
+
 1. Left for some time now...Integrating Ankit's app into the database.
 
 
@@ -23,7 +24,21 @@ Nikhil
 1. Build activity to completely take care of php talking.
 2. HTML page for viewing the databases
 3. See if db files are directly downloadable.
-
+4. Import section must talk with Nikhil's php code 
+and list down all the available question banks. User chooses
+one from the activity, initiating its download and overwriting
+the existing DB.
+    Pros:
+    1. Simple to implement and we have achieved at least the
+    level required in the mobile
+    Cons:
+    1. User can't take multiple quizzes
+    2. If he needs to take another quiz, he has to download the
+    other one.
+    Solution: Go with this method and the quiz chooser shows all 
+    the details.
+    
+    
 No Man's Land
 =============
 
