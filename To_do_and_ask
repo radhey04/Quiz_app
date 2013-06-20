@@ -1,5 +1,6 @@
 Abraham
 =======
+1. User_base page
 	3. View scores
 3. Previous option in the test and update the data base accordingly.
 5. Version settings for the question bank.
@@ -7,13 +8,11 @@ Abraham
 7. Fonts at the quiz section and at admin.
     1. Layouts for user_base,user_import,user_score needs to be updated.
     2. User base buttons to be made fill parent.
-
 1. Left for some time now...Integrating Ankit's app into the database.
 
 
 Ankit
 =====
-1. Killing timer
 4. Image file in database values table qbank
 	Imageview..
       onClick
@@ -21,7 +20,6 @@ Ankit
 
 Nikhil
 ======
-1. Build activity to completely take care of php talking.
 2. HTML page for viewing the databases
 3. See if db files are directly downloadable.
 4. Import section must talk with Nikhil's php code 
@@ -59,8 +57,8 @@ Ignored
 1. Test options for admin not required as user mode is sufficient.
 4. Cash on admin properties
 6. Change App Name
-NABquiz
 
+NABquiz
 
 Done
 ====
@@ -102,7 +100,7 @@ Abraham:
 Ankit:
 1. Timer
 	1. Timer with upper limit.
-
+	2. Killing timer
 2. Credits
 2. Background changes
 3. Layout
@@ -110,5 +108,6 @@ Ankit:
 Nikhil:
 1. PHP part ->	Check the layout_php file
 2. Uniqueness of attempt ->      Login in the beginning. Authentication from the server.
+3. Build activity to completely take care of php talking.
 
 
