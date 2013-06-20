@@ -24,7 +24,7 @@ public class User_base extends Activity {
 		TextView t=(TextView) findViewById(R.id.textView1);
 		Button takeq=(Button) findViewById(R.id.button1);
 //		Button vscr=(Button) findViewById(R.id.button2);
-//		Button impq=(Button) findViewById(R.id.button3);
+		Button impq=(Button) findViewById(R.id.button3);
 		
 		SettingsDBAdapter set=new SettingsDBAdapter(getApplicationContext());
 		set.updatemem();
@@ -60,6 +60,23 @@ public class User_base extends Activity {
 					}
 				}
 								
+			}
+		});
+		
+		impq.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				DBhandling dbh = new DBhandling();
+				Boolean suc=dbh.importDB("Quiz");
+				if(suc==true)
+				{
+					Toast.makeText(getApplicationContext(), "Loaded the quiz", Toast.LENGTH_SHORT).show();
+				}
+				else
+				{
+					Toast.makeText(getApplicationContext(), "Couldn't find the question bank.", Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 	}

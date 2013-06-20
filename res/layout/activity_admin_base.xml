@@ -42,4 +42,13 @@
         android:layout_marginTop="30dip"
         android:text="@string/admin_base_revw" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonx2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="@string/admin_base_export" />
+
 </RelativeLayout>

@@ -25,18 +25,17 @@ public class SettingsDBAdapter {
 		 db_helper = new SettingsDBHelper(context, DB_NAME, null, 1);
 	}
 	
-	 public void open() throws SQLException 
+    public void open() throws SQLException 
 	   {
 	      //open database in reading/writing mode
 	      db = db_helper.getWritableDatabase();
 	   } 
 
-	   public void close() 
+    public void close() 
 	   {
 	      if (db != null)
 	         db.close();
 	   }	
-	
 	
 	public void updateset(String Name_upd,String ID_upd, Integer Timer)
 	{

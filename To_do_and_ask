@@ -1,22 +1,14 @@
 Abraham
 =======
-1. Integrating Ankit's app into the database.
-2. Exporting in admin page and importing databank @ user_base & admin_base
-	1. Publish question
-	    Transfer data as XML/JSON way.
-	    Post should be multipath
-	    Storageroomapp.com Mobile CS
-	    Choose DB method...by extracting the db. exporting db from android app.
-		The exported quiz must contain the facts.
-2. Create a user landing page.
-	1. Done Take a quiz
-	2. Import a question bank
 	3. View scores
 3. Previous option in the test and update the data base accordingly.
 5. Version settings for the question bank.
 6. Editing questions and qbank settings.
 7. Fonts at the quiz section and at admin.
-8. Keep calm and eat clam.
+    1. Layouts for user_base,user_import,user_score needs to be updated.
+    2. User base buttons to be made fill parent.
+1. Left for some time now...Integrating Ankit's app into the database.
+
 
 Ankit
 =====
@@ -29,6 +21,8 @@ Ankit
 Nikhil
 ======
 1. Build activity to completely take care of php talking.
+2. HTML page for viewing the databases
+3. See if db files are directly downloadable.
 
 No Man's Land
 =============
@@ -50,7 +44,7 @@ Ignored
 1. Test options for admin not required as user mode is sufficient.
 4. Cash on admin properties
 6. Change App Name
-
+NABquiz
 
 
 Done
@@ -78,6 +72,17 @@ Abraham:
 	2. Check if no. of questions are greater than zero.
 16. Create a user landing page.
 	1. Take a quiz
+	2. Import a question bank
+17. Exporting in admin page and importing databank @ user_base & admin_base
+	1. Check if the promised questions and no. of questions match
+	2. Ensure you can't have zero questions in the settings
+	3. Confirm if you want to export 
+	Publish question
+	    Transfer data as XML/JSON way.
+	    Post should be multipath
+	    Storageroomapp.com Mobile CS
+	    Choose DB method...by extracting the db. exporting db from android app.
+		The exported quiz must contain the facts.
 
 Ankit:
 1. Timer
@@ -90,4 +95,5 @@ Ankit:
 Nikhil:
 1. PHP part ->	Check the layout_php file
 2. Uniqueness of attempt ->      Login in the beginning. Authentication from the server.
+
 

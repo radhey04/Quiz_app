@@ -12,7 +12,7 @@ public class MyDBAdapter {
 	// Calls public void onCreate(SQLiteDatabase db)
 	MyDBHelper db_helper;
 	// Database naming
-	String DB_NAME="values";
+	String DB_NAME="Quiz";
 	String TAB_NAME="qbank";
 	// Do most of the communication
 	// db_helper is just to do the upper-level 
