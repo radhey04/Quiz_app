@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -19,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+@SuppressLint("SimpleDateFormat")
 public class Admin_cp extends Activity {
 	
 	Context context=this;
@@ -114,11 +116,12 @@ public class Admin_cp extends Activity {
     
     public void updateLabel()
     {
-    	datef=new SimpleDateFormat("yyyyMMdd").format(dateTime.getTime());
+    	SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+    	datef=sdf.format(dateTime.getTime());
         Integer datefint=Integer.parseInt(datef);
 
         Date d = new Date();
-        String datet = new SimpleDateFormat("yyyyMMdd").format(d.getTime());
+        String datet = sdf.format(d.getTime());
         Integer datetint=Integer.parseInt(datet);
     	
         Log.d("Debug_admin_cp","New date => "+datefint);

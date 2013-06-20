@@ -23,8 +23,8 @@ public class User_base extends Activity {
 		
 		TextView t=(TextView) findViewById(R.id.textView1);
 		Button takeq=(Button) findViewById(R.id.button1);
-		Button vscr=(Button) findViewById(R.id.button2);
-		Button impq=(Button) findViewById(R.id.button3);
+//		Button vscr=(Button) findViewById(R.id.button2);
+//		Button impq=(Button) findViewById(R.id.button3);
 		
 		SettingsDBAdapter set=new SettingsDBAdapter(getApplicationContext());
 		set.updatemem();
