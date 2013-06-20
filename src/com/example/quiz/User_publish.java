@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 //import android.widget.Toast;
+import android.widget.Toast;
 
 public class User_publish extends Activity {
 
@@ -65,8 +66,6 @@ public class User_publish extends Activity {
 		// Nikhil's score code comes here
 		String student_ID = set.ID;
 		final String studentID = student_ID.replace(" ", "");
-//		String name_ = set.Name;
-//		final String name=name_.replace(" ", "");
 		String quiz_Name = c.getString(2);
 		final String QuizName=quiz_Name.replace(" ", "");
 		final String score = ads.getscore().toString();
@@ -75,7 +74,6 @@ public class User_publish extends Activity {
 		DownloadWebPageTask task = new DownloadWebPageTask();
 		
 		String Student_ID = "Student_ID='"+studentID+"'";
-//		String Name = "Name='"+name+"'";
 		String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 		String Scre  = "Score="+score;
 		String Time_Limit = "TimeLimit="+TimeLimit;
@@ -83,7 +81,7 @@ public class User_publish extends Activity {
 		String url = "http://10.0.0.2/app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
 		task.execute(url);
-		
+		Toast.makeText(getApplicationContext(),"Scores uploaded", Toast.LENGTH_SHORT).show();
 		
 		ret.setOnClickListener(new OnClickListener() {
 			
