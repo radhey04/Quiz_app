@@ -28,6 +28,27 @@ public class Mainquiz extends Activity {
 	TextView time;
 	int Tottime;
     long starttime = 0;
+
+    Timer timer = new Timer();
+    Button submit;
+ 	private Integer qno;
+    private String answ;
+    private Integer totq;
+    private String timeleft;
+    private boolean Must_answer=false;
+    CheckBox chka;
+	CheckBox chkb;
+	CheckBox chkc;
+	CheckBox chkd;
+	TextView Q;
+    TextView opta;
+    TextView optb;
+    TextView optc;
+    TextView optd;
+    MyDBAdapter ad;
+    scoresDBAdapter ads;
+    SettingsDBAdapter set;
+    
     final Handler h = new Handler(new Callback() {
 
         @Override
@@ -49,7 +70,10 @@ public class Mainquiz extends Activity {
        		   startActivity(j);
        		   finish();
            }
-           time.setText(String.format("%d:%02d", minutes_left, seconds_left));
+           if(set.ShowTimer==true)
+        	   time.setText(String.format("%d:%02d", minutes_left, seconds_left));
+           else
+        	   time.setText("");
            return false;
         }
     });
@@ -62,24 +86,6 @@ public class Mainquiz extends Activity {
         }
    };
 
-   Timer timer = new Timer();
-    Button submit;
-	private Integer qno;
-    private String answ;
-    private Integer totq;
-    private String timeleft;
-    private boolean Must_answer=false;
-    CheckBox chka;
-	CheckBox chkb;
-	CheckBox chkc;
-	CheckBox chkd;
-	TextView Q;
-    TextView opta;
-    TextView optb;
-    TextView optc;
-    TextView optd;
-    MyDBAdapter ad;
-    scoresDBAdapter ads;
     private void updateactivity()
     {    	
 	    Cursor c1=ad.getQno(qno);
@@ -123,7 +129,8 @@ public class Mainquiz extends Activity {
 	    ads.dropsheet();								//Drop the scoresheet
 	    qno=1;											//Initialise the question number
 	    answ="";										//Initialise the answ string
-	    
+	    set=new SettingsDBAdapter(context);
+	    set.updatemem();								//Update the settings
     }
     
     private Boolean isquizover()

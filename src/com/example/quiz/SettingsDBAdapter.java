@@ -19,6 +19,7 @@ public class SettingsDBAdapter {
 	
 	public String Name="";
 	public String ID="";
+	public Boolean ShowTimer=true;
 	
 	
 	public SettingsDBAdapter(Context context) {
@@ -64,11 +65,15 @@ public class SettingsDBAdapter {
 		Cursor cf=getAllSet();
 		Name=Name_upd;
 		ID=ID_upd;
+		if(Timer==1)
+			ShowTimer=true;
+		else
+			ShowTimer=false;
 		Log.d("Debug_settings","New values");
 		while(cf.moveToNext())
 		{
-	    	Log.d("Debug_settings",cf.getString(1)+" "+cf.getString(2)+"");
-	    	Log.d("Debug_settings",Name+" "+ID+" ");
+	    	Log.d("Debug_settings",cf.getString(1)+" "+cf.getString(2)+" "+cf.getString(3));
+	    	Log.d("Debug_settings",Name+" "+ID+" "+" "+ShowTimer.toString());	    	
 		}
 	    close();
 	}
@@ -82,6 +87,7 @@ public class SettingsDBAdapter {
 		{
 			Name="";
 			ID="";
+			ShowTimer=true;
 			Log.d("Debug_settings","Table empty");
 		}
 		else
@@ -89,7 +95,12 @@ public class SettingsDBAdapter {
 			ca.moveToNext();				 //Move to the first element
 			Name=ca.getString(1);
 			ID=ca.getString(2);
-			Log.d("Debug_settings",Name+" "+ID+' ');
+			Integer timer=ca.getInt(3);
+			if(timer==1)
+				ShowTimer=true;
+			else
+				ShowTimer=false;
+			Log.d("Debug_settings",Name+" "+ID+" "+ShowTimer.toString());
 			Log.d("Debug_settings","Settings updated");
 		}
 		close();

@@ -39,7 +39,6 @@ public class Settings extends Activity {
 		else
 		{
 			name.setText(set.Name);
-			//Log.d("Debug_settings",set.Name);
 		}
 		if(set.ID.equals(""))
 		{
@@ -48,7 +47,14 @@ public class Settings extends Activity {
 		else
 		{
 			id.setText(set.ID);
-			//Log.d("Debug_settings",set.ID);
+		}
+		if(set.ShowTimer==true)
+		{
+			timer.setChecked(true);
+		}            
+		else
+		{
+			timer.setChecked(false);
 		}
 		//Shifted the commented section here below
 		
