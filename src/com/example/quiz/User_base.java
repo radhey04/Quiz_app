@@ -23,7 +23,7 @@ public class User_base extends Activity {
 		
 		TextView t=(TextView) findViewById(R.id.textView1);
 		Button takeq=(Button) findViewById(R.id.button1);
-//		Button vscr=(Button) findViewById(R.id.button2);
+		Button vscr=(Button) findViewById(R.id.button2);
 		Button impq=(Button) findViewById(R.id.button3);
 		
 		SettingsDBAdapter set=new SettingsDBAdapter(getApplicationContext());
@@ -76,6 +76,20 @@ public class User_base extends Activity {
 				else
 				{
 					Toast.makeText(getApplicationContext(), "Couldn't find the question bank.", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+		vscr.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				markDBAdapter md=new markDBAdapter(context);
+				if(md.N==0)
+					Toast.makeText(context,"No scores to display", Toast.LENGTH_SHORT).show();
+				else
+				{
+					Intent i = new Intent(getApplicationContext(), User_score.class);
+					startActivity(i);
 				}
 			}
 		});

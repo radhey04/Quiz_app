@@ -76,5 +76,7 @@
 	<string name="user_landing_scr">View scores</string>
 	<string name="user_landing_imp">Import a Quiz</string>
 	<string name="admin_base_export">Export the Quiz</string>
+	<string name="clear">Clear</string>
+	
 	
 </resources>

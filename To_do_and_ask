@@ -1,14 +1,18 @@
 Abraham
 =======
+0. Why is the app crashing once in a while?
 1. User_base page
-	3. View scores
-3. Previous option in the test and update the data base accordingly.
-5. Version settings for the question bank.
-6. Editing questions and qbank settings.
+	1. View scores
+2. User_publish
+	1. Table format
+3. Previous option in the test and update the score data base accordingly.
+4. Editing questions and qbank settings.
+0. Import/Export file manager 
+5. Left for some time now...Integrating Ankit's app into the database.
+6. Version settings for the question bank.
 7. Fonts at the quiz section and at admin.
     1. Layouts for user_base,user_import,user_score needs to be updated.
     2. User base buttons to be made fill parent.
-1. Left for some time now...Integrating Ankit's app into the database.
 
 
 Ankit

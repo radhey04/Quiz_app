@@ -30,6 +30,7 @@ public class User_landing extends Activity {
 	Context context=this;
 	Integer totq;
 	String timeleft;
+	appset myapp=new appset();
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +140,12 @@ public class User_landing extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute"+result);
+			if(myapp.httpdisable==true)
+			{
+				result="1";
+				Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
+				Log.d("Debug_user_landing","Bypassing the http authentication");
+			}
 			if(result.equals("1"))
 			{
 				final Bundle bund = new Bundle();

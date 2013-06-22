@@ -25,6 +25,7 @@ import android.widget.Toast;
 public class User_publish extends Activity {
 
 	Context context=this;
+	appset myapp=new appset();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,9 @@ public class User_publish extends Activity {
 		String url = "http://10.0.0.2/app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
 		task.execute(url);
+		
+		markDBAdapter md=new markDBAdapter(context);
+		md.insertmark(md.N+1,quiz_Name, score, c.getString(3));
 		Toast.makeText(getApplicationContext(),"Scores uploaded", Toast.LENGTH_SHORT).show();
 		
 		ret.setOnClickListener(new OnClickListener() {
@@ -135,6 +139,13 @@ public class User_publish extends Activity {
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute");
 			//Toast.makeText(context,  result, Toast.LENGTH_LONG).show();
+			//Disabling http
+			if(myapp.httpdisable==true)
+			{
+				result="1";
+				Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
+				Log.d("Debug_user_publish","Bypassing the http authentication");
+			}
 			if(result.equals("1"))
 			{
 				Toast.makeText(context,  "Scores Updated",Toast.LENGTH_SHORT).show();
