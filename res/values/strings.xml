@@ -77,6 +77,6 @@
 	<string name="user_landing_imp">Import a Quiz</string>
 	<string name="admin_base_export">Export the Quiz</string>
 	<string name="clear">Clear</string>
-	
+	<string name="mainquiz_prev">Previous</string>
 	
 </resources>

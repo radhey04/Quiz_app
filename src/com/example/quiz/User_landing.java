@@ -98,6 +98,8 @@ public class User_landing extends Activity {
 				String url = "http://10.0.0.2/app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				task.execute(url);
+				scoresDBAdapter ads=new scoresDBAdapter(context);
+				ads.dropsheet();		// Clear the sheet
 			}
 		});
 	}

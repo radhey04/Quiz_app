@@ -165,8 +165,7 @@ public class MyDBAdapter {
 	public Cursor getQno(Integer QN)
 	{
 		open();
-		Log.d("Debug_mydbadapter","Got to fetch");
-		Log.d("Debug_mydbadapter",QN.toString());
+		Log.d("Debug_scoredbadapter","Got to fetch "+QN.toString());
 		String query="SELECT * FROM "+TAB_NAME+" WHERE Qno=?";
 		Cursor c=null;
 		if ( (QN <= N) && (QN > 0) )

@@ -64,7 +64,38 @@ public class scoresDBAdapter {
 		//Insert into the table qbank the contents of the bag.
 		db.insert(TAB_NAME, null, bag);
 		close();
+		if(qno==N+1)
+		{
+			Log.d("Debug_scoredbadapter","Scoring is correct");
+		}
+		else
+		{
+			Log.d("Debug_scoredbadapter","Scoring is wrong");
+		}	
 		N=N+1;
+	}
+	
+	public void updateans(Integer qno, String act_ans,String corr_ans,Integer correct)
+	{
+		// ContentValues which is like bundle
+		ContentValues bag = new ContentValues();
+		// Order matters. It should be as same as the columns
+		// Contents of the bag will increase with every put statement
+		String loc="qno="+qno.toString();			//sno is not autoincremented :)
+		bag.put("qno", qno);
+		bag.put("act_ans", act_ans);
+		bag.put("corr_ans", corr_ans);
+		bag.put("correct", correct);
+		Log.d("Debug_scoredbadapter","Updated qno/act_ans/corr_ans/correct");
+		Log.d("Debug_scoredbadapter",qno.toString());
+		Log.d("Debug_scoredbadapter",act_ans);
+		Log.d("Debug_scoredbadapter",corr_ans);
+		Log.d("Debug_scoredbadapter",correct.toString());
+		
+		open();
+		//Insert into the table qbank the contents of the bag.
+		db.update(TAB_NAME,bag,loc, null);
+		close();
 	}
 	
 	public Cursor getAllans()
@@ -81,14 +112,12 @@ public class scoresDBAdapter {
 	public Integer getscore()
 	{
 		open();
-		Log.d("Debug_scoredbadapter","Performance evaluation");
 		Cursor c1 = getAllans();
 		Integer score=0,qno=0,score_temp=0;
 		perf="";
 		while(c1.moveToNext())
 		{
 			qno=c1.getInt(1);
-			Log.d("Debug_scoredbadapter",qno.toString());
 			perf=perf.concat(qno.toString());
 			perf=perf.concat(". ");
 			perf=perf.concat(c1.getString(2));
@@ -119,5 +148,25 @@ public class scoresDBAdapter {
 		db.execSQL(query);
 		Log.d("Debug_scoredbadapter","Dropped scoresheet");
 		close();
+	}
+	
+	public Cursor getQno(Integer QN)
+	{
+		open();
+		Log.d("Debug_scoredbadapter","Got to fetch "+QN.toString());
+		String query="SELECT * FROM "+TAB_NAME+" WHERE qno="+QN.toString();
+		Cursor c=null;
+		if ( (QN <= N) && (QN > 0) )
+		{
+			c=db.rawQuery(query,null);
+			c.moveToNext();
+			Log.d("Debug_scoreadapter","Got it "+c.getString(1));
+		}
+		else
+		{
+			Log.d("Debug_scoreadapter","Bad luck");						
+		}
+		close();
+		return c;						// Returns null if failed
 	}
 }

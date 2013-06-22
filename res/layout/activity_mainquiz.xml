@@ -9,14 +9,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Mainquiz" >
 
-    <TextView
+     <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/TextView" />
+     
+     <TextView
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="34dip"
-        android:layout_marginTop="55dip" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView6"
+        android:layout_marginTop="10dip"
+        android:text="@string/TextView" />
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -24,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="40dip"
+        android:layout_marginTop="30dip"
         android:text="@string/chkA" />
 
     <CheckBox
@@ -33,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/checkBox1"
         android:layout_below="@+id/checkBox1"
-        android:layout_marginTop="40dip"
+        android:layout_marginTop="20dip"
         android:text="@string/chkB" />
 
     <CheckBox
@@ -42,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/checkBox2"
         android:layout_below="@+id/checkBox2"
-        android:layout_marginTop="40dip"
+        android:layout_marginTop="20dip"
         android:text="@string/chkC" />
 
     <CheckBox
@@ -51,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/checkBox3"
         android:layout_below="@+id/checkBox3"
-        android:layout_marginTop="40dip"
+        android:layout_marginTop="20dip"
         android:text="@string/chkD" />
 
     <Button
@@ -61,23 +69,30 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView1"
         android:text="@string/mainquiz_next" />
-
+	
+	<Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button1"
+        android:text="@string/mainquiz_prev" />
+    
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox3"
         android:layout_alignBottom="@+id/checkBox3"
-        android:layout_alignLeft="@+id/textView3" />
-
+        android:layout_alignLeft="@+id/textView3"
+        android:text="@string/TextView" />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox2"
         android:layout_alignBottom="@+id/checkBox2"
-        android:layout_alignLeft="@+id/textView2"/>
-
+        android:layout_alignLeft="@+id/textView2"
+        android:text="@string/TextView" />
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -85,21 +100,15 @@
         android:layout_alignBaseline="@+id/checkBox1"
         android:layout_alignBottom="@+id/checkBox1"
         android:layout_marginLeft="19dp"
-        android:layout_toRightOf="@+id/checkBox4"/>
-
+        android:layout_toRightOf="@+id/checkBox4"
+        android:text="@string/TextView" />
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox4"
         android:layout_alignBottom="@+id/checkBox4"
-        android:layout_alignLeft="@+id/textView4"/>
-
-  <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"/>
-
+        android:layout_alignLeft="@+id/textView4"
+        android:text="@string/TextView" />
+ 
 </RelativeLayout>

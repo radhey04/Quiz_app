@@ -30,12 +30,13 @@ public class Mainquiz extends Activity {
     long starttime = 0;
 
     Timer timer = new Timer();
-    Button submit;
- 	private Integer qno;
+    Button submit,prev;
+ 	private Integer qno,qmax;
     private String answ;
     private Integer totq;
     private String timeleft;
     private boolean Must_answer=false;
+    private boolean prev_flag=false;
     CheckBox chka;
 	CheckBox chkb;
 	CheckBox chkc;
@@ -73,7 +74,7 @@ public class Mainquiz extends Activity {
            if(set.ShowTimer==true)
         	   time.setText(String.format("%d:%02d", minutes_left, seconds_left));
            else
-        	   time.setText("");
+        	   time.setText("Timer running. <Set to invisible>");
            return false;
         }
     });
@@ -95,22 +96,52 @@ public class Mainquiz extends Activity {
 		}
 	    else
 	    {
+	    	Log.d("Debug_Mainquiz","Updating Question");
 		    Q.setText(c1.getString(1)+". "+c1.getString(2));
 		    opta.setText(c1.getString(3));
 		    optb.setText(c1.getString(4));
 		    optc.setText(c1.getString(5));
 		    optd.setText(c1.getString(6));
 		    answ=c1.getString(7).toString();
-		    chka.setChecked(false);
+		    // Clearing all checkboxes
+	        chka.setChecked(false);
 		    chkb.setChecked(false);
 		    chkc.setChecked(false);
 		    chkd.setChecked(false);
+		    if(prev_flag==true)
+		    {
+				Cursor c=ads.getQno(qno);
+		    	String mans=c.getString(2);//Marked ans
+		    	Log.d("Debug_Mainquiz","Have to decipher => "+mans);
+		    	if(mans.contains("A")==true)
+		    		chka.setChecked(true);
+		    	if(mans.contains("B")==true)
+		    		chkb.setChecked(true);
+		    	if(mans.contains("C")==true)
+		    		chkc.setChecked(true);
+		    	if(mans.contains("D")==true)
+		    		chkd.setChecked(true);
+		    	Log.d("Debug_Mainquiz","Checkboxes Corrected");
+		    }
 		    Log.d("Debug","Updated");
 	    }
 	    if(ad.N==qno)
 	    {
 	    	submit.setText("Finish");
 	    }
+	    else
+	    {
+	    	submit.setText("Next");
+	    }
+	    if(qno>1)
+	    {
+	    	prev.setVisibility(0);//Visible
+	    }
+	    else
+	    {
+	    	prev.setVisibility(4);//Invisible
+		}
+    	Log.d("Debug_Mainquiz","Question updated");    	
     }
     
     private void Initialize()
@@ -131,6 +162,7 @@ public class Mainquiz extends Activity {
 	    answ="";										//Initialise the answ string
 	    set=new SettingsDBAdapter(context);
 	    set.updatemem();								//Update the settings
+	    prev.setVisibility(4);//Invisible
     }
     
     private Boolean isquizover()
@@ -158,27 +190,33 @@ public class Mainquiz extends Activity {
 		
 		totq=b.getInt("totq");
 		timeleft=b.getString("timeleft");
-		
+		Tottime = Integer.parseInt(timeleft);
+        
 		
 		time = (TextView)findViewById(R.id.textView6);
-		Tottime = Integer.parseInt(timeleft);
-		//Tottime = 1;
-        
-        starttime = System.currentTimeMillis();
+		starttime = System.currentTimeMillis();
         timer = new Timer();
         timer.schedule(new firstTask(), 0,500);
 
 		
 		submit=(Button) findViewById(R.id.button1);
+		prev=(Button) findViewById(R.id.button2);
 	    
 	    Initialize();
 	    updateactivity();
 	    
-	    submit.setOnClickListener(new OnClickListener() {
+	    prev.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
-			    String option = "";
+				if(prev_flag==false)
+				{
+					qmax=qno;
+					prev_flag=true;
+				}					
+				Log.d("Debug_Mainquiz","Previous button pressed. Prev_flag " +
+						"=> "+prev_flag+" qno =>"+qno+" qmax => "+qmax);
+				String option = "";
 			    if(chka.isChecked())
 				{
 					option=option.concat("A");
@@ -204,18 +242,110 @@ public class Mainquiz extends Activity {
 				// Must_answer is set to false.
 			    if(!option.equals("")||(Must_answer==false))
 			    {
-			    	if(option.equals(answ))	// Always the order will be A-B-C-D. :)
-		        	{
-		        		//Toast.makeText(getApplicationContext(), "You are correct", Toast.LENGTH_SHORT).show();
-		        		Log.d("Debug","Correct");
-		        		ads.insertans(qno,option,answ,1);
-		        	}
-		        	else 
-		        	{		        		
-		        		//Toast.makeText(getApplicationContext(), "You are wrong", Toast.LENGTH_SHORT).show();
-		        		Log.d("Debug","Incorrect");
-		        		ads.insertans(qno,option,answ,0);
-		        	}
+			    	Log.d("Debug_Mainquiz","Scoring the answer (prev)");
+			    	Cursor c=ads.getQno(qno);
+			    	if(c!=null)		// Qno can't be null...and if it is not null update
+			    	{
+				    	if(option.equals(answ))	// Always the order will be A-B-C-D. :)
+			        	{
+			        		ads.updateans(qno,option,answ,1);
+			        		Log.d("Debug_Mainquiz","Corrected a previous question");						    
+			        	}
+			        	else 
+			        	{		        		
+			        		ads.updateans(qno,option,answ,0);
+			        		Log.d("Debug_Mainquiz","Wronged a previous question");
+			        	}
+				    }
+			    	else//The first previous button press..updating the answers in the current question
+			    	{
+				    	if(option.equals(answ))	// Always the order will be A-B-C-D. :)
+			        	{
+			        		ads.insertans(qno,option,answ,1);
+			        		Log.d("Debug_Mainquiz","Going to a previous question but this question is correct");
+			        	}
+			        	else 
+			        	{		        		
+			        		ads.insertans(qno,option,answ,0);
+			        		Log.d("Debug_Mainquiz","Going to a previous question but this question is wrong");
+			        	}
+				    }
+			    	qno=qno-1;
+			    	updateactivity();
+			    	Log.d("Debug","Question Updated");
+			    	// We will never hit quiz over from here.
+			    }
+				else
+				{
+					Toast.makeText(getApplicationContext(), "You forgot to enter answer.", Toast.LENGTH_SHORT).show();
+				}		    	
+			}
+		});
+	    
+	    submit.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Log.d("Debug_Mainquiz","Prev_flag => "+prev_flag+" qno =>"+qno+" qmax => "+qmax);
+				String option = "";
+			    if(chka.isChecked())
+				{
+					option=option.concat("A");
+				}
+				if(chkb.isChecked())
+				{
+					option=option.concat("B");
+				}
+				if(chkc.isChecked())
+				{
+					option=option.concat("C");
+				}
+				if(chkd.isChecked())
+				{
+					option=option.concat("D");
+				}
+		        //Inserts a String value into the mapping of this Bundle
+				Log.d("Debug","Your answer");
+				Log.d("Debug",option);
+				Log.d("Debug","Correct answer");
+				Log.d("Debug",answ);
+				// Now, even if answers are unchecked Next key will work if  
+				// Must_answer is set to false.
+			    if(!option.equals("")||(Must_answer==false))
+			    {
+			    	Cursor c=ads.getQno(qno);
+			    	Log.d("Debug_Mainquiz","Scoring the answer (next)");
+			    	if(c!=null)		// Cursor is empty
+			    	{
+		    			if(option.equals(answ))	// Always the order will be A-B-C-D. :)
+			        	{
+			        		ads.updateans(qno,option,answ,1);
+			        		Log.d("Debug_Mainquiz","In a previous question and made it correct");
+			        	}
+			        	else 
+			        	{		        		
+			        		ads.updateans(qno,option,answ,0);
+			        		Log.d("Debug_Mainquiz","In a previous question and made it wrong");
+			        	}
+				    	if(qno==qmax)
+				    	{
+				    		prev_flag=false;	//Now whatever you will face is new
+				    							//So don't have to check for checkboxes
+				    	}
+				    }
+				    else
+				    {
+				    	if(option.equals(answ))	// Always the order will be A-B-C-D. :)
+			        	{
+			        		ads.insertans(qno,option,answ,1);
+			        		Log.d("Debug_Mainquiz","In a new question and made it correct");
+			        	}
+			        	else 
+			        	{		        		
+			        		ads.insertans(qno,option,answ,0);
+			        		Log.d("Debug_Mainquiz","In a new question and made it wrong");
+			        	}
+				    }
 			    	qno=qno+1;
 			    	if(!isquizover())
 			    	{
@@ -230,7 +360,6 @@ public class Mainquiz extends Activity {
 						startActivity(i);
 						finish();
 			    	}
-			    	
 			    }
 				else
 				{
