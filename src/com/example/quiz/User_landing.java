@@ -41,9 +41,10 @@ public class User_landing extends Activity {
 		TextView t=(TextView) findViewById(R.id.textView1);
 		
 		final MyDBAdapter ad=new MyDBAdapter(context);
-		Cursor c = ad.getQBset();
 		
+		Cursor c = ad.getQBset();
 		String dates=c.getString(6);
+		
 		Date expiry=null;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 	    try {

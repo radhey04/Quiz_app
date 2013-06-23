@@ -102,6 +102,7 @@ public class Admin_base extends Activity {
 				{
 					Cursor c=ad.getQBset();
 					String qnos=c.getString(3);
+					c.close();
 					Integer qno=Integer.parseInt(qnos);
 					if(qno==ad.N)
 					{
@@ -109,7 +110,6 @@ public class Admin_base extends Activity {
 						DBhandling dbh = new DBhandling();
 						dbh.exportDB("Quiz");									
 						Toast.makeText(getApplicationContext(), "Exported the question bank", Toast.LENGTH_SHORT).show();
-						c.close();
 					}
 					else
 					{

@@ -68,7 +68,7 @@ public class FullscreenActivity extends Activity {
 		MyDBAdapter ad=new MyDBAdapter(getApplicationContext());
 		Cursor c=ad.getQno(qno);
 		
-		byte[] imageByteArray=c.getBlob(8);
+		byte[] imageByteArray=c.getBlob(9);
 		c.close();
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(imageByteArray);
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);

@@ -1,7 +1,6 @@
 Abraham
 =======
 0. Why is the app crashing once in a while?
-1. Left for some time now...Integrating Ankit's app into the database.
 2. Import/Export file manager 
 3. Editing questions and qbank settings.
 4. Version settings for the question bank.
@@ -35,7 +34,12 @@ the existing DB.
     other one.
     Solution: Go with this method and the quiz chooser shows all 
     the details.
-    
+ 5. Import_user must go to the webpage,
+ 2 times duplex communication
+ 	1. User says import
+ 	2. Server says I have these
+ 	3. User says I want this
+ 	4. Server says take it and go.   
     
 No Man's Land
 =============
@@ -100,6 +104,7 @@ Abraham:
 		The exported quiz must contain the facts.
 18. Timer visibility
 19. Previous option in the test and update the score data base accordingly.
+20. Left for some time now...Integrating Ankit's app into the database.
 
 	
 

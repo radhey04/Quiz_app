@@ -103,8 +103,9 @@ public class Mainquiz extends Activity {
 		    optc.setText(c1.getString(5));
 		    optd.setText(c1.getString(6));
 		    answ=c1.getString(7).toString();
-//		    Integer imagethere=c1.getInt(9);
-		    Integer imagethere=0;
+		    Integer imagethere=c1.getInt(8);
+		    c1.close();
+//		    Integer imagethere=0;
 		    if(imagethere==0)
 		    {
 		    	cimg.setVisibility(4);	//Invisible
@@ -134,7 +135,6 @@ public class Mainquiz extends Activity {
 		    		chkd.setChecked(true);
 		    	Log.d("Debug_Mainquiz","Checkboxes Corrected");
 		    }
-		    c1.close();
 		    Log.d("Debug","Updated");
 	    }
 	    if(ad.N==qno)
@@ -269,7 +269,7 @@ public class Mainquiz extends Activity {
 			        		ads.updateans(qno,option,answ,0);
 			        		Log.d("Debug_Mainquiz","Wronged a previous question");
 			        	}
-				    	c.close();
+				    	c.close();		// Close only if null
 				    	Log.d("Debug_Mainquiz","Closed it");				        
 				    }
 			    	else//The first previous button press..updating the answers in the current question

@@ -45,6 +45,7 @@ public class User_base extends Activity {
 				{
 					Cursor c=ad.getQBset();
 					String qnos=c.getString(3);
+					c.close();
 					Integer qno=Integer.parseInt(qnos);
 					if(qno==ad.N)
 					{
@@ -58,7 +59,6 @@ public class User_base extends Activity {
 						Toast.makeText(context,"Invalid Question Bank", Toast.LENGTH_SHORT).show();
 						Log.d("Debug_user_base","# of qnos didn't match. ad.N =>"+ad.N+"# promised =>"+qno);
 					}
-					c.close();
 				}
 								
 			}

@@ -55,15 +55,14 @@ public class Admin_quest_confirm extends Activity {
 			@Override
 			public void onClick(View v) {
 				// Add entry
-//				Boolean imagethere;
-//				
-//				if(qn==2)
-//					imagethere= true;
-//				else
-//					imagethere= false;
-//				
-//				ad.insertQ(quest,opta,optb,optc,optd,ans,imagethere,context);
-				ad.insertQ(quest,opta,optb,optc,optd,ans);
+				Boolean imagethere;
+				
+				if(qn==1)
+					imagethere= true;
+				else
+					imagethere= false;
+				ad.insertQ(quest,opta,optb,optc,optd,ans,imagethere,context);
+//				ad.insertQ(quest,opta,optb,optc,optd,ans);
 				Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
 		        Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 	        	startActivity(intent);

@@ -18,7 +18,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// id is an integer as the primary key and autoincrement
 		// Default value of id starting from 0, I suppose
-        String createQuery = "CREATE TABLE qbank (sno integer primary key autoincrement,Qno integer,quest,opta,optb,optc,optd,option);";                 
+        String createQuery = "CREATE TABLE qbank (sno integer primary key autoincrement,Qno integer,quest,opta,optb,optc,optd,option,imagethere integer,img blob);";                 
         db.execSQL(createQuery);		
 		
 	}

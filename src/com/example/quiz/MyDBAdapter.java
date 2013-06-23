@@ -49,21 +49,25 @@ public class MyDBAdapter {
 		   db.close();
 	}	
 	
-	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option)
+	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,Context context)
 	{
-//		byte[] img={0};
-//		Integer imgthere=0;
-//		if(imagethere==true)
-//		{
-//			Bitmap icon = BitmapFactory.decodeResource(context.getResources(),R.drawable.eiffel);
-//			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
-//			
-//			img = bos.toByteArray();
-//			imgthere=1;
-//			Log.d("Debug_myadapter","Image added");
-//		}
-//		Log.d("Debug_myadapter","No image added");
+		byte[] img={};
+		Integer imagethere;
+		if(imgthere==true)
+		{
+			Bitmap icon = BitmapFactory.decodeResource(context.getResources(),R.drawable.party);
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
+			
+			img = bos.toByteArray();
+			imagethere=1;
+			Log.d("Debug_myadapter","Image added");
+		}
+		else
+		{
+			imagethere=0;
+			Log.d("Debug_myadapter","No image added");
+		}
 		// ContentValues which is like bundle
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
@@ -75,18 +79,21 @@ public class MyDBAdapter {
 		bag.put("optc", optc);
 		bag.put("optd", optd);
 		bag.put("option",option);
-//		bag.put("img",img);
-//		bag.put("imagethere",imgthere);
+		bag.put("imagethere",imagethere);
+		bag.put("img",img);
 		
 		open();
 		//Insert into the table qbank the contents of the bag.
-		db.insert("qbank", null, bag);
-		Log.d("Debug_mydbadapter","Inserted an entry");
+		long row=db.insert("qbank", null, bag);
+		if(row!=-1)
+			Log.d("Debug_mydbadapter","Inserted an entry => "+row);
+		else
+			Log.d("Debug_mydbadapter","Error while inserting");
 		close();
 		N=N+1;								// Update N
 	}
 	
-	public void updateQ(Integer Qprev, Integer Qno, String quest,String opta,String optb,String optc,String optd,String option)
+	public void updateQ(Integer Qprev, Integer Qno, String quest,String opta,String optb,String optc,String optd,String option,Integer imagethere,byte[] img)
 	{
 		// ContentValues which is like bundle
 		ContentValues bag = new ContentValues();
@@ -99,13 +106,16 @@ public class MyDBAdapter {
 		bag.put("optc", optc);
 		bag.put("optd", optd);
 		bag.put("option",option);
-//		bag.put("img",img);
-//		bag.put("imagethere",imagethere);
+		bag.put("imagethere",imagethere);
+		bag.put("img",img);
 
 		open();
 		//Insert into the table qbank the contents of the bag.
-		db.update(TAB_NAME,bag,"Qno=?",new String []{Qprev.toString()});
-		Log.d("Debug_mydbadapter","Updated "+Qprev+" to "+Qno);
+		long row=db.update(TAB_NAME,bag,"Qno=?",new String []{Qprev.toString()});
+		if(row==1)
+			Log.d("Debug_mydbadapter","Updated "+Qprev+" to "+Qno);
+		else
+			Log.d("Debug_mydbadapter","Error as rows updated are "+row+" in no.");
 		close();		
 	}
 	
@@ -138,9 +148,9 @@ public class MyDBAdapter {
 						c.getString(4),
 						c.getString(5),
 						c.getString(6),
-						c.getString(7));
-//						c.getBlob(8),
-//						c.getInt(9));
+						c.getString(7),
+						c.getInt(8),
+						c.getBlob(9));
 			}
 		}
 		c.close();

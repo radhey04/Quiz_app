@@ -59,9 +59,9 @@ public class Admin_chkq extends Activity {
 			Qs=Qs.concat("\n\n Correct Answer => ");
 			Qs=Qs.concat(c.getString(7));
 			t1.setText(Qs);
-			Log.d("Debug_admin_chkq","Got the answer");			
+			Log.d("Debug_admin_chkq","Got the answer");
+			c.close();			//Should close only if something was open
 		}
-		c.close();
 		return qno;
 	}
 	@Override
