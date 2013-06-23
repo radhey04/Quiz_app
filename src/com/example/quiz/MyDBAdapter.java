@@ -1,10 +1,16 @@
 package com.example.quiz;
 
+import java.io.ByteArrayOutputStream;
+
+import com.example.quiz.R;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 public class MyDBAdapter {
@@ -27,6 +33,7 @@ public class MyDBAdapter {
 		 Cursor c1=getAllQs();
 		 N=c1.getCount()-1;			// N now has the count
 		 Log.d("Debug_mydbadapter","Total no. of elements =>"+N);
+		 c1.close();
 		 close();					// Closing the link for Qs();
 	}
 	
@@ -44,6 +51,19 @@ public class MyDBAdapter {
 	
 	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option)
 	{
+//		byte[] img={0};
+//		Integer imgthere=0;
+//		if(imagethere==true)
+//		{
+//			Bitmap icon = BitmapFactory.decodeResource(context.getResources(),R.drawable.eiffel);
+//			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
+//			
+//			img = bos.toByteArray();
+//			imgthere=1;
+//			Log.d("Debug_myadapter","Image added");
+//		}
+//		Log.d("Debug_myadapter","No image added");
 		// ContentValues which is like bundle
 		ContentValues bag = new ContentValues();
 		// Order matters. It should be as same as the columns
@@ -55,6 +75,8 @@ public class MyDBAdapter {
 		bag.put("optc", optc);
 		bag.put("optd", optd);
 		bag.put("option",option);
+//		bag.put("img",img);
+//		bag.put("imagethere",imgthere);
 		
 		open();
 		//Insert into the table qbank the contents of the bag.
@@ -77,7 +99,9 @@ public class MyDBAdapter {
 		bag.put("optc", optc);
 		bag.put("optd", optd);
 		bag.put("option",option);
-		
+//		bag.put("img",img);
+//		bag.put("imagethere",imagethere);
+
 		open();
 		//Insert into the table qbank the contents of the bag.
 		db.update(TAB_NAME,bag,"Qno=?",new String []{Qprev.toString()});
@@ -115,8 +139,11 @@ public class MyDBAdapter {
 						c.getString(5),
 						c.getString(6),
 						c.getString(7));
+//						c.getBlob(8),
+//						c.getInt(9));
 			}
 		}
+		c.close();
 	}
 	
 	public void deleteall()

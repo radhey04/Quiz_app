@@ -32,6 +32,7 @@ public class markDBAdapter {
 // need it.
 		 Cursor c1=getAllperf();
 		 N=c1.getCount();			// Initialized
+		 c1.close();
 		 Log.d("Debug_markdbadapter","Total no. of elements =>"+N);
 		 close();					// Closing the link for getAllans();
 	}
@@ -68,7 +69,7 @@ public class markDBAdapter {
 		Log.d("Debug_markdbadapter","Inserting quizname: "+quizname);
 		Log.d("Debug_markdbadapter","Inserting date: "+datetaken);
 		Log.d("Debug_markdbadapter","Inserting score: "+score);
-		Log.d("Debug_markdbadapter","Inserting score: "+outof);
+		Log.d("Debug_markdbadapter","Inserting Maxmarks: "+outof);
 		
 		open();
 		//Insert into the table qbank the contents of the bag.

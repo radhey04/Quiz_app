@@ -1,12 +1,11 @@
 Abraham
 =======
 0. Why is the app crashing once in a while?
-1. Previous option in the test and update the score data base accordingly.
-2. Editing questions and qbank settings.
-3. Import/Export file manager 
-4. Left for some time now...Integrating Ankit's app into the database.
-5. Version settings for the question bank.
-6. Fonts at the quiz section and at admin.
+1. Left for some time now...Integrating Ankit's app into the database.
+2. Import/Export file manager 
+3. Editing questions and qbank settings.
+4. Version settings for the question bank.
+5. Fonts at the quiz section and at admin.
     ...See from the point Ankit pushed his layouts
     1. Layouts for Mainquiz,user_base,user_import,user_score needs to be updated.
     2. User base buttons to be made fill parent.
@@ -100,6 +99,7 @@ Abraham:
 	    Choose DB method...by extracting the db. exporting db from android app.
 		The exported quiz must contain the facts.
 18. Timer visibility
+19. Previous option in the test and update the score data base accordingly.
 
 	
 

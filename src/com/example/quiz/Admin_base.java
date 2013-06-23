@@ -109,15 +109,14 @@ public class Admin_base extends Activity {
 						DBhandling dbh = new DBhandling();
 						dbh.exportDB("Quiz");									
 						Toast.makeText(getApplicationContext(), "Exported the question bank", Toast.LENGTH_SHORT).show();
+						c.close();
 					}
 					else
 					{
 						Toast.makeText(context,"No. of questions in the bank didn't match the number promised.", Toast.LENGTH_LONG).show();
 						Log.d("Debug_user_base","# of qnos didn't match. ad.N =>"+ad.N+"# promised =>"+qno);
 					}
-				}
-
-				
+				}				
 			}
 		});
 	}

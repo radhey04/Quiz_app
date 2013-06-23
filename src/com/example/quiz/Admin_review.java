@@ -47,6 +47,7 @@ public class Admin_review extends Activity {
 			Qs = Qs.concat("\n");
 		}
 		t.setText(Qs);
+		c1.close();
 		
 		delall.setOnClickListener(new OnClickListener() {
 			

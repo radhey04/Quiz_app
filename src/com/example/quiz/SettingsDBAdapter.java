@@ -62,7 +62,7 @@ public class SettingsDBAdapter {
 			db.update("sett", bag,loc,null );
 			Log.d("Debug_settings","Settings updated");
 		}
-		Cursor cf=getAllSet();
+		c1.close();
 		Name=Name_upd;
 		ID=ID_upd;
 		if(Timer==1)
@@ -70,12 +70,8 @@ public class SettingsDBAdapter {
 		else
 			ShowTimer=false;
 		Log.d("Debug_settings","New values");
-		while(cf.moveToNext())
-		{
-	    	Log.d("Debug_settings",cf.getString(1)+" "+cf.getString(2)+" "+cf.getString(3));
-	    	Log.d("Debug_settings",Name+" "+ID+" "+" "+ShowTimer.toString());	    	
-		}
-	    close();
+		Log.d("Debug_settings",Name+" "+ID+" "+" "+ShowTimer.toString());	    	
+		close();
 	}
 	
 	public void updatemem()
@@ -103,6 +99,7 @@ public class SettingsDBAdapter {
 			Log.d("Debug_settings",Name+" "+ID+" "+ShowTimer.toString());
 			Log.d("Debug_settings","Settings updated");
 		}
+		ca.close();
 		close();
 	}
 	

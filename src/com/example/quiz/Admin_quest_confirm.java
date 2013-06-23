@@ -42,7 +42,7 @@ public class Admin_quest_confirm extends Activity {
 		final String ans = b.getCharSequence("option").toString();
 		String corans="Correct Option: ";
 		corans=corans.concat(ans);
-		Integer qn=ad.N+1;
+		final Integer qn=ad.N+1;
 		t2.setText(qn.toString()+". "+quest);
 		t3.setText("A -> "+opta);
 		t4.setText("B -> "+optb);
@@ -55,11 +55,17 @@ public class Admin_quest_confirm extends Activity {
 			@Override
 			public void onClick(View v) {
 				// Add entry
+//				Boolean imagethere;
+//				
+//				if(qn==2)
+//					imagethere= true;
+//				else
+//					imagethere= false;
+//				
+//				ad.insertQ(quest,opta,optb,optc,optd,ans,imagethere,context);
 				ad.insertQ(quest,opta,optb,optc,optd,ans);
-				
 				Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
-		        
-				Intent intent = new Intent(getApplicationContext(), Admin_base.class);
+		        Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 	        	startActivity(intent);
 	        	finish();
 			}

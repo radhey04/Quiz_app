@@ -30,7 +30,7 @@ public class Mainquiz extends Activity {
     long starttime = 0;
 
     Timer timer = new Timer();
-    Button submit,prev;
+    Button submit,prev,cimg;
  	private Integer qno,qmax;
     private String answ;
     private Integer totq;
@@ -103,6 +103,16 @@ public class Mainquiz extends Activity {
 		    optc.setText(c1.getString(5));
 		    optd.setText(c1.getString(6));
 		    answ=c1.getString(7).toString();
+//		    Integer imagethere=c1.getInt(9);
+		    Integer imagethere=0;
+		    if(imagethere==0)
+		    {
+		    	cimg.setVisibility(4);	//Invisible
+		    }
+		    else
+		    {
+		    	cimg.setVisibility(0);	//Visible
+		    }
 		    // Clearing all checkboxes
 	        chka.setChecked(false);
 		    chkb.setChecked(false);
@@ -112,6 +122,7 @@ public class Mainquiz extends Activity {
 		    {
 				Cursor c=ads.getQno(qno);
 		    	String mans=c.getString(2);//Marked ans
+			    c.close();
 		    	Log.d("Debug_Mainquiz","Have to decipher => "+mans);
 		    	if(mans.contains("A")==true)
 		    		chka.setChecked(true);
@@ -123,6 +134,7 @@ public class Mainquiz extends Activity {
 		    		chkd.setChecked(true);
 		    	Log.d("Debug_Mainquiz","Checkboxes Corrected");
 		    }
+		    c1.close();
 		    Log.d("Debug","Updated");
 	    }
 	    if(ad.N==qno)
@@ -162,7 +174,7 @@ public class Mainquiz extends Activity {
 	    answ="";										//Initialise the answ string
 	    set=new SettingsDBAdapter(context);
 	    set.updatemem();								//Update the settings
-	    prev.setVisibility(4);//Invisible
+	    prev.setVisibility(4);							//Invisible
     }
     
     private Boolean isquizover()
@@ -201,6 +213,7 @@ public class Mainquiz extends Activity {
 		
 		submit=(Button) findViewById(R.id.button1);
 		prev=(Button) findViewById(R.id.button2);
+	    cimg=(Button) findViewById(R.id.button3);
 	    
 	    Initialize();
 	    updateactivity();
@@ -256,6 +269,8 @@ public class Mainquiz extends Activity {
 			        		ads.updateans(qno,option,answ,0);
 			        		Log.d("Debug_Mainquiz","Wronged a previous question");
 			        	}
+				    	c.close();
+				    	Log.d("Debug_Mainquiz","Closed it");				        
 				    }
 			    	else//The first previous button press..updating the answers in the current question
 			    	{
@@ -332,6 +347,8 @@ public class Mainquiz extends Activity {
 				    		prev_flag=false;	//Now whatever you will face is new
 				    							//So don't have to check for checkboxes
 				    	}
+				    	c.close();
+				    	Log.d("Debug_Mainquiz","Closed it");				        
 				    }
 				    else
 				    {
@@ -347,7 +364,7 @@ public class Mainquiz extends Activity {
 			        	}
 				    }
 			    	qno=qno+1;
-			    	if(!isquizover())
+					if(!isquizover())
 			    	{
 			    		updateactivity();
 			    		Log.d("Debug","Question Answered");
@@ -365,6 +382,22 @@ public class Mainquiz extends Activity {
 				{
 					Toast.makeText(getApplicationContext(), "You forgot to enter answer.", Toast.LENGTH_SHORT).show();
 				}
+			}
+		});
+	    
+	    cimg.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(), FullscreenActivity.class);
+	        	//Create a bundle object
+		        Bundle b = new Bundle();
+		        b.putInt("qno",qno);
+		        //Add the bundle to the intent.
+		        intent.putExtras(b);
+		        //Toast.makeText(getApplicationContext(), "Done.", Toast.LENGTH_SHORT).show();
+		        //start the DisplayActivity
+		        startActivity(intent);
 			}
 		});
 	}

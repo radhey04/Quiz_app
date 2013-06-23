@@ -85,6 +85,7 @@ public class User_publish extends Activity {
 		
 		markDBAdapter md=new markDBAdapter(context);
 		md.insertmark(md.N+1,quiz_Name, score, c.getString(3));
+		c.close();
 		Toast.makeText(getApplicationContext(),"Scores uploaded", Toast.LENGTH_SHORT).show();
 		
 		ret.setOnClickListener(new OnClickListener() {

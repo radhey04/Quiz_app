@@ -110,5 +110,13 @@
         android:layout_alignBottom="@+id/checkBox4"
         android:layout_alignLeft="@+id/textView4"
         android:text="@string/TextView" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/mainquiz_img" />
  
 </RelativeLayout>

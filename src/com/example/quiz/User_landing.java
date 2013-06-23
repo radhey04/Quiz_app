@@ -66,7 +66,7 @@ public class User_landing extends Activity {
 		totq= Integer.parseInt(c.getString(3));
 		timeleft=c.getString(4);
 		b.setText("Authenticate & Continue");		        
-        
+        c.close();
 		b.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -81,6 +81,8 @@ public class User_landing extends Activity {
 				MyDBAdapter ad=new MyDBAdapter(context);
 				Cursor c=ad.getQBset();
 				String QuizName = c.getString(2);
+				c.close();
+				
 				String Deadline = datef;
 				QuizName= QuizName.replace(" ", "");
 				name=name.replace(" ","");

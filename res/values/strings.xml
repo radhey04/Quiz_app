@@ -72,11 +72,15 @@
     <string name="title_activity_user_base">User_base</string>
     <string name="title_activity_user_score">User_score</string>
     <string name="title_activity_user_import">User_import</string>
-	<string name="user_landing_take">Take a Quiz</string>
-	<string name="user_landing_scr">View scores</string>
-	<string name="user_landing_imp">Import a Quiz</string>
-	<string name="admin_base_export">Export the Quiz</string>
-	<string name="clear">Clear</string>
-	<string name="mainquiz_prev">Previous</string>
-	
+    <string name="user_landing_take">Take a Quiz</string>
+    <string name="user_landing_scr">View scores</string>
+    <string name="user_landing_imp">Import a Quiz</string>
+    <string name="admin_base_export">Export the Quiz</string>
+    <string name="clear">Clear</string>
+    <string name="mainquiz_prev">Previous</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="mainquiz_img">Image</string>
+    
 </resources>

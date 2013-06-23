@@ -61,6 +61,7 @@ public class Admin_chkq extends Activity {
 			t1.setText(Qs);
 			Log.d("Debug_admin_chkq","Got the answer");			
 		}
+		c.close();
 		return qno;
 	}
 	@Override

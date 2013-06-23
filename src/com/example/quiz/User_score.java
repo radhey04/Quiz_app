@@ -131,6 +131,8 @@ public class User_score extends Activity {
             rowi.addView(text4);
             table.addView(rowi);
         }while(c.moveToPrevious());
+        c.close();
+		
         rowi = new TableRow(this);
 
         Button clr= new Button(context);

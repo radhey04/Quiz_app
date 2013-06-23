@@ -28,6 +28,7 @@ public class scoresDBAdapter {
 		 Cursor c1=getAllans();
 		 N=c1.getCount();			// Initialized
 		 Log.d("Debug_scoreadapter","Total no. of elements =>"+N);
+		 c1.close();
 		 close();					// Closing the link for getAllans();
 	}
 	
@@ -136,6 +137,7 @@ public class scoresDBAdapter {
 			}			
 			perf=perf.concat("\n");
 		}
+		c1.close();
 		close();
 		return score;
 	}
