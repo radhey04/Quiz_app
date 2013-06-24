@@ -137,7 +137,7 @@ public class User_score extends Activity {
 
         Button clr= new Button(context);
         fonts=80;
-        TableRow.LayoutParams paramsb=new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT,fonts);
+        TableRow.LayoutParams paramsb=new TableRow.LayoutParams(200,fonts);
         paramsb.gravity=Gravity.CENTER;
         clr.setLayoutParams(paramsb);
         clr.setText("Clear All");

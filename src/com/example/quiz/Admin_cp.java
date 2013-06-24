@@ -64,8 +64,7 @@ public class Admin_cp extends Activity {
 				if(allset())
 				{
 					boolean imagethere=false;
-					ad.insertQ(e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"",imagethere,context);
-//					ad.insertQ(e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"");
+					ad.insertQ(e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"",imagethere,"");
 					Intent intent = new Intent(context, Admin_home.class);
 			        startActivity(intent);
 			        Log.d("Debug","Registered the test");

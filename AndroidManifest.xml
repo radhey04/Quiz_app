@@ -91,6 +91,14 @@
             android:label="@string/title_activity_fullscreen"
             android:theme="@style/FullscreenTheme" >
         </activity>
+        <activity
+            android:name="com.example.quiz.Filepicker"
+            android:label="@string/title_activity_filepicker" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.FilePickerActivity"
+            android:label="@string/title_activity_filepicker" >
+        </activity>
     </application>
 
 </manifest>

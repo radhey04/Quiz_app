@@ -5,13 +5,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 
+import android.app.Activity;
 import android.os.Environment;
 import android.util.Log;
 
-public class DBhandling{
+public class DBhandling extends Activity{
 	
 	public String dirpath="";
 	public String dirname="/NABquiz";
+	
 	public void chkdir()
 	{
 		dirpath=Environment.getExternalStorageDirectory() + dirname;
@@ -32,38 +34,52 @@ public class DBhandling{
 	}
 
     @SuppressWarnings("resource")
-    public boolean importDB(String DatabaseName) 
+    public boolean importDB(String DatabaseName,String newpath) 
     {
         // TODO Auto-generated method stub
 
-        try {
-            File sd = Environment.getExternalStorageDirectory();
-            File data  = Environment.getDataDirectory();
-            String PackageName="com.example.quiz";
+        File sd = Environment.getExternalStorageDirectory();
+        File data  = Environment.getDataDirectory();
+        String PackageName="com.example.quiz";
             
-            if (sd.canWrite()) {
-                String currentDBPath = "//data//" + PackageName + "//databases//" + DatabaseName;
-                String backupDBPath  = dirname +"/"+ DatabaseName;
-
+        if (sd.canWrite()) {
+            String currentDBPath = "//data//" + PackageName + "//databases//" + DatabaseName;
+            String backupDBPath  = newpath;
+            String exten="";
+            if(newpath.length()>4)
+            	exten=newpath.substring(newpath.length()-3, newpath.length());
+            else
+            	return false;
+            Log.d("Debug_dbhandling_import", "Got path as "+newpath+" "+exten);
+            if(exten.equals("nab"))
+            {
                 File  backupDB= new File(data, currentDBPath);
-                File currentDB  = new File(sd, backupDBPath);
+                File currentDB  = new File(backupDBPath);
 
-				FileChannel src = new FileInputStream(currentDB).getChannel();
-                FileChannel dst = new FileOutputStream(backupDB).getChannel();
-                dst.transferFrom(src, 0, src.size());
-                src.close();
-                dst.close();
-                Log.d("Debug_dbhandling_import", backupDB.toString());
-                return true;
+                try
+                {
+                    FileChannel src = new FileInputStream(currentDB).getChannel();
+                    FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                    dst.transferFrom(src, 0, src.size());
+                    src.close();
+	                dst.close();
+	                Log.d("Debug_dbhandling_import", backupDB.toString());
+	                return true;
+                }
+                catch (Exception e) {
+                	Log.d("Debug_dbhandling_import", "Exception => "+e.toString());
+                }
             }
-        } catch (Exception e) {
-        	Log.d("Debug_dbhandling_import", "Exception => "+e.toString());
+            else
+            {
+            	Log.d("Debug_dbhandling_import", "Unrecognized format");
+            }
         }
         return false;
     }
 //exporting database 
     @SuppressWarnings("resource")
-	public void exportDB(String DatabaseName) 
+	public void exportDB(String DatabaseName,String QuizName) 
     {
         // TODO Auto-generated method stub
 
@@ -75,7 +91,7 @@ public class DBhandling{
             if (sd.canWrite()) {
                 String  currentDBPath= "//data//" + PackageName
                         + "//databases//" + DatabaseName;
-                String backupDBPath  = dirname +"/"+ DatabaseName;
+                String backupDBPath  = dirname +"/"+ QuizName;
                 File currentDB = new File(data, currentDBPath);
                 File backupDB = new File(sd, backupDBPath);
 
@@ -89,4 +105,5 @@ public class DBhandling{
         } catch (Exception e) {
         	Log.d("Debug_dbhandling_export", "Exception => "+e.toString());        }
     }
+    
 }

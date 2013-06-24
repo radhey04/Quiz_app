@@ -1,7 +1,10 @@
 Abraham
 =======
 0. Why is the app crashing once in a while?
-2. Import/Export file manager 
+=> Check what happens when exit file manager
+        The path returns as null
+2. Check for size
+1. View scores need to be made scrollable
 3. Editing questions and qbank settings.
 4. Version settings for the question bank.
 5. Fonts at the quiz section and at admin.
@@ -105,8 +108,7 @@ Abraham:
 18. Timer visibility
 19. Previous option in the test and update the score data base accordingly.
 20. Left for some time now...Integrating Ankit's app into the database.
-
-	
+21. Import/Export file manager 
 
 Ankit:
 1. Timer

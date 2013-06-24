@@ -25,6 +25,9 @@ public class MyDBAdapter {
 	SQLiteDatabase db=null;
 	String Q_Name,Admin_ID;
 	
+	byte[] filepickedimg={};
+	boolean filepickflag=false;
+	
 	public Integer N=1;			//The total count
 	
 	public MyDBAdapter(Context context) 
@@ -49,17 +52,20 @@ public class MyDBAdapter {
 		   db.close();
 	}	
 	
-	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,Context context)
+	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,String photoPath)
 	{
 		byte[] img={};
 		Integer imagethere;
 		if(imgthere==true)
 		{
-			Bitmap icon = BitmapFactory.decodeResource(context.getResources(),R.drawable.party);
+			BitmapFactory.Options options = new BitmapFactory.Options();
+			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+			Bitmap icon = BitmapFactory.decodeFile(photoPath, options);
+			
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
-			
 			img = bos.toByteArray();
+
 			imagethere=1;
 			Log.d("Debug_myadapter","Image added");
 		}
@@ -93,6 +99,10 @@ public class MyDBAdapter {
 		N=N+1;								// Update N
 	}
 	
+	public void getimg()
+	{
+		
+	}
 	public void updateQ(Integer Qprev, Integer Qno, String quest,String opta,String optb,String optc,String optd,String option,Integer imagethere,byte[] img)
 	{
 		// ContentValues which is like bundle

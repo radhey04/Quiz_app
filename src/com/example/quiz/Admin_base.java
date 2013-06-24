@@ -107,8 +107,13 @@ public class Admin_base extends Activity {
 					if(qno==ad.N)
 					{
 						Log.d("Debug_user_base","Everything is perfect. Exporting the quiz");
+						c=ad.getQBset();
+						String QuizName=c.getString(2);
+						QuizName=QuizName.replace(" ", "");
+						QuizName=QuizName.concat(".nab");
+						c.close();
 						DBhandling dbh = new DBhandling();
-						dbh.exportDB("Quiz");									
+						dbh.exportDB("Quiz",QuizName);									
 						Toast.makeText(getApplicationContext(), "Exported the question bank", Toast.LENGTH_SHORT).show();
 					}
 					else

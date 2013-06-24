@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 				}
 				else // If name already there
 				{
-//				Intent i=new Intent(getApplicationContext(), User_score.class);
+//				Intent i=new Intent(getApplicationContext(), Filepicker.class);
 					Intent i=new Intent(getApplicationContext(), Admin.class);
 					startActivity(i);
 					finish();
