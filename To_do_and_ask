@@ -5,9 +5,8 @@ Abraham
 => Check what happens when exit file manager
         The path returns as null
 2. Check for size
+
 1. View scores need to be made scrollable
-3. Editing questions and qbank settings.
-4. Version settings for the question bank.
 5. Fonts at the quiz section and at admin.
     ...See from the point Ankit pushed his layouts
     1. Layouts for Mainquiz,user_base,user_import,user_score needs to be updated.
@@ -23,21 +22,6 @@ Ankit
 
 Nikhil
 ======
-2. HTML page for viewing the databases
-3. See if db files are directly downloadable.
-4. Import section must talk with Nikhil's php code 
-and list down all the available question banks. User chooses
-one from the activity, initiating its download and overwriting
-the existing DB.
-    Pros:
-    1. Simple to implement and we have achieved at least the
-    level required in the mobile
-    Cons:
-    1. User can't take multiple quizzes
-    2. If he needs to take another quiz, he has to download the
-    other one.
-    Solution: Go with this method and the quiz chooser shows all 
-    the details.
  5. Import_user must go to the webpage,
  2 times duplex communication
  	1. User says import
@@ -54,7 +38,6 @@ No Man's Land
 	Background service 
 3. Develop database storing quizzes available.
 	Quiz|location of db|deadline
-4. Importing the exported database.
 
 To check
 ========
@@ -66,6 +49,8 @@ Ignored
 2. User_publish page made tabular
 4. Cash on admin properties
 6. Change App Name
+3. Editing questions and qbank settings.
+4. Version settings for the question bank.
 
 NABquiz
 

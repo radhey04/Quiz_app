@@ -65,9 +65,16 @@ public class MyDBAdapter {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
 			img = bos.toByteArray();
-
+			
 			imagethere=1;
-			Log.d("Debug_myadapter","Image added");
+			Integer imgsize=img.length/1024;
+			Log.d("Debug_myadapter","Image added "+imgsize);
+			if(imgsize>1600)
+			{
+				imagethere=0;
+				img=null;
+				Log.d("Debug_myadapter","No image added as too big an image provided");
+			}
 		}
 		else
 		{
@@ -99,10 +106,6 @@ public class MyDBAdapter {
 		N=N+1;								// Update N
 	}
 	
-	public void getimg()
-	{
-		
-	}
 	public void updateQ(Integer Qprev, Integer Qno, String quest,String opta,String optb,String optc,String optd,String option,Integer imagethere,byte[] img)
 	{
 		// ContentValues which is like bundle
