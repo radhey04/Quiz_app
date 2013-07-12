@@ -22,13 +22,8 @@ Ankit
 
 Nikhil
 ======
- 5. Import_user must go to the webpage,
- 2 times duplex communication
- 	1. User says import
- 	2. Server says I have these
- 	3. User says I want this
- 	4. Server says take it and go.   
-    
+ 
+ 
 No Man's Land
 =============
 
@@ -36,8 +31,6 @@ No Man's Land
 	13 in the 58 slide page
 2. Notification for loaded quizzes
 	Background service 
-3. Develop database storing quizzes available.
-	Quiz|location of db|deadline
 
 To check
 ========
@@ -108,5 +101,7 @@ Nikhil:
 1. PHP part ->	Check the layout_php file
 2. Uniqueness of attempt ->      Login in the beginning. Authentication from the server.
 3. Build activity to completely take care of php talking.
-
+4. Develop database storing quizzes available.
+	Quiz|location of db|deadline
+5. Import_user must go to the webpage,
 
