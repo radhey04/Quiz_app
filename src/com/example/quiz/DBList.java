@@ -15,7 +15,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
@@ -35,12 +34,15 @@ public class DBList extends ListActivity {
 	public Context context = this;
 	String pressed;
 	String FRUIT;
+	DBhandling db=new DBhandling();
+	
 	//static String[] FRUITS = new String[50];
 	int i=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_dblist);
+//		setContentView(R.layout.activity_dblist);
+		
 		Log.d("DEBUG", "Click");
 		DownloadWebPageTask task = new DownloadWebPageTask();
 		// no more this
@@ -56,14 +58,15 @@ public class DBList extends ListActivity {
 			String response = "";
 			for (String url : urls) {
 				try {
-					File root = Environment.getExternalStorageDirectory();
+					String path = db.chkdir();
+					File root = new File(path);
 			        Log.d("DEBUG", "ROOT"+root);
 			        URL u = new URL(url);
 					HttpURLConnection c = (HttpURLConnection) u.openConnection();
 			        c.setRequestMethod("GET");
 			        c.setDoOutput(true);
 			        c.connect();
-
+			        
 			        FileOutputStream f = new FileOutputStream(new File(root, pressed));
 
 			        InputStream in = c.getInputStream();
@@ -133,7 +136,6 @@ public class DBList extends ListActivity {
 			String[] FRUITS = FRUIT.split(" #");
 			
 			setListAdapter(new ArrayAdapter<String>(context, R.layout.activity_dblist,FRUITS));
-
 			ListView listView = getListView();
 			listView.setTextFilterEnabled(true);
 			
@@ -163,7 +165,7 @@ public class DBList extends ListActivity {
 							// if this button is clicked, close
 							// current activity
 							//MainActivity.this.finish();
-							//Toast.makeText(getApplicationContext(),"You pressed yes", Toast.LENGTH_SHORT).show();
+							Toast.makeText(getApplicationContext(),"You pressed yes", Toast.LENGTH_SHORT).show();
 							DownloadWebPage task1 = new DownloadWebPage();
 							
 							final String address = "http://10.21.0.158/app/uploads/"+pressed;
