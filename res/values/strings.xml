@@ -83,5 +83,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="mainquiz_img">Image</string>
     <string name="title_activity_filepicker">Filepicker</string>
+    <string name="title_activity_dblist">DBList</string>
 
 </resources>

@@ -74,7 +74,9 @@ public class User_base extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				importdb();	//Call the filepicker
+				//importdb();	//Call the filepicker
+				Intent i = new Intent(getApplicationContext(), DBList.class);
+				startActivity(i);
 			}
 		});
 		vscr.setOnClickListener(new OnClickListener() {

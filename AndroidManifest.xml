@@ -99,6 +99,10 @@
             android:name="com.example.quiz.FilePickerActivity"
             android:label="@string/title_activity_filepicker" >
         </activity>
+        <activity
+            android:name="com.example.quiz.DBList"
+            android:label="@string/title_activity_dblist" >
+        </activity>
     </application>
 
 </manifest>
