@@ -16,7 +16,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +37,8 @@ public class User_score extends Activity {
         TableRow.LayoutParams params = new TableRow.LayoutParams(width,fonts);
         TableLayout table = new TableLayout(this);
         
+        //TableLayout table = (TableLayout) findViewById(R.id.table1);
+        
         TableRow row = new TableRow(this);
         
         TextView text = new TextView(this);
@@ -45,8 +46,11 @@ public class User_score extends Activity {
         
         text.setLayoutParams(params);
         text.setText("Your Marksheet (Most Recent on top)");
+        Log.d("Debug","Tablelayout1");
         row.addView(text);
+        Log.d("Debug","Tablelayout11");
         table.addView(row);
+        Log.d("Debug","Tablelayout2");
 
         fonts = 50;
 		TableRow.LayoutParams params0 = new TableRow.LayoutParams(0,fonts,.1f);
@@ -143,7 +147,7 @@ public class User_score extends Activity {
         clr.setText("Clear All");
         rowi.addView(clr);
         table.addView(rowi);
-        setContentView(table);
+        //setContentView(table);
         
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
     	
