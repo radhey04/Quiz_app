@@ -188,8 +188,6 @@ public class DBList extends ListActivity {
 					// show it
 					alertDialog.show();
 					
-
-
 				}
 			});
 			}
