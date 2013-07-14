@@ -5,14 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.example.quiz.R;
-
 import android.os.Bundle;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -22,9 +20,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-@SuppressLint("SimpleDateFormat")
-public class Admin_cp extends Activity {
-	
+public class EditQBActivity extends Activity {
+
 	Context context=this;
 	Calendar dateTime=Calendar.getInstance();
 	DateFormat formatDateTime=DateFormat.getDateInstance();
@@ -35,20 +32,23 @@ public class Admin_cp extends Activity {
 	Button setd;
 	String datef="";
 	EditText e1,e2,e3,e4;
+	MyDBAdapter ad;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_admin_cp);
+		setContentView(R.layout.activity_edit_qb);
 
-		final MyDBAdapter ad=new MyDBAdapter(context);
+		ad=new MyDBAdapter(context);
 		e1=(EditText) findViewById(R.id.editText1);
 		e2=(EditText) findViewById(R.id.editText2);
 		e3=(EditText) findViewById(R.id.editText3);
 		e4=(EditText) findViewById(R.id.editText4);
 		Button conf=(Button) findViewById(R.id.button1);
-		Button pop=(Button) findViewById(R.id.button3);
 		setd=(Button) findViewById(R.id.button2);
+		Button back=(Button) findViewById(R.id.button3);
+		
+		initialize();
 		
 		setd.setOnClickListener(new OnClickListener() {
 			
@@ -57,6 +57,7 @@ public class Admin_cp extends Activity {
 				chooseDate();
 			}
 		});
+		
 		conf.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -64,10 +65,12 @@ public class Admin_cp extends Activity {
 				if(allset())
 				{
 					boolean imagethere=false;
-					ad.insertQ(e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"",imagethere,"");
-					Intent intent = new Intent(context, Admin_home.class);
+					Integer qno=0;
+					ad.updateQprev(qno,e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"",imagethere,"");
+					Intent intent = new Intent(context, Admin_review.class);
 			        startActivity(intent);
-			        Log.d("Debug","Registered the test");
+			        Log.d("Debug","Updated the test settings");
+					Toast.makeText(getApplicationContext(), "Updated the test settings", Toast.LENGTH_SHORT).show();					
 			        finish();
 				}
 				else
@@ -76,17 +79,38 @@ public class Admin_cp extends Activity {
 				}
 			}
 		});
-		pop.setOnClickListener(new OnClickListener() {
+		
+		back.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "Filled it! Plz tick a box.", Toast.LENGTH_SHORT).show();
-				e1.setText("Test QP");
-				e2.setText("1");
-				e3.setText("2");
-				e4.setText("This paper covers portions from different parts of Electrical Engineering.");				
+				Intent intent = new Intent(context, Admin_review.class);
+		        startActivity(intent);
+		        finish();				
 			}
 		});
+	}
+	
+	public void initialize()
+	{
+		Cursor c=ad.getQBset();
+		e1.setText(c.getString(2));//Quiz Name
+		e2.setText(c.getString(3));//No. of Qs
+		e3.setText(c.getString(4));//Duration
+		e4.setText(c.getString(5));//Syllabus
+		
+		String dates=c.getString(6);
+		
+		Date expiry=null;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+	    try {
+	        expiry = formatter.parse(dates);
+	        datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());   
+			setd.setText(datef);
+			
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 	
 	public boolean allset()
@@ -99,7 +123,7 @@ public class Admin_cp extends Activity {
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.admin_cp, menu);
+		getMenuInflater().inflate(R.menu.edit_qb, menu);
 		return true;
 	}
     
@@ -114,7 +138,7 @@ public class Admin_cp extends Activity {
 	};
 	
     public void chooseDate(){
-    	new DatePickerDialog(Admin_cp.this, d, dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH)).show();
+    	new DatePickerDialog(EditQBActivity.this, d, dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH), dateTime.get(Calendar.DAY_OF_MONTH)).show();
     }
     
     public void updateLabel()
@@ -127,8 +151,8 @@ public class Admin_cp extends Activity {
         String datet = sdf.format(d.getTime());
         Integer datetint=Integer.parseInt(datet);
     	
-        Log.d("Debug_admin_cp","New date => "+datefint);
-        Log.d("Debug_admin_cp","Date 2dy => "+datetint);
+        Log.d("Debug_editqb","New date => "+datefint);
+        Log.d("Debug_editqb","Date 2dy => "+datetint);
         if(datefint<datetint)
         {
     		Toast.makeText(context, "Please provide correct deadline", Toast.LENGTH_LONG).show();

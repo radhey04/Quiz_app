@@ -2,8 +2,6 @@ package com.example.quiz;
 
 import java.io.ByteArrayOutputStream;
 
-import com.example.quiz.R;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -106,6 +104,58 @@ public class MyDBAdapter {
 		N=N+1;								// Update N
 	}
 	
+	public void updateQprev(Integer qno,String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,String photoPath)
+	{
+		byte[] img={};
+		Integer imagethere;
+		if(imgthere==true)
+		{
+			BitmapFactory.Options options = new BitmapFactory.Options();
+			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+			Bitmap icon = BitmapFactory.decodeFile(photoPath, options);
+			
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
+			img = bos.toByteArray();
+			
+			imagethere=1;
+			Integer imgsize=img.length/1024;
+			Log.d("Debug_myadapter","Image added "+imgsize);
+			if(imgsize>1600)
+			{
+				imagethere=0;
+				img=null;
+				Log.d("Debug_myadapter","No image added as too big an image provided");
+			}
+		}
+		else
+		{
+			imagethere=0;
+			Log.d("Debug_myadapter","No image added");
+		}
+		// ContentValues which is like bundle
+		ContentValues bag = new ContentValues();
+		// Order matters. It should be as same as the columns
+		// Contents of the bag will increase with every put statement
+		bag.put("Qno", qno);
+		bag.put("quest", quest);
+		bag.put("opta", opta);
+		bag.put("optb", optb);
+		bag.put("optc", optc);
+		bag.put("optd", optd);
+		bag.put("option",option);
+		bag.put("imagethere",imagethere);
+		bag.put("img",img);
+		
+		open();
+		//Insert into the table qbank the contents of the bag.
+		long row=db.update(TAB_NAME,bag,"Qno=?",new String []{qno.toString()});
+		if(row!=-1)
+			Log.d("Debug_mydbadapter","Inserted an entry => "+row);
+		else
+			Log.d("Debug_mydbadapter","Error while inserting");
+		close();
+	}
 	public void updateQ(Integer Qprev, Integer Qno, String quest,String opta,String optb,String optc,String optd,String option,Integer imagethere,byte[] img)
 	{
 		// ContentValues which is like bundle

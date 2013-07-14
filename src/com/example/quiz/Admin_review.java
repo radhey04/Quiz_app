@@ -31,6 +31,8 @@ public class Admin_review extends Activity {
     	
 		Button delall=(Button) findViewById(R.id.button1);
 		Button back=(Button) findViewById(R.id.button2);
+		Button editqb=(Button) findViewById(R.id.button3);
+		
 		final TextView t=(TextView) findViewById(R.id.textView2);
 		
 		Cursor c1 = ad.getAllQs();
@@ -77,6 +79,16 @@ public class Admin_review extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getApplicationContext(), Admin_base.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		
+		editqb.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(), EditQBActivity.class);
 				startActivity(intent);
 				finish();
 			}

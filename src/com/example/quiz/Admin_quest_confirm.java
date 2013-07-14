@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 
 public class Admin_quest_confirm extends Activity {
+	
 	Context context = this;
 	String imgpath="",quest="",opta="",optb="",optc="",optd="",ans="";
 	Boolean imagethere=true;
@@ -140,10 +141,6 @@ public class Admin_quest_confirm extends Activity {
 				}
 			}
 		}
-	}
-	
-	public void ins()
-	{
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -28,22 +28,28 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
+        android:layout_alignParentLeft="true"
         android:text="@string/delete_all" />
     
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-    	android:layout_alignBaseline="@+id/button1"
-        android:text="@string/admin_back" 
-        android:layout_toRightOf="@+id/button1"
-        android:layout_marginLeft="20dip" />
-    
+        android:layout_alignBottom="@+id/button1"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dip" 
+        android:text="@string/admin_back"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/editqb" />
 
 </RelativeLayout>
