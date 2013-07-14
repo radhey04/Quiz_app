@@ -65,8 +65,7 @@ public class EditQBActivity extends Activity {
 				if(allset())
 				{
 					boolean imagethere=false;
-					Integer qno=0;
-					ad.updateQprev(qno,e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"",imagethere,"");
+					ad.updateQprev(0,e1.getText().toString(), e2.getText().toString(), e3.getText().toString(), e4.getText().toString(), datef,"",imagethere,"");
 					Intent intent = new Intent(context, Admin_review.class);
 			        startActivity(intent);
 			        Log.d("Debug","Updated the test settings");
@@ -98,7 +97,6 @@ public class EditQBActivity extends Activity {
 		e2.setText(c.getString(3));//No. of Qs
 		e3.setText(c.getString(4));//Duration
 		e4.setText(c.getString(5));//Syllabus
-		
 		String dates=c.getString(6);
 		
 		Date expiry=null;
@@ -111,8 +109,7 @@ public class EditQBActivity extends Activity {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	}
-	
+	}	
 	public boolean allset()
 	{
 		if(e1.getText().toString().equals("")||e2.getText().toString().equals("")||e3.getText().toString().equals("")||e4.getText().toString().equals("")||datef.equals(""))
