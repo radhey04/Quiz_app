@@ -4,7 +4,6 @@ Abraham
 0. Why is the app crashing once in a while?
 => Check what happens when exit file manager
         The path returns as null
-2. Check for size
 
 1. View scores need to be made scrollable
 5. Fonts at the quiz section and at admin.
