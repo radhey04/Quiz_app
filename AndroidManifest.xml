@@ -103,6 +103,15 @@
             android:name="com.example.quiz.DBList"
             android:label="@string/title_activity_dblist" >
         </activity>
+        <activity
+            android:name="com.example.quiz.EditQActivity"
+            android:label="@string/title_activity_edit_q" >
+        </activity>
+        <activity
+            android:name="com.example.quiz.EditQBActivity"
+            android:label="@string/title_activity_edit_qb" >
+        </activity>
+        
     </application>
 
 </manifest>

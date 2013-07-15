@@ -14,7 +14,7 @@ public class DBhandling extends Activity{
 	public String dirpath="";
 	public String dirname="/NABquiz";
 	
-	public void chkdir()
+	public String chkdir()
 	{
 		dirpath=Environment.getExternalStorageDirectory() + dirname;
 		File direct = new File(dirpath);
@@ -30,7 +30,7 @@ public class DBhandling extends Activity{
         {
         	Log.d("Debug_dbhandling","Directory exists");
         }
-        
+        return dirpath;
 	}
 
     @SuppressWarnings("resource")

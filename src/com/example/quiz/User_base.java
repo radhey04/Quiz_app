@@ -75,7 +75,8 @@ public class User_base extends Activity {
 			@Override
 			public void onClick(View v) {
 				//importdb();	//Call the filepicker
-				Intent i = new Intent(getApplicationContext(), DBList.class);
+				Intent i = new Intent(getApplicationContext(),DBList.class);
+				Log.d("Debug","Exited the user base");
 				startActivity(i);
 			}
 		});

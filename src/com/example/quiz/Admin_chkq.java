@@ -21,7 +21,8 @@ public class Admin_chkq extends Activity {
 	
 	Context context=this;
 	MyDBAdapter ad;
-	
+	Button cimg;
+	Integer qno;
 	public Integer updatespace(EditText e1,TextView t1)
 	{
 		Log.d("Debug_admin_chkq","Updating the space");
@@ -58,8 +59,19 @@ public class Admin_chkq extends Activity {
 			Qs=Qs.concat("D -> "+c.getString(6));
 			Qs=Qs.concat("\n\n Correct Answer => ");
 			Qs=Qs.concat(c.getString(7));
-			t1.setText(Qs);
-			Log.d("Debug_admin_chkq","Got the answer");
+			Integer imagethere=c.getInt(8);
+		    if(imagethere==0)
+		    {
+		    	Qs=Qs.concat("\n\n The question has no image");
+		    	cimg.setVisibility(4);	//Invisible
+		    }
+		    else
+		    {
+		    	Qs=Qs.concat("\n\n The question has an image");
+		    	cimg.setVisibility(0);	//Visible
+			}
+		    t1.setText(Qs);
+			Log.d("Debug_admin_chkq","Screen updated");
 			c.close();			//Should close only if something was open
 		}
 		return qno;
@@ -73,7 +85,10 @@ public class Admin_chkq extends Activity {
 		Button sub=(Button) findViewById(R.id.button1);
 		Button back=(Button) findViewById(R.id.button2);
 		Button del=(Button) findViewById(R.id.button3);
-		
+		Button editq=(Button) findViewById(R.id.button4);
+		cimg=(Button) findViewById(R.id.button5);
+		cimg.setVisibility(4);	//Invisible
+	    
 		final TextView t1=(TextView) findViewById(R.id.textView2);
 		final EditText e1=(EditText) findViewById(R.id.editText1);
 		final AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -83,7 +98,8 @@ public class Admin_chkq extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				if(updatespace(e1,t1)==0)
+				qno=updatespace(e1,t1);
+				if(qno==0)
 				{
 					Toast.makeText(getApplicationContext(), "Invalid Question no.", Toast.LENGTH_SHORT).show();					
 				}
@@ -102,7 +118,7 @@ public class Admin_chkq extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				final Integer qno=updatespace(e1,t1);
+				qno=updatespace(e1,t1);
 				if((qno<=ad.N)&&(qno>0))
 				{
 					Log.d("Debug_admin_chkq","Prepare the dialog");
@@ -129,6 +145,45 @@ public class Admin_chkq extends Activity {
 				{
 					Toast.makeText(getApplicationContext(), "Invalid Question no.", Toast.LENGTH_SHORT).show();					
 				}
+			}
+		});
+		
+		editq.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				qno=updatespace(e1,t1);
+				if((qno<=ad.N)&&(qno>0))
+				{
+					Intent i=new Intent(context,EditQActivity.class);
+					Bundle b=new Bundle();
+					b.putInt("Qno", qno);
+					i.putExtras(b);
+					startActivity(i);
+					finish();
+				}
+				else
+				{
+					Toast.makeText(getApplicationContext(), "Invalid Question no.", Toast.LENGTH_SHORT).show();					
+				}
+			}
+		});
+		
+	    cimg.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(), FullscreenActivity.class);
+	        	//Create a bundle object
+		        Bundle b = new Bundle();
+		        b.putInt("qno",qno);
+		        Log.d("Debug_Admin_chkq", "Fetching the image @ "+qno);
+		        //Add the bundle to the intent.
+		        intent.putExtras(b);
+		        //Toast.makeText(getApplicationContext(), "Done.", Toast.LENGTH_SHORT).show();
+		        //start the DisplayActivity
+		        startActivity(intent);
 			}
 		});
 		

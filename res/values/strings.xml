@@ -84,5 +84,11 @@
     <string name="mainquiz_img">Image</string>
     <string name="title_activity_filepicker">Filepicker</string>
     <string name="title_activity_dblist">DBList</string>
-
+    <string name="title_activity_edit_q">EditQActivity</string>
+    <string name="edit">Edit</string>
+    <string name="editqb">Edit Settings</string>
+    <string name="title_activity_edit_qb">EditQBActivity</string>
+    <string name="admin_update">Update</string>
+    <string name="title_activity_dblist">DBList</string>
+    
 </resources>
