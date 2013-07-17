@@ -146,7 +146,7 @@ public class User_score extends Activity {
         clr.setText("Clear All");
         rowi.addView(clr);
         table.addView(rowi);
-        setContentView(table);
+        //setContentView(table);
         
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
     	
