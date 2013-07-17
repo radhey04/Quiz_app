@@ -13,9 +13,8 @@
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
         android:text="@string/user" />
 
     <Button
@@ -23,16 +22,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="30dp"
         android:text="@string/admin" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="30dp"
         android:text="@string/settings" />
 
 </RelativeLayout>

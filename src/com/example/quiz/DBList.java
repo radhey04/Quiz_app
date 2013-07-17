@@ -20,7 +20,6 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,6 +34,7 @@ public class DBList extends ListActivity {
 	String pressed;
 	String FRUIT;
 	DBhandling db=new DBhandling();
+	SettingsDBAdapter set;
 	
 	//static String[] FRUITS = new String[50];
 	int i=0;
@@ -47,9 +47,11 @@ public class DBList extends ListActivity {
 		DownloadWebPageTask task = new DownloadWebPageTask();
 		// no more this
 		// setContentView(R.layout.list_fruit);
-		String url = "http://10.21.0.158/app/uploads";
+		set=new SettingsDBAdapter(context);
+		set.updatemem();
+		String url = set.URL+"app/uploads";
 		Log.d("debug", url);
-		task.execute(url);
+		task.execute(url);		
 	}
 	private class DownloadWebPage extends AsyncTask<String, Void, String> {
 		@Override
@@ -168,7 +170,7 @@ public class DBList extends ListActivity {
 							Toast.makeText(getApplicationContext(),"You pressed yes", Toast.LENGTH_SHORT).show();
 							DownloadWebPage task1 = new DownloadWebPage();
 							
-							final String address = "http://10.21.0.158/app/uploads/"+pressed;
+							final String address = set.URL+"app/uploads/"+pressed;
 							Log.d("url to download from", "123"+address+"123");
 							task1.execute(address);
 						}
@@ -192,11 +194,4 @@ public class DBList extends ListActivity {
 			});
 			}
 	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.dblist, menu);
-		return true;
-	}
-
 }

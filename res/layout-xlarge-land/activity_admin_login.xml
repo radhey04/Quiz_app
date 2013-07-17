@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/taj"
+    android:background="@drawable/admin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,8 +13,7 @@
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
-        android:layout_height="100dip"
-        android:textSize="40sp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dip"
         android:ems="10"
@@ -24,8 +23,7 @@
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
-        android:layout_height="100dip"
-        android:textSize="40sp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="@string/login_welcome" />
@@ -33,8 +31,7 @@
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
-        android:layout_height="100dip"
-        android:textSize="40sp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dip"

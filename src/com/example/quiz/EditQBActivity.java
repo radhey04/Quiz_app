@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -103,7 +102,7 @@ public class EditQBActivity extends Activity {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 	    try {
 	        expiry = formatter.parse(dates);
-	        datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());   
+	        datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime()).toString();   
 			setd.setText(datef);
 			
 	    } catch (Exception e) {
@@ -114,13 +113,6 @@ public class EditQBActivity extends Activity {
 	{
 		if(e1.getText().toString().equals("")||e2.getText().toString().equals("")||e3.getText().toString().equals("")||e4.getText().toString().equals("")||datef.equals(""))
 			return false;
-		return true;
-	}
-		    
-    @Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.edit_qb, menu);
 		return true;
 	}
     

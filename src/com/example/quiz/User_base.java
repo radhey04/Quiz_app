@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,6 +20,7 @@ public class User_base extends Activity {
 	Context context=this;
 	private static final int REQUEST_PICK_FILE = 1;
 	String newpath="";
+	SettingsDBAdapter set;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class User_base extends Activity {
 		Button vscr=(Button) findViewById(R.id.button2);
 		Button impq=(Button) findViewById(R.id.button3);
 		
-		SettingsDBAdapter set=new SettingsDBAdapter(getApplicationContext());
+		set=new SettingsDBAdapter(getApplicationContext());
 		set.updatemem();
 		
 		t.setText("Hi "+set.Name+"!!! Please choose an option to continue.");
@@ -74,10 +74,18 @@ public class User_base extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				//importdb();	//Call the filepicker
-				Intent i = new Intent(getApplicationContext(),DBList.class);
-				Log.d("Debug","Exited the user base");
-				startActivity(i);
+				if(set.disablehttp==true)
+				{
+					importdb();	//Call the filepicker
+					Toast.makeText(context, "Working in HTTP disable mode", Toast.LENGTH_SHORT).show();
+					
+				}
+				else
+				{
+					Intent i = new Intent(getApplicationContext(),DBList.class);
+					Log.d("Debug","Exited the user base");
+					startActivity(i);
+				}
 			}
 		});
 		vscr.setOnClickListener(new OnClickListener() {
@@ -94,13 +102,6 @@ public class User_base extends Activity {
 				}
 			}
 		});
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_base, menu);
-		return true;
 	}
 	
     public void importdb() 

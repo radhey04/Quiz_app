@@ -251,13 +251,13 @@ public class MyDBAdapter {
 			c=db.rawQuery(query,null);
 			c.moveToNext();				// Moving the cursor forward
 			Log.d("Debug_mydbadapter","Got the settings");
+			Q_Name=c.getString(2);
+			Admin_ID=c.getString(7);			
 		}
 		else
 		{
 			Log.d("Debug_mydbadapter","No question bank");						
 		}
-		Q_Name=c.getString(2);
-		Admin_ID=c.getString(7);
 		close();
 		return c;						// Returns null if failed
 	}

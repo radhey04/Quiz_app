@@ -3,7 +3,6 @@ package com.example.quiz;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -51,16 +50,8 @@ public class Admin extends Activity {
 				
 //				Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
 				Intent k = new Intent(getApplicationContext(), Settings.class);
-				startActivity(k);				
+				startActivity(k);
 			}
 		});
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.admin, menu);
-		return true;
-	}
-
 }

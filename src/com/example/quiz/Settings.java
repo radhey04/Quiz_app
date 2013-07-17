@@ -3,7 +3,7 @@ package com.example.quiz;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
-import android.view.Menu;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -15,9 +15,11 @@ public class Settings extends Activity {
 
 	Context context=this;
 	
-	private Integer Timer = 0;
+	private Integer Timer = 0, dh=0;
 	String Name="";
 	String ID="";
+	String URL="";
+	
 	SettingsDBAdapter set;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +31,13 @@ public class Settings extends Activity {
 		final EditText name = (EditText) findViewById(R.id.editText1);
 		final EditText id = (EditText) findViewById(R.id.editText2);
 		final CheckBox timer = (CheckBox) findViewById(R.id.checkBox1);
+		final CheckBox httpdisb = (CheckBox) findViewById(R.id.checkBox2);
+		final EditText url = (EditText) findViewById(R.id.editText3);
 		Button sub = (Button) findViewById(R.id.button1);
 		//set.dropset();
 		set.updatemem();
+		httpdisb.setChecked(true);
+		timer.setChecked(true);
 		if(set.Name.equals(""))
 		{
 			name.setHint("Your Name");
@@ -56,6 +62,22 @@ public class Settings extends Activity {
 		{
 			timer.setChecked(false);
 		}
+		if(set.disablehttp==true)
+		{
+			httpdisb.setChecked(true);
+		}            
+		else
+		{
+			httpdisb.setChecked(false);
+		}
+		if(set.URL.equals(""))
+		{
+			url.setHint("Eg. http://10.0.0.2/");
+		}
+		else
+		{
+			url.setText(set.URL);
+		}
 		//Shifted the commented section here below
 		
 		sub.setOnClickListener(new OnClickListener() {
@@ -65,6 +87,7 @@ public class Settings extends Activity {
 								
 				Name = name.getText().toString();
 				ID = id.getText().toString();
+				URL=url.getText().toString();
 				if(timer.isChecked()) {
 					Timer = 1;
 				}
@@ -72,52 +95,38 @@ public class Settings extends Activity {
 				{
 					Timer = 0;
 				}
+				if(httpdisb.isChecked()) {
+					dh=1;
+				}
+				else 
+				{
+					dh = 0;
+				}
 				if(Name.equals("") && ID.equals(""))
 				{
-					Toast.makeText(getApplicationContext(), "You can't leave the fields empty!!!", Toast.LENGTH_SHORT).show();			
+					Toast.makeText(context, "You can't leave the fields empty!!!", Toast.LENGTH_SHORT).show();			
 				}
 				else if(Name.equals(""))
 				{
-					Toast.makeText(getApplicationContext(), "You can't leave the Name field empty!!!", Toast.LENGTH_SHORT).show();			
+					Toast.makeText(context, "You can't leave the Name field empty!!!", Toast.LENGTH_SHORT).show();			
 				}
 				else if(ID.equals(""))
 				{
-					Toast.makeText(getApplicationContext(), "You can't leave the ID field empty!!!", Toast.LENGTH_SHORT).show();			
+					Toast.makeText(context, "You can't leave the ID field empty!!!", Toast.LENGTH_SHORT).show();			
+				}
+				else if(URL.equals("") && (dh==0))
+				{
+					Toast.makeText(context, "You can't leave the URL field empty if you are not disabling HTTP!!!", Toast.LENGTH_SHORT).show();
 				}
 				else
 				{
-					set.updateset(Name, ID, Timer);
+					set.updateset(Name, ID, Timer,dh,URL);
 					Toast.makeText(getApplicationContext(), "Settings updated", Toast.LENGTH_SHORT).show();
+					Intent i=new Intent(getApplicationContext(), Admin.class);
+					startActivity(i);
 					finish();
 				}
 			}
 		});
-		
-//		
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-}
-
-/*SettingsDBAdapter set1 = new SettingsDBAdapter(getApplicationContext());
-Cursor c = null;
-c=set1.getAllSet();
-Integer n = c.getCount();
-if(n>0){
-	name.setHint(c.getString(1));
-	id.setHint(c.getString(2));
-	int t=c.getInt(3);
-	if(t>0){
-		timer.setChecked(true);
 	}
 }
-else{
-	name.setHint("Enter Name");
-	id.setHint("Enter ID");
-}*/

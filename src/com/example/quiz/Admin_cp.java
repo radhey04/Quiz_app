@@ -14,7 +14,6 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -95,14 +94,7 @@ public class Admin_cp extends Activity {
 			return false;
 		return true;
 	}
-		    
-    @Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.admin_cp, menu);
-		return true;
-	}
-    
+
     DatePickerDialog.OnDateSetListener d=new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,int dayOfMonth) {

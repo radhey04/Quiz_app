@@ -12,119 +12,108 @@
     <TextView
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
-        android:layout_height="70dip"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:text="@string/hello_admin" />
 
     <EditText
         android:id="@+id/editText1"
         android:layout_width="fill_parent"
-        android:layout_height="70dip"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dip"
         android:ems="10"
         android:hint="@string/question_hint"
         android:inputType="textMultiLine" />
 
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:text="@string/chkA" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/checkBox1"
+        android:layout_toRightOf="@+id/checkBox1"
+        android:ems="10"
+        android:hint="@string/optionA_hint" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_marginLeft="46dp"
+        android:text="@string/populate" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText4"
+        android:layout_alignTop="@+id/CheckBox02"
+        android:ems="10"
+        android:hint="@string/optionD_hint" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
-		android:layout_height="70dip"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/checkBox2"
         android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="20dip"
         android:ems="10"
         android:hint="@string/optionB_hint" />
 
     <EditText
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="20dip"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/checkBox1"
+        android:layout_alignRight="@+id/editText1"
         android:ems="10"
         android:hint="@string/optionC_hint" />
-    
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText4"
-        android:layout_marginTop="20dip"
-        android:ems="10"
-        android:hint="@string/optionD_hint" />
-    
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_alignBottom="@+id/editText2"
-        android:text="@string/chkA" />
-    
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_alignBottom="@+id/editText3"
-        android:text="@string/chkB" />
 
-	<CheckBox
+    <CheckBox
         android:id="@+id/CheckBox01"
         android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_alignBottom="@+id/editText4"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText2"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_toLeftOf="@+id/editText4"
         android:text="@string/chkC" />
-    
+
     <CheckBox
         android:id="@+id/CheckBox02"
         android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_alignBottom="@+id/editText5"
-        android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText3"
+        android:layout_alignRight="@+id/CheckBox01"
         android:text="@string/chkD" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/editText3"
+        android:text="@string/chkB" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/editText5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dip"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@+id/checkBox2"
         android:text="@string/submit" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignLeft="@+id/CheckBox02"
-        android:text="@string/populate" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="70dip"
-        android:textSize="30sp"
-        android:layout_below="@+id/editText1"
-        android:layout_marginLeft="15dip"
-        android:layout_marginTop="21dip"
-        android:layout_toRightOf="@+id/CheckBox02"
-        android:ems="10"
-        android:hint="@string/optionA_hint" />
 
 </RelativeLayout>

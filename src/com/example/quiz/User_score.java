@@ -10,7 +10,6 @@ import android.graphics.Point;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -37,6 +36,8 @@ public class User_score extends Activity {
         TableRow.LayoutParams params = new TableRow.LayoutParams(width,fonts);
         TableLayout table = new TableLayout(this);
         
+        //TableLayout table = (TableLayout) findViewById(R.id.table1);
+        
         TableRow row = new TableRow(this);
         
         TextView text = new TextView(this);
@@ -44,8 +45,11 @@ public class User_score extends Activity {
         
         text.setLayoutParams(params);
         text.setText("Your Marksheet (Most Recent on top)");
+        Log.d("Debug","Tablelayout1");
         row.addView(text);
+        Log.d("Debug","Tablelayout11");
         table.addView(row);
+        Log.d("Debug","Tablelayout2");
 
         fonts = 50;
 		TableRow.LayoutParams params0 = new TableRow.LayoutParams(0,fonts,.1f);
@@ -129,7 +133,7 @@ public class User_score extends Activity {
             rowi.addView(text3);
             rowi.addView(text4);
             table.addView(rowi);
-        }while(c.moveToPrevious());
+        }while(c.moveToPrevious() && (slno<5));
         c.close();
 		
         rowi = new TableRow(this);
@@ -168,12 +172,4 @@ public class User_score extends Activity {
 			}
 		});
     }
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_score, menu);
-		return true;
-	}
-
 }

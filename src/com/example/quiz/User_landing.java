@@ -18,7 +18,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,7 +29,7 @@ public class User_landing extends Activity {
 	Context context=this;
 	Integer totq;
 	String timeleft;
-	appset myapp=new appset();
+	SettingsDBAdapter set;
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,8 @@ public class User_landing extends Activity {
 		TextView t=(TextView) findViewById(R.id.textView1);
 		
 		final MyDBAdapter ad=new MyDBAdapter(context);
-		
+		set=new SettingsDBAdapter(context);
+		set.updatemem();
 		Cursor c = ad.getQBset();
 		String dates=c.getString(6);
 		
@@ -51,9 +51,12 @@ public class User_landing extends Activity {
 	        expiry = formatter.parse(dates);
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	    }
+	        Log.d("DEBUG","Shit!");
+		}
+	    Log.d("DEBUG","Reached before datef");
 	    final String datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());    
-		
+	    Log.d("DEBUG","Cleared datef");
+	    
 		String details="Hi. The following are the details of " +
 				"the quiz you are about to take.";
 		details=details.concat("\n\n Quiz Name: "+c.getString(2));
@@ -74,8 +77,6 @@ public class User_landing extends Activity {
 			public void onClick(View v) {
 				Log.d("DEBUG","button click");
 				DownloadWebPageTask task = new DownloadWebPageTask();
-				SettingsDBAdapter set = new SettingsDBAdapter(context);
-				set.updatemem();
 				String studentID = set.ID;
 				String name = set.Name;
 				
@@ -98,20 +99,23 @@ public class User_landing extends Activity {
 								
 				Log.d("DEBUG", "Deadline:"+Deads);
 				
-				String url = "http://10.0.0.2/app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
+				String url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
-				task.execute(url);
 				scoresDBAdapter ads=new scoresDBAdapter(context);
 				ads.dropsheet();		// Clear the sheet
+				if(set.disablehttp==true)
+				{
+					Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
+					Log.d("Debug_user_landing","Bypassing the http authentication");
+					proceed();
+				}
+				else
+				{
+					task.execute(url);
+				}
+				
 			}
 		});
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_landing, menu);
-		return true;
 	}
 
 	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
@@ -145,27 +149,9 @@ public class User_landing extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute"+result);
-			if(myapp.httpdisable==true)
-			{
-				result="1";
-				Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
-				Log.d("Debug_user_landing","Bypassing the http authentication");
-			}
 			if(result.equals("1"))
 			{
-				final Bundle bund = new Bundle();
-				
-				// Bundle containing
-				// Total Questions stored as totq (int)
-				// Time as timeleft (String)
-								
-		        bund.putInt("totq",totq);
-		        bund.putString("timeleft",timeleft);
-		        
-		        //Toast.makeText(context,  "The test will start now. All the best!!!", Toast.LENGTH_SHORT).show();
-				Intent i= new Intent(getApplicationContext(),Mainquiz.class);
-				i.putExtras(bund);
-				startActivity(i);
+				proceed();
 			}
 			else if(result.equals("0"))
 			{
@@ -178,5 +164,22 @@ public class User_landing extends Activity {
 			}
 			finish();
 		}
+	}
+	
+	protected void proceed()
+	{
+		final Bundle bund = new Bundle();
+		
+		// Bundle containing
+		// Total Questions stored as totq (int)
+		// Time as timeleft (String)
+						
+	    bund.putInt("totq",totq);
+	    bund.putString("timeleft",timeleft);
+	    
+	    //Toast.makeText(context,  "The test will start now. All the best!!!", Toast.LENGTH_SHORT).show();
+		Intent i= new Intent(getApplicationContext(),Mainquiz.class);
+		i.putExtras(bund);
+		startActivity(i);
 	}
 }

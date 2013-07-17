@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,7 +24,7 @@ import android.widget.Toast;
 public class User_publish extends Activity {
 
 	Context context=this;
-	appset myapp=new appset();
+	SettingsDBAdapter set;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,7 @@ public class User_publish extends Activity {
 		TextView t6=(TextView) findViewById(R.id.textView6);
 		TextView t7=(TextView) findViewById(R.id.textView7);
 		
-		SettingsDBAdapter set = new SettingsDBAdapter(context);
+		set= new SettingsDBAdapter(context);
 		Log.d("Debug",set.Name);
 		Log.d("Debug",set.ID);
 		Log.d("Debug","Values to be printed on my scoresheet");
@@ -79,9 +78,18 @@ public class User_publish extends Activity {
 		String Scre  = "Score="+score;
 		String Time_Limit = "TimeLimit="+TimeLimit;
 		
-		String url = "http://10.0.0.2/app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
+		String url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
-		task.execute(url);
+		if(set.disablehttp==true)
+		{
+			Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
+			Log.d("Debug_user_publish","Bypassing the http authentication");
+			Toast.makeText(context,  "Scores Updated",Toast.LENGTH_SHORT).show();
+		}
+		else
+		{
+			task.execute(url);
+		}
 		
 		markDBAdapter md=new markDBAdapter(context);
 		md.insertmark(md.N+1,quiz_Name, score, c.getString(3));
@@ -100,13 +108,6 @@ public class User_publish extends Activity {
 		});
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_publish, menu);
-		return true;
-	}
-	
 	private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
@@ -141,12 +142,6 @@ public class User_publish extends Activity {
 			Log.d("DEBUG", "onPostExecute");
 			//Toast.makeText(context,  result, Toast.LENGTH_LONG).show();
 			//Disabling http
-			if(myapp.httpdisable==true)
-			{
-				result="1";
-				Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
-				Log.d("Debug_user_publish","Bypassing the http authentication");
-			}
 			if(result.equals("1"))
 			{
 				Toast.makeText(context,  "Scores Updated",Toast.LENGTH_SHORT).show();
