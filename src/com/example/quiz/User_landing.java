@@ -181,5 +181,6 @@ public class User_landing extends Activity {
 		Intent i= new Intent(getApplicationContext(),Mainquiz.class);
 		i.putExtras(bund);
 		startActivity(i);
+		finish();
 	}
 }

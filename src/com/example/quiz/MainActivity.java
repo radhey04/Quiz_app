@@ -35,16 +35,15 @@ public class MainActivity extends Activity {
 				set.updatemem();
 				if(set.Name.equals(""))
 				{
-					Toast.makeText(context,"Hi. We see that its your first time here. Please fill in the details.",Toast.LENGTH_LONG).show();
-					Intent i=new Intent(getApplicationContext(), Settings.class);
+//					Toast.makeText(context,"Please fill in the details.",Toast.LENGTH_LONG).show();
+					Intent i=new Intent(context, Settings.class);
 					startActivity(i);
 					// Control will come back here. So wait till name has come.
 					finish();					
 				}
 				else // If name already there
 				{
-//				Intent i=new Intent(getApplicationContext(), User_landing.class);
-					Intent i=new Intent(getApplicationContext(), Admin.class);
+					Intent i=new Intent(context, Admin.class);
 					startActivity(i);
 					finish();
 				}
