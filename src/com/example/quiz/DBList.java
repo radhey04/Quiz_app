@@ -10,7 +10,11 @@ import java.net.URL;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 
 
 import android.os.AsyncTask;
@@ -94,8 +98,15 @@ public class DBList extends ListActivity {
 			Log.d("DEBUG", "Inside dwp");
 			String response = "";
 			for (String url : urls) {
-				DefaultHttpClient client = new DefaultHttpClient();
 				HttpGet httpGet = new HttpGet(url);
+				HttpParams httpParameters = new BasicHttpParams();
+				int timeoutConnection = 3000;
+				HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+				int timeoutSocket = 5000;
+				HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
+
+				DefaultHttpClient client = new DefaultHttpClient(httpParameters);
+
 				try {
 					HttpResponse execute = client.execute(httpGet);
 					InputStream content = execute.getEntity().getContent();
@@ -115,7 +126,12 @@ public class DBList extends ListActivity {
 						}
 					}
 					Log.d("DEBUG", response);
-				} catch (Exception e) {
+				} catch (ConnectTimeoutException cte) {
+					cte.printStackTrace();
+					Log.d("DEBUG", "ConnectionTimeout");
+					i=1;
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 					Log.d("DEBUG", "Exception");
 				}
@@ -127,8 +143,11 @@ public class DBList extends ListActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute"+result);
+			if(i==1){
+				Toast.makeText(context,  "Connection could not be established" , Toast.LENGTH_LONG).show();
+				finish();
+			}
 			
-			i=1;
 			Log.d("DEBUG", result);
 			String[] FRUITS = result.split(" #");
 			
