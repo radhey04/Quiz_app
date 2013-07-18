@@ -87,10 +87,10 @@
     <string name="edit">Edit</string>
     <string name="editqb">Edit Settings</string>
     <string name="title_activity_edit_qb">EditQBActivity</string>
-    <string name="admin_update">Update</string>
     <string name="admin_base_delete">Delete the QB</string>
     <string name="admin_base_newdb">Create A New Question Paper</string>
     <string name="settings_url">Localhost URL</string>
     <string name="disablehttp">Disable HTTP</string>
+    <string name="admin_update">Update</string>
     
 </resources>
