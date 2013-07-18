@@ -32,16 +32,13 @@ public class DBList extends ListActivity {
 	
 	public Context context = this;
 	String pressed;
-	String FRUIT;
 	DBhandling db=new DBhandling();
 	SettingsDBAdapter set;
 	
-	//static String[] FRUITS = new String[50];
 	int i=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_dblist);
 		
 		Log.d("DEBUG", "Click");
 		DownloadWebPageTask task = new DownloadWebPageTask();
@@ -130,25 +127,20 @@ public class DBList extends ListActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute"+result);
-			FRUIT = result;
-
-			Log.d("DEBUG", "outside execute");
+			
 			i=1;
-			Log.d("DEBUG", FRUIT);
-			String[] FRUITS = FRUIT.split(" #");
+			Log.d("DEBUG", result);
+			String[] FRUITS = result.split(" #");
 			
 			setListAdapter(new ArrayAdapter<String>(context, R.layout.activity_dblist,FRUITS));
 			ListView listView = getListView();
 			listView.setTextFilterEnabled(true);
 			
 			registerForContextMenu(getListView());  
-
 			listView.setOnItemClickListener(new OnItemClickListener() {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					// When clicked, show a toast with the TextView text
-
-					//Toast.makeText(getApplicationContext(),((TextView) view).getText(), Toast.LENGTH_SHORT).show();
 
 					pressed = ((TextView) view).getText().toString();
 
@@ -160,7 +152,7 @@ public class DBList extends ListActivity {
 
 					// set dialog message
 					alertDialogBuilder
-					.setMessage("Do you want to download "+pressed)
+					.setMessage("Do you want to download "+pressed+"?")
 					.setCancelable(false)
 					.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,int id) {
