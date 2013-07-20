@@ -76,7 +76,7 @@ public class User_base extends Activity {
 			public void onClick(View v) {
 				if(set.disablehttp==true)
 				{
-					importdb();	//Call the filepicker
+//					importdb();	//Call the filepicker
 					Toast.makeText(context, "Working in HTTP disable mode", Toast.LENGTH_SHORT).show();
 					
 				}
@@ -102,59 +102,5 @@ public class User_base extends Activity {
 				}
 			}
 		});
-	}
-	
-    public void importdb() 
-    {
-    	Intent intent = new Intent(context, FilePickerActivity.class);
-		
-		// Set the initial directory to be the sdcard
-		DBhandling db=new DBhandling();
-		db.chkdir();
-		Log.d("Debug_dbhandling",db.dirpath);
-		intent.putExtra(FilePickerActivity.EXTRA_FILE_PATH,db.dirpath);
-		
-		// Only make .png files visible
-		ArrayList<String> extensions = new ArrayList<String>();
-		extensions.add(".png");
-		extensions.add(".jpg");
-		extensions.add(".nab");
-		intent.putExtra(FilePickerActivity.EXTRA_ACCEPTED_FILE_EXTENSIONS, extensions);
-		
-		// Start the activity
-		startActivityForResult(intent, REQUEST_PICK_FILE);
-		Log.d("Debug_dbhandling","Triggered File picker");    	
-    }
-    
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
-	{
-		Log.d("Debug_dbhandling","Result");
-		if(resultCode == RESULT_OK) 
-		{
-			switch(requestCode) 
-			{
-				case REQUEST_PICK_FILE:
-				{
-					if(data.hasExtra(FilePickerActivity.EXTRA_FILE_PATH)) 
-					{
-						// Get the file path
-						File f = new File(data.getStringExtra(FilePickerActivity.EXTRA_FILE_PATH));
-						newpath=f.getPath();
-						Log.d("Debug_dbhandling","File picker worked");
-						DBhandling dbh = new DBhandling();
-						Boolean suc=dbh.importDB("Quiz",newpath);
-						if(suc==true)
-						{
-							Toast.makeText(getApplicationContext(), "Loaded the quiz", Toast.LENGTH_SHORT).show();
-						}
-						else
-						{
-							Toast.makeText(getApplicationContext(), "Couldn't find the question bank.", Toast.LENGTH_SHORT).show();
-						}
-					}
-					break;
-				}
-			}
-		}
 	}
 }

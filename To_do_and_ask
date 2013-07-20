@@ -11,6 +11,12 @@ Final stages:
 4. Activity names (Done)
 5. Settings (Done)
 
+
+User branch
+===========
+Update the admin.xml files too
+Removed the user_base calling importDB()
+
 Abraham
 =======
 0. Why is the app crashing once in a while?
