@@ -1,8 +1,5 @@
 package com.example.quiz;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -18,7 +15,6 @@ import android.widget.Toast;
 public class User_base extends Activity {
 
 	Context context=this;
-	private static final int REQUEST_PICK_FILE = 1;
 	String newpath="";
 	SettingsDBAdapter set;
 	
