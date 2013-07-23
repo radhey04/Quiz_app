@@ -103,17 +103,7 @@ public class User_landing extends Activity {
 				Log.d("debug", url);
 				scoresDBAdapter ads=new scoresDBAdapter(context);
 				ads.dropsheet();		// Clear the sheet
-				if(set.disablehttp==true)
-				{
-					Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
-					Log.d("Debug_user_landing","Bypassing the http authentication");
-					proceed();
-				}
-				else
-				{
-					task.execute(url);
-				}
-				
+				task.execute(url);
 			}
 		});
 	}

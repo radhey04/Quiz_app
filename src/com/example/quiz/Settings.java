@@ -15,7 +15,7 @@ public class Settings extends Activity {
 
 	Context context=this;
 	
-	private Integer Timer = 0, dh=0;
+	private Integer Timer = 0;
 	String Name="";
 	String ID="";
 	String URL="";
@@ -32,11 +32,11 @@ public class Settings extends Activity {
 		final EditText id = (EditText) findViewById(R.id.editText2);
 		final CheckBox timer = (CheckBox) findViewById(R.id.checkBox1);
 		final CheckBox httpdisb = (CheckBox) findViewById(R.id.checkBox2);
+		httpdisb.setVisibility(4);
+		//Made the checkbox invisible..use master's copy of settings* - all 3 files if you want to revert
 		final EditText url = (EditText) findViewById(R.id.editText3);
 		Button sub = (Button) findViewById(R.id.button1);
-		//set.dropset();
 		set.updatemem();
-		httpdisb.setChecked(true);
 		timer.setChecked(true);
 		if(set.Name.equals(""))
 		{
@@ -61,14 +61,6 @@ public class Settings extends Activity {
 		else
 		{
 			timer.setChecked(false);
-		}
-		if(set.disablehttp==true)
-		{
-			httpdisb.setChecked(true);
-		}            
-		else
-		{
-			httpdisb.setChecked(false);
 		}
 		if(set.URL.equals(""))
 		{
@@ -95,14 +87,7 @@ public class Settings extends Activity {
 				{
 					Timer = 0;
 				}
-				if(httpdisb.isChecked()) {
-					dh=1;
-				}
-				else 
-				{
-					dh = 0;
-				}
-				if(Name.equals("") && ID.equals(""))
+				if(Name.equals("") && ID.equals("")&&URL.equals(""))
 				{
 					Toast.makeText(context, "You can't leave the fields empty!!!", Toast.LENGTH_SHORT).show();			
 				}
@@ -114,16 +99,16 @@ public class Settings extends Activity {
 				{
 					Toast.makeText(context, "You can't leave the ID field empty!!!", Toast.LENGTH_SHORT).show();			
 				}
-				else if(URL.equals("") && (dh==0))
+				else if(URL.equals("") )
 				{
-					Toast.makeText(context, "You can't leave the URL field empty if you are not disabling HTTP!!!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, "You can't leave the URL field empty!!!", Toast.LENGTH_SHORT).show();
 				}
 				else
 				{
 					if(!URL.endsWith("/")) {
 						URL=URL+"/";  //Ensuring that the URL ends with a Backslash
 					}
-					set.updateset(Name, ID, Timer,dh,URL);
+					set.updateset(Name, ID, Timer,URL);
 					Toast.makeText(getApplicationContext(), "Settings updated", Toast.LENGTH_SHORT).show();
 					Intent i=new Intent(getApplicationContext(), Admin.class);
 					startActivity(i);

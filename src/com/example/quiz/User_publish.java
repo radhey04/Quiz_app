@@ -80,16 +80,7 @@ public class User_publish extends Activity {
 		
 		String url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
-		if(set.disablehttp==true)
-		{
-			Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
-			Log.d("Debug_user_publish","Bypassing the http authentication");
-			Toast.makeText(context,  "Scores Updated",Toast.LENGTH_SHORT).show();
-		}
-		else
-		{
-			task.execute(url);
-		}
+		task.execute(url);
 		
 		markDBAdapter md=new markDBAdapter(context);
 		md.insertmark(md.N+1,quiz_Name, score, c.getString(3));

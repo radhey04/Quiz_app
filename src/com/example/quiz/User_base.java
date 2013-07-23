@@ -70,18 +70,9 @@ public class User_base extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				if(set.disablehttp==true)
-				{
-//					importdb();	//Call the filepicker
-					Toast.makeText(context, "Working in HTTP disable mode", Toast.LENGTH_SHORT).show();
-					
-				}
-				else
-				{
-					Intent i = new Intent(getApplicationContext(),DBList.class);
-					Log.d("Debug","Exited the user base");
-					startActivity(i);
-				}
+				Intent i = new Intent(getApplicationContext(),DBList.class);
+				Log.d("Debug","Exited the user base");
+				startActivity(i);
 			}
 		});
 		vscr.setOnClickListener(new OnClickListener() {
