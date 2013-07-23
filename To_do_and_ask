@@ -16,6 +16,7 @@ User branch
 ===========
 Update the admin.xml files too
 Removed the user_base calling importDB()
+Make a hotfix branch
 
 Abraham
 =======
