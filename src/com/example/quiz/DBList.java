@@ -50,7 +50,7 @@ public class DBList extends ListActivity {
 		// setContentView(R.layout.list_fruit);
 		set=new SettingsDBAdapter(context);
 		set.updatemem();
-		String url = set.URL+"app/uploads";
+		String url = set.URL+"app/listdir.php";
 		Log.d("debug", url);
 		task.execute(url);		
 	}
@@ -123,14 +123,13 @@ public class DBList extends ListActivity {
 					BufferedReader buffer = new BufferedReader(
 							new InputStreamReader(content));
 					String s = "";
-					String delim = ">";
 					while ((s = buffer.readLine()) != null) {
 						if(s.contains(".nab")){
-							String name = s.substring(96);
-							name.trim();
-							String token[] =name.split(delim);
-							Log.d("DEBUG", token[0].replace('"', ' '));
-							response += token[0].replace('"', ' ');
+							//String name = s.substring(96);
+							//name.trim();
+							//String token[] =name.split(delim);
+							//Log.d("DEBUG", token[0].replace('"', ' '));
+							response += s;
 							response += "#";
 						}
 					}
@@ -159,7 +158,7 @@ public class DBList extends ListActivity {
 			}
 			
 			Log.d("DEBUG", result);
-			String[] FRUITS = result.split(" #");
+			String[] FRUITS = result.split("#");
 			
 			setListAdapter(new ArrayAdapter<String>(context, R.layout.activity_dblist,FRUITS));
 			ListView listView = getListView();
