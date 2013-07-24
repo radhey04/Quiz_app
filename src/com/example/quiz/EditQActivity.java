@@ -124,27 +124,40 @@ public class EditQActivity extends Activity {
 		        //Inserts a String value into the mapping of this Bundle
 				if(!option.equals(""))
 			    {
-					String rmvimg="Remove Image";
-			    	if(imagethereint==0)
-			    	{//No image
-			    		rmvimg="No image";
-			    	}
-			    	Log.d("Debug_editq","Do you want to change image?");
+					Log.d("Debug_editq","What about the image?");
 					builder.setTitle("What about the image?");
-					builder.setMessage("Press back to abort edits.");
+					builder.setMessage("Press back to go back to editing question.");
 			    	builder.setIcon(android.R.drawable.ic_dialog_alert);
-			    	builder.setPositiveButton(rmvimg, new DialogInterface.OnClickListener() {
-			    	    public void onClick(DialogInterface dialog, int which) {			      	
-			    	    	confirm();
-			    	    }
-			    	});
-			    	builder.setNegativeButton("Modify/Retain Image", new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							getimg();
-						}
-					});
+			    	if(imagethereint==1)
+			    	{
+				    	builder.setPositiveButton("Modify Image", new DialogInterface.OnClickListener() {
+				    	    public void onClick(DialogInterface dialog, int which) {			      	
+				    	    	newimg();
+				    	    }
+				    	});
+				    	builder.setNeutralButton("Retain Image", new DialogInterface.OnClickListener() {
+				    	    public void onClick(DialogInterface dialog, int which) {			      	
+				    	    	retainimg();
+				    	    }
+				    	});
+				    	builder.setNegativeButton("Remove Image", new DialogInterface.OnClickListener() {
+				    	    public void onClick(DialogInterface dialog, int which) {			      	
+				    	    	confirm();
+				    	    }
+				    	});
+			    	}
+			    	else
+			    	{
+				    	builder.setPositiveButton("Add Image", new DialogInterface.OnClickListener() {
+				    	    public void onClick(DialogInterface dialog, int which) {			      	
+				    	    	newimg();
+				    	    }
+				    	});builder.setNegativeButton("Remove Image", new DialogInterface.OnClickListener() {
+				    	    public void onClick(DialogInterface dialog, int which) {			      	
+				    	    	confirm();
+				    	    }
+				    	});
+			    	}	
 			    	builder.show();
 			    }
 				else
@@ -166,27 +179,31 @@ public class EditQActivity extends Activity {
 		});
 	}
 	
-	public void getimg()
+	public void confirm()
 	{
-		final AlertDialog.Builder builder2= new AlertDialog.Builder(context);
-		builder2.setTitle("Image");
-    	builder2.setMessage("What do you want me to do?");
-		builder2.setIcon(android.R.drawable.ic_dialog_alert);
-    	builder2.setPositiveButton("Retain the image", new DialogInterface.OnClickListener() {
-    	    public void onClick(DialogInterface dialog, int which) {
-    	    	Cursor c=ad.getQno(qno);
-    	    	ad.updateQ(qno,qno,Q.getText().toString(),opta.getText().toString(),optb.getText().toString(),optc.getText().toString(),optd.getText().toString(),option,c.getInt(8),c.getBlob(9));
-				Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
-			    Intent intent = new Intent(getApplicationContext(), Admin_chkq.class);
-				startActivity(intent);
-				finish();
-    	    }
-    	});
-    	builder2.setNegativeButton("Cancel operation",null);
-    	builder2.show();
+		imagethere=false;
+    	imgpath="";
+    	Log.d("Debug_editq","Updating the question without image");
+		ad.updateQprev(qno,Q.getText().toString(),opta.getText().toString(),optb.getText().toString(),optc.getText().toString(),optd.getText().toString(),option,imagethere,imgpath);
+		Toast.makeText(context, "Question updated", Toast.LENGTH_SHORT).show();
+	    Intent intent = new Intent(context, Admin_chkq.class);
+		startActivity(intent);
+		finish();
+	}
+	
+	public void retainimg()
+	{
+		Cursor c=ad.getQno(qno);
+    	ad.updateQ(qno,qno,Q.getText().toString(),opta.getText().toString(),optb.getText().toString(),optc.getText().toString(),optd.getText().toString(),option,c.getInt(8),c.getBlob(9));
+		Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
+	    Intent intent = new Intent(getApplicationContext(), Admin_chkq.class);
+		startActivity(intent);
+		finish();
+	}
+	
+	public void newimg()
+	{
 		Intent intent = new Intent(context, FilePickerActivity.class);
-		
-		
 		//Proceeding with image selection
 		// Set the initial directory to be the sdcard
 		DBhandling db=new DBhandling();
@@ -234,17 +251,5 @@ public class EditQActivity extends Activity {
 				}
 			}
 		}
-	}
-
-	public void confirm()
-	{
-		imagethere=false;
-    	imgpath="";
-    	Log.d("Debug_editq","Updating the question without image");
-		ad.updateQprev(qno,Q.getText().toString(),opta.getText().toString(),optb.getText().toString(),optc.getText().toString(),optd.getText().toString(),option,imagethere,imgpath);
-		Toast.makeText(context, "Question updated", Toast.LENGTH_SHORT).show();
-	    Intent intent = new Intent(context, Admin_chkq.class);
-		startActivity(intent);
-		finish();
 	}
 }
