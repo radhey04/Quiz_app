@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox1"
         android:layout_alignBottom="@+id/checkBox1"
-        android:layout_marginLeft="18dp"
+        android:layout_marginLeft="18dip"
         android:layout_toRightOf="@+id/checkBox1"
         android:text="A" />
 
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox3"
         android:layout_alignBottom="@+id/checkBox3"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="16dip"
         android:layout_toRightOf="@+id/checkBox4"
         android:text="C" />
 
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="70dip"
         android:text="@string/chkA" />
 
     <CheckBox
@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkBox1"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="39dip"
         android:layout_toLeftOf="@+id/textView2"
         android:text="@string/chkB" />
 
@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkBox2"
-        android:layout_marginTop="167dp"
+        android:layout_marginTop="167dip"
         android:layout_toRightOf="@+id/textView3"
         android:text="@string/mainquiz_prev" />
 
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_marginLeft="369dp"
+        android:layout_marginLeft="369dip"
         android:layout_toRightOf="@+id/button2"
         android:text="@string/chkD" />
 
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button2"
         android:layout_alignBottom="@+id/button2"
-        android:layout_marginRight="114dp"
+        android:layout_marginRight="114dip"
         android:layout_toLeftOf="@+id/checkBox3"
         android:text="@string/mainquiz_img" />
 

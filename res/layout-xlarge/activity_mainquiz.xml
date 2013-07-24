@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox1"
         android:layout_alignBottom="@+id/checkBox1"
-        android:layout_marginLeft="19dp"
+        android:layout_marginLeft="19dip"
         android:layout_toRightOf="@+id/checkBox4"
         android:text="@string/TextView" />
     <TextView

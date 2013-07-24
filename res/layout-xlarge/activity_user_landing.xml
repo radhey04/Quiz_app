@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="116dip"
         android:text="@string/user_lp_cont" />
 
 </RelativeLayout>
