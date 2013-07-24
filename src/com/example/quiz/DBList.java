@@ -134,6 +134,7 @@ public class DBList extends ListActivity {
 				catch (Exception e) {
 					e.printStackTrace();
 					Log.d("DEBUG", "Exception");
+					i=1;
 				}
 			}
 			Log.d("DEBUG", "Done dwp");
@@ -171,7 +172,7 @@ public class DBList extends ListActivity {
 
 					// set dialog message
 					alertDialogBuilder
-					.setMessage("Do you want to download "+pressed+"?")
+					.setMessage("Do you want to take the test "+pressed+"?")
 					.setCancelable(false)
 					.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,int id) {

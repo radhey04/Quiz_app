@@ -64,7 +64,7 @@ public class Settings extends Activity {
 		}
 		if(set.URL.equals(""))
 		{
-			url.setHint("Eg. http://10.0.0.2/");
+			url.setText("http://10.21.2.246/");
 		}
 		else
 		{
