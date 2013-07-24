@@ -81,7 +81,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="mainquiz_img">Image</string>
-    <string name="title_activity_filepicker">Pick your Question Paper</string>
+    <string name="title_activity_filepicker">Pick the image</string>
     <string name="title_activity_dblist">Question Bank @ Server</string>
     <string name="title_activity_edit_q">Edit a Question</string>
     <string name="edit">Edit</string>
