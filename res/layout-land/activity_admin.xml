@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="30dip"
         android:text="@string/settings" />
 
 </RelativeLayout>
