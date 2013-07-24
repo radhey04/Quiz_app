@@ -51,7 +51,7 @@
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
         android:layout_alignLeft="@+id/editText5"
-        android:layout_marginLeft="46dp"
+        android:layout_marginLeft="46dip"
         android:text="@string/populate" />
 
     <EditText
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="14dip"
         android:layout_toLeftOf="@+id/editText3"
         android:text="@string/chkB" />
 
@@ -112,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText5"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="14dip"
         android:layout_toRightOf="@+id/checkBox2"
         android:text="@string/submit" />
 

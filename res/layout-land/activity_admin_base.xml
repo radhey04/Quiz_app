@@ -32,7 +32,7 @@
         android:layout_alignLeft="@+id/buttonx2"
         android:layout_alignRight="@+id/buttonx2"
         android:layout_below="@+id/buttonx2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="30dip"
         android:text="@string/admin_base_export" />
 
     <Button
@@ -40,8 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="42dip"
+        android:layout_marginTop="20dip"
         android:layout_toRightOf="@+id/textView1"
         android:text="@string/admin_base_revw" />
 
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="14dip"
         android:text="@string/admin_base_delete" />
 
 </RelativeLayout>

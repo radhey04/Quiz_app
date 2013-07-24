@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="16dip"
         android:text="@string/admin_cp_name" />
 
     <Button
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="30dip"
         android:text="@string/admin_cp_time" />
 
     <TextView
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText3"
         android:layout_below="@+id/button2"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="14dip"
         android:ems="10"
         android:inputType="textMultiLine" />
 

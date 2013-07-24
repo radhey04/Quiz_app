@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/textView3"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="20dip"
         android:text="@string/TextView" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="14dip"
         android:text="@string/TextView" />
 
     <TextView
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="19dip"
         android:text="@string/TextView" />
 
     <TextView
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView4"
         android:layout_alignBottom="@+id/textView4"
-        android:layout_marginRight="35dp"
+        android:layout_marginRight="35dip"
         android:layout_toLeftOf="@+id/button1"
         android:text="@string/TextView" />
 
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
-        android:layout_marginLeft="17dp"
+        android:layout_marginLeft="17dip"
         android:layout_toRightOf="@+id/textView4"
         android:text="@string/TextView" />
 
@@ -77,8 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView6"
-        android:layout_marginRight="75dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginRight="75dip"
+        android:layout_marginTop="16dip"
         android:text="@string/admin_quest_upd" />
 
 </RelativeLayout>

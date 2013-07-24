@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button2"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="30dip"
         android:layout_toLeftOf="@+id/textView2"
         android:text="@string/chkB" />
 
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/checkBox2"
         android:layout_alignLeft="@+id/textView1"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="17dip"
         android:text="@string/chkA" />
 
     <Button
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="30dip"
         android:layout_toRightOf="@+id/button2"
         android:text="@string/mainquiz_img" />
 
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox1"
         android:layout_alignBottom="@+id/checkBox1"
-        android:layout_marginLeft="18dp"
+        android:layout_marginLeft="18dip"
         android:layout_toRightOf="@+id/checkBox1"
         android:text="A" />
 
@@ -119,7 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/checkBox3"
         android:layout_alignBottom="@+id/checkBox3"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="16dip"
         android:layout_toRightOf="@+id/checkBox4"
         android:text="C" />
  

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="48dip"
         android:ems="10" 
         android:hint="@string/settings_name"
         android:textColorHint="#555">
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText1"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="30dip"
         android:ems="10" 
         android:hint="@string/settings_id"
         android:textColorHint="#555"/>
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText2"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="30dip"
         android:ems="10" 
         android:hint="@string/settings_url"
         android:textColorHint="#555"/>
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText3"
         android:layout_below="@+id/editText3"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="30dip"
         android:text="@string/timer" />
 
     <CheckBox
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/checkBox2"
         android:layout_below="@+id/checkBox2"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="64dip"
         android:text="@string/submit" />
     
 </RelativeLayout>

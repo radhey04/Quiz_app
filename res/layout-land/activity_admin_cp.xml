@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editText1"
         android:layout_alignBottom="@+id/editText1"
-        android:layout_marginRight="32dp"
+        android:layout_marginRight="32dip"
         android:layout_toLeftOf="@+id/editText2"
         android:text="@string/admin_cp_qn" />
 
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView4"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="19dp"
+        android:layout_marginRight="19dip"
         android:ems="10"
         android:inputType="number" />
 
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/button2"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="18dip"
         android:text="@string/admin_cp_syllabus" />
 
     <EditText
@@ -133,8 +133,8 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editText3"
         android:layout_below="@+id/editText4"
-        android:layout_marginRight="19dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginRight="19dip"
+        android:layout_marginTop="25dip"
         android:text="@string/populate" />
 
 </RelativeLayout>

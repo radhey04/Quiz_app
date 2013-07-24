@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="150dip"
         android:textSize="20sp"
         android:gravity="center_horizontal"
         android:text="text1" />
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="40dip"
         android:src="@drawable/ic_launcher" 
         android:contentDescription="@string/main_logo"/>
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="21dip"
         android:textSize="20sp"
         android:gravity="center_horizontal"
         android:text="text2" />
