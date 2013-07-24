@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content" >
     
-<RelativeLayout 
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/back"
@@ -71,7 +71,8 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="20dip"
         android:layout_alignRight="@+id/textView1"
         android:text="@string/mainquiz_next" />
 	
@@ -79,7 +80,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignTop="@+id/button1"
         android:text="@string/mainquiz_prev" />
     
     <TextView
@@ -120,9 +121,8 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
-        android:layout_toRightOf="@+id/textView5"
+        android:layout_centerHorizontal="true"
         android:text="@string/mainquiz_img" />
  
 </RelativeLayout>
