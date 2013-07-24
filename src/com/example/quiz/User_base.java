@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +36,7 @@ public class User_base extends Activity {
 			@Override
 			public void onClick(View v) {
 				//Do the user sanity check
-				MyDBAdapter ad=new MyDBAdapter(context);
+				/*MyDBAdapter ad=new MyDBAdapter(context);
 				if(ad.N==-1)
 				{
 					Log.d("Debug_user_base","No Question bank detected");
@@ -61,12 +60,14 @@ public class User_base extends Activity {
 						Toast.makeText(context,"Invalid Question Bank", Toast.LENGTH_SHORT).show();
 						Log.d("Debug_user_base","# of qnos didn't match. ad.N =>"+ad.N+"# promised =>"+qno);
 					}
-				}
-								
+				}*/
+				Intent i = new Intent(getApplicationContext(),DBList.class);
+				Log.d("Debug","Exited the user base");
+				startActivity(i);			
 			}
 		});
 		
-		impq.setOnClickListener(new OnClickListener() {
+		/*impq.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -74,7 +75,8 @@ public class User_base extends Activity {
 				Log.d("Debug","Exited the user base");
 				startActivity(i);
 			}
-		});
+		});*/
+		impq.setVisibility(4);
 		vscr.setOnClickListener(new OnClickListener() {
 			
 			@Override

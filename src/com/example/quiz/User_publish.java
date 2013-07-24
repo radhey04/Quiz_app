@@ -26,7 +26,7 @@ public class User_publish extends Activity {
 
 	Context context=this;
 	SettingsDBAdapter set;
-		
+	String url;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,7 +48,7 @@ public class User_publish extends Activity {
 		Log.d("Debug",set.ID);
 		Log.d("Debug","Values to be printed on my scoresheet");
 		/**/
-		scoresDBAdapter ads=new scoresDBAdapter(context);
+		final scoresDBAdapter ads=new scoresDBAdapter(context);
 		Integer N=ads.N;
 		Integer Score=ads.getscore();
 		String res=Score.toString();
@@ -59,9 +59,9 @@ public class User_publish extends Activity {
 		t7.setText(ads.perf);
 		
 		Button ret=(Button) findViewById(R.id.button1);
-		
+		Button retry = (Button) findViewById(R.id.RetryButton);
 		final MyDBAdapter ad=new MyDBAdapter(context);
-		Cursor c=ad.getQBset();
+		final Cursor c=ad.getQBset();
 		// Duration is given by c.getString(4);
 		// Nikhil's score code comes here
 		String student_ID = set.ID;
@@ -78,15 +78,35 @@ public class User_publish extends Activity {
 		String Scre  = "Score="+score;
 		String Time_Limit = "TimeLimit="+TimeLimit;
 		
-		String url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
+		url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
 		task.execute(url);
 		
 		markDBAdapter md=new markDBAdapter(context);
 		md.insertmark(md.N+1,quiz_Name, score, c.getString(3));
-		c.close();
-		Toast.makeText(getApplicationContext(),"Scores uploaded", Toast.LENGTH_SHORT).show();
-		
+		retry.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				String student_ID = set.ID;
+				final String studentID = student_ID.replace(" ", "");
+				String quiz_Name = c.getString(2);
+				final String QuizName=quiz_Name.replace(" ", "");
+				final String score = ads.getscore().toString();
+				final String TimeLimit = c.getString(4)+"00";
+				
+				DownloadWebPageTask task = new DownloadWebPageTask();
+				
+				String Student_ID = "Student_ID='"+studentID+"'";
+				String Quiz_Name = "Quiz_Name='"+QuizName+"'";
+				String Scre  = "Score="+score;
+				String Time_Limit = "TimeLimit="+TimeLimit;
+				url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
+				Log.d("DEBUG", url);
+				task.execute(url);
+			}
+		});
 		ret.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -102,6 +122,7 @@ public class User_publish extends Activity {
 				file.delete();
 				ad.deleteall();
 	        	finish();
+	        	c.close();
 			}
 		});
 	}
@@ -142,7 +163,7 @@ public class User_publish extends Activity {
 			//Disabling http
 			if(result.equals("1"))
 			{
-				Toast.makeText(context,  "Scores Updated",Toast.LENGTH_SHORT).show();
+				Toast.makeText(context,  "Scores Uploaded",Toast.LENGTH_SHORT).show();
 			}
 			else if(result.equals("0"))
 			{
@@ -150,7 +171,7 @@ public class User_publish extends Activity {
 			}
 			else
 			{
-				Toast.makeText(context,  "Connection to the server could not be established", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "Connection to the URL "+url+" could not be established", Toast.LENGTH_LONG).show();
 			}
 		}
 	}

@@ -23,6 +23,8 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,7 +40,7 @@ public class DBList extends ListActivity {
 	public String pressed;
 	DBhandling db=new DBhandling();
 	SettingsDBAdapter set;
-	
+	String url;
 	int i=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class DBList extends ListActivity {
 		// setContentView(R.layout.list_fruit);
 		set=new SettingsDBAdapter(context);
 		set.updatemem();
-		String url = set.URL+"app/listdir.php";
+		url = set.URL+"app/listdir.php";
 		Log.d("debug", url);
 		task.execute(url);		
 	}
@@ -85,6 +87,31 @@ public class DBList extends ListActivity {
 					if(suc==true)
 					{
 						Toast.makeText(getApplicationContext(), "Loaded the quiz", Toast.LENGTH_SHORT).show();
+						MyDBAdapter ad=new MyDBAdapter(context);
+						if(ad.N==-1)
+						{
+							Log.d("Debug_user_base","No Question bank detected");
+							Toast.makeText(context,"No Question Bank Loaded", Toast.LENGTH_SHORT).show();
+						}
+						else
+						{
+							Cursor cur=ad.getQBset();
+							String qnos=cur.getString(3);
+							cur.close();
+							Integer qno=Integer.parseInt(qnos);
+							if(qno==ad.N)
+							{
+								Log.d("Debug_user_base","Everything is perfect. Launching the quiz");
+								Intent i = new Intent(getApplicationContext(), User_landing.class);
+								startActivity(i);
+								finish();
+							}
+							else
+							{
+								Toast.makeText(context,"Invalid Question Bank", Toast.LENGTH_SHORT).show();
+								Log.d("Debug_user_base","# of qnos didn't match. ad.N =>"+ad.N+"# promised =>"+qno);
+							}
+						}
 					}
 					else
 					{
@@ -153,7 +180,7 @@ public class DBList extends ListActivity {
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute"+result);
 			if(i==1){
-				Toast.makeText(context,  "Connection could not be established" , Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "Connection to "+url+" could not be established" , Toast.LENGTH_LONG).show();
 				finish();
 			}
 			

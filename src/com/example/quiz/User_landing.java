@@ -30,6 +30,7 @@ public class User_landing extends Activity {
 	Integer totq;
 	String timeleft;
 	SettingsDBAdapter set;
+	String url;
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +100,7 @@ public class User_landing extends Activity {
 								
 				Log.d("DEBUG", "Deadline:"+Deads);
 				
-				String url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
+				url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				scoresDBAdapter ads=new scoresDBAdapter(context);
 				ads.dropsheet();		// Clear the sheet
@@ -155,7 +156,7 @@ public class User_landing extends Activity {
 			}
 			else
 			{
-				Toast.makeText(context,  "The website cannot be reached", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "The website "+url+" cannot be reached", Toast.LENGTH_LONG).show();
 			}
 			finish();
 		}

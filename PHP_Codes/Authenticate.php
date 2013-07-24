@@ -13,7 +13,6 @@ PRIMARY KEY(SNo,Student_ID),
 Name CHAR(30),
 StartingTime BIGINT,
 Quiz_Name CHAR(40),
-Deadline BIGINT,
 Score INT
 )";
 if (mysqli_query($con,$sql))
@@ -45,10 +44,14 @@ while($row = mysqli_fetch_array($result))
   $timestamp = strtotime($Deadline);
   $Deads = date('YmdHis', $timestamp);
   $Deads = $Deads+235959;
-  
-if( $exists == '0' && $Deads>$StartTime)
+if($Quiz_Name == "'DefaultTest'")
 {
-  mysqli_query($con,"INSERT INTO `quiz`.`scores` (`SNo`, `Student_ID`, `Name`, `StartingTime`, `Quiz_Name`, `Deadline`, `Score`) VALUES (NULL, $Student_ID, $Name, $StartTime, $Quiz_Name, $Deads, NULL)");
+	echo "1";
+}
+else if( $exists == '0' && $Deads>$StartTime)
+{
+  $sql = "INSERT INTO `scores`(`SNo`, `Student_ID`, `Name`, `StartingTime`, `Quiz_Name`, `Score`) VALUES (NULL, $Student_ID, $Name, $StartTime, $Quiz_Name, NULL)";
+  mysqli_query($con, $sql);
   echo "1";
 }
 else if ($exists != 0)
