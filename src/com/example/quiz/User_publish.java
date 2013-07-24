@@ -1,6 +1,7 @@
 package com.example.quiz;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -25,7 +26,7 @@ public class User_publish extends Activity {
 
 	Context context=this;
 	SettingsDBAdapter set;
-	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,7 +49,6 @@ public class User_publish extends Activity {
 		Log.d("Debug","Values to be printed on my scoresheet");
 		/**/
 		scoresDBAdapter ads=new scoresDBAdapter(context);
-		
 		Integer N=ads.N;
 		Integer Score=ads.getscore();
 		String res=Score.toString();
@@ -60,7 +60,7 @@ public class User_publish extends Activity {
 		
 		Button ret=(Button) findViewById(R.id.button1);
 		
-		MyDBAdapter ad=new MyDBAdapter(context);
+		final MyDBAdapter ad=new MyDBAdapter(context);
 		Cursor c=ad.getQBset();
 		// Duration is given by c.getString(4);
 		// Nikhil's score code comes here
@@ -94,6 +94,13 @@ public class User_publish extends Activity {
 				// Intent intent = new Intent(getApplicationContext(), Admin.class);
 	        	// startActivity(intent);
 				// Safety net is there. So NO need to create another activity.
+				DBhandling db=new DBhandling();
+				String path = db.chkdir();
+				path = path + "/Quiz.nab";
+				Log.d("DEBUG",path);
+				File file = new File(path);
+				file.delete();
+				ad.deleteall();
 	        	finish();
 			}
 		});

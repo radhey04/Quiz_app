@@ -143,9 +143,14 @@ public class User_landing extends Activity {
 			{
 				proceed();
 			}
-			else if(result.equals("0"))
+			else if(result.equals("2"))
 			{
 				Toast.makeText(context,  "You have already taken the test. You being sent back to the previous page", Toast.LENGTH_LONG).show();
+				// Calling finish will take you back to admin.java
+			}
+			else if(result.equals("3"))
+			{
+				Toast.makeText(context,  "The test is past the deadline. You being sent back to the previous page", Toast.LENGTH_LONG).show();
 				// Calling finish will take you back to admin.java
 			}
 			else

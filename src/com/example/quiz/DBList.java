@@ -35,7 +35,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class DBList extends ListActivity {
 	
 	public Context context = this;
-	String pressed;
+	public String pressed;
 	DBhandling db=new DBhandling();
 	SettingsDBAdapter set;
 	
@@ -70,7 +70,7 @@ public class DBList extends ListActivity {
 			        c.setDoOutput(true);
 			        c.connect();
 			        
-			        FileOutputStream f = new FileOutputStream(new File(root, pressed));
+			        FileOutputStream f = new FileOutputStream(new File(root, "Quiz.nab"));
 
 			        InputStream in = c.getInputStream();
 
@@ -81,6 +81,15 @@ public class DBList extends ListActivity {
 			            f.write(buffer, 0, len1);
 			        }
 			        f.close();
+			        Boolean suc=db.importDB("Quiz",path+"/Quiz.nab");
+					if(suc==true)
+					{
+						Toast.makeText(getApplicationContext(), "Loaded the quiz", Toast.LENGTH_SHORT).show();
+					}
+					else
+					{
+						Toast.makeText(getApplicationContext(), "Couldn't find the question bank.", Toast.LENGTH_SHORT).show();
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 					Log.d("DEBUG", "Exception");
@@ -163,8 +172,7 @@ public class DBList extends ListActivity {
 					// When clicked, show a toast with the TextView text
 
 					pressed = ((TextView) view).getText().toString();
-
-
+					String popupt="Do you want to take the test "+pressed+"?";
 					AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 							context);
 					// set title
@@ -172,26 +180,26 @@ public class DBList extends ListActivity {
 
 					// set dialog message
 					alertDialogBuilder
-					.setMessage("Do you want to take the test "+pressed+"?")
+					
+					.setMessage(popupt)
 					.setCancelable(false)
 					.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,int id) {
 							// if this button is clicked, close
 							// current activity
 							//MainActivity.this.finish();
-							Toast.makeText(getApplicationContext(),"You pressed yes", Toast.LENGTH_SHORT).show();
 							DownloadWebPage task1 = new DownloadWebPage();
 							
 							final String address = set.URL+"app/uploads/"+pressed;
 							Log.d("url to download from", "123"+address+"123");
 							task1.execute(address);
+							finish();
 						}
 					})
 					.setNegativeButton("No",new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,int id) {
 							// if this button is clicked, just close
 							// the dialog box and do nothing
-							Toast.makeText(getApplicationContext(),"You pressed no", Toast.LENGTH_SHORT).show();
 							dialog.cancel();
 						}
 					});

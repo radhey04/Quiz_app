@@ -1,6 +1,16 @@
-Make DBlist.
+Make DBlist proper (Done)
+Default url (Done)
+
 Thoughrough check
-Default url
+	1. importDB() check (Done)
+	2. pop up message must detect and suitable change text(done)
+	3. delete the database after the test..not required if overwrite is not working.(done)
+	4. delete the .nab from filesystem(done)
+	5. Deadline work
+	6. Image in the tablet emulator.
+	
+dip conversion
+Overall scrolling.
 
 Final stages:
 
