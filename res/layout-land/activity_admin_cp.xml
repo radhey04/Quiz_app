@@ -41,16 +41,6 @@
 <!--         android:layout_alignLeft="@+id/editText1" -->
 <!--         android:layout_alignBottom="@+id/textView5"/> -->
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText1"
-        android:layout_alignBottom="@+id/editText1"
-        android:layout_marginRight="32dip"
-        android:layout_toLeftOf="@+id/editText2"
-        android:text="@string/admin_cp_qn" />
-
     <Button
         android:id="@+id/button2"
         style="?android:attr/buttonStyleSmall"
@@ -60,16 +50,6 @@
         android:layout_alignBottom="@+id/textView5"
         android:layout_toRightOf="@+id/textView3"
         android:text="@string/admin_cp_date" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="60dip"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView4"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="19dip"
-        android:ems="10"
-        android:inputType="number" />
 
     <TextView
         android:id="@+id/textView1"
@@ -141,6 +121,25 @@
         android:layout_marginRight="19dip"
         android:layout_marginTop="25dip"
         android:text="@string/populate" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="60dip"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText3"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="38dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/editText2"
+        android:text="@string/admin_cp_qn" />
 
 </RelativeLayout>
 </ScrollView>
