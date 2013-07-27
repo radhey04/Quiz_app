@@ -117,7 +117,7 @@ public class DBList extends ListActivity {
 									@Override
 									public void run() {
 										// TODO Auto-generated method stub
-										finish();									
+										finish();
 									}
 								},2*1000);
 								

@@ -29,6 +29,7 @@ public class User_publish extends Activity {
 	Context context=this;
 	SettingsDBAdapter set;
 	String url;
+	Button retry;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,7 +70,7 @@ public class User_publish extends Activity {
 		t7.setText(ads.perf);
 		
 		Button ret=(Button) findViewById(R.id.button1);
-		Button retry = (Button) findViewById(R.id.RetryButton);
+		retry = (Button) findViewById(R.id.RetryButton);
 		final MyDBAdapter ad=new MyDBAdapter(context);
 		final Cursor c=ad.getQBset();
 		// Duration is given by c.getString(4);
@@ -117,6 +118,9 @@ public class User_publish extends Activity {
 				task.execute(url);
 			}
 		});
+		
+		retry.setVisibility(4);
+		
 		ret.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -182,7 +186,9 @@ public class User_publish extends Activity {
 			else
 			{
 				Toast.makeText(context,  "Connection to the URL "+url+" could not be established", Toast.LENGTH_LONG).show();
+				retry.setVisibility(0);
 			}
+			
 		}
 	}
 
