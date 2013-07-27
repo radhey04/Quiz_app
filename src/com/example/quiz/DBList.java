@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -108,7 +110,19 @@ public class DBList extends ListActivity {
 								Log.d("Debug_user_base","Everything is perfect. Launching the quiz");
 								Intent i = new Intent(getApplicationContext(), User_landing.class);
 								startActivity(i);
-								finish();
+								
+								Timer timer_begin= new Timer();
+								timer_begin.schedule(new TimerTask() {
+									
+									@Override
+									public void run() {
+										// TODO Auto-generated method stub
+										finish();									
+									}
+								},2*1000);
+								
+								timer_begin.cancel();
+								timer_begin.purge();
 							}
 							else
 							{

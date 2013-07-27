@@ -51,6 +51,10 @@ public class MainActivity extends Activity {
 			}
 		},3*1000);
 		
+		timer_begin.cancel();
+		timer_begin.purge();
+		finish();
+		
 		
 /*		Button b1 = (Button) findViewById(R.id.button1);
 		
