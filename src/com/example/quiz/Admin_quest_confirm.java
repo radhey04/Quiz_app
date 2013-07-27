@@ -23,8 +23,9 @@ public class Admin_quest_confirm extends Activity {
 	
 	Context context = this;
 	String imgpath="",quest="",opta="",optb="",optc="",optd="",ans="";
-	Boolean imagethere=true;
+	boolean imagethere=true;
 	MyDBAdapter ad; 
+	boolean suc=false;
 	private static final int REQUEST_PICK_FILE = 1;
 	
 	@Override
@@ -129,8 +130,15 @@ public class Admin_quest_confirm extends Activity {
 						File f = new File(data.getStringExtra(FilePickerActivity.EXTRA_FILE_PATH));
 						imgpath=f.getPath();
 						Log.d("Debug_admin_qu",imgpath);
-						ad.insertQ(quest,opta,optb,optc,optd,ans,imagethere,imgpath);
-						Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
+						suc=ad.insertQ(quest,opta,optb,optc,optd,ans,imagethere,imgpath);
+						if(suc==false)
+						{
+							Toast.makeText(getApplicationContext(), "Question updated without adding image because the image was larger than 850 kB.", Toast.LENGTH_SHORT).show();
+						}
+						else
+						{
+							Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
+						}
 					    Intent intent = new Intent(getApplicationContext(), Admin_base.class);
 						startActivity(intent);
 						finish();

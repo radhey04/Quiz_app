@@ -31,6 +31,7 @@ public class User_landing extends Activity {
 	String timeleft;
 	String url1;
 	SettingsDBAdapter set;
+	String datef="";
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +48,18 @@ public class User_landing extends Activity {
 		String dates=c.getString(6);
 		
 		Date expiry=null;
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-	    try {
-	        expiry = formatter.parse(dates);
-	    } catch (Exception e) {
+		try {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		    expiry = formatter.parse(dates);
+		    Log.d("DEBUG","Reached before datef");
+		    datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());
+		    Log.d("DEBUG","Cleared datef");
+		} catch (Exception e) {
 	        e.printStackTrace();
 	        Log.d("DEBUG","Shit!");
+	        Toast.makeText(context, "Invalid database as date not set correctly", Toast.LENGTH_LONG).show();
+	        finish();
 		}
-	    Log.d("DEBUG","Reached before datef");
-	    final String datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());    
-	    Log.d("DEBUG","Cleared datef");
-	    
 		String details="Hi. The following are the details of " +
 				"the quiz you are about to take.";
 		details=details.concat("\n\n Quiz Name: "+c.getString(2));

@@ -93,6 +93,7 @@ public class Admin_home extends Activity {
 				optb.setText("Optionb");
 				optc.setText("Optionc ");
 				optd.setText("Optiond");
+				chka.setChecked(true);
 			}
 		});
 	}

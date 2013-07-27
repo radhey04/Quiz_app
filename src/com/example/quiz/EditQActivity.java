@@ -35,6 +35,7 @@ public class EditQActivity extends Activity {
 	EditText optd;
     MyDBAdapter ad;
     Integer qno=0,imagethereint=0;
+    boolean suc=false;
     
     private void updateactivity(Integer qno)
     {    	
@@ -184,6 +185,7 @@ public class EditQActivity extends Activity {
 		imagethere=false;
     	imgpath="";
     	Log.d("Debug_editq","Updating the question without image");
+    	// Could have used updateQ but didn't put fight for that :P It works na. :P
 		ad.updateQprev(qno,Q.getText().toString(),opta.getText().toString(),optb.getText().toString(),optc.getText().toString(),optd.getText().toString(),option,imagethere,imgpath);
 		Toast.makeText(context, "Question updated", Toast.LENGTH_SHORT).show();
 	    Intent intent = new Intent(context, Admin_chkq.class);
@@ -237,9 +239,16 @@ public class EditQActivity extends Activity {
 						File f = new File(data.getStringExtra(FilePickerActivity.EXTRA_FILE_PATH));
 						imgpath=f.getPath();
 						Log.d("Debug_admin_qu",imgpath);
-						ad.updateQprev(qno,Q.getText().toString(),opta.getText().toString(),optb.getText().toString(),optc.getText().toString(),optd.getText().toString(),option,imagethere,imgpath);
-						Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
-					    Intent intent = new Intent(getApplicationContext(), Admin_chkq.class);
+						suc=ad.updateQprev(qno,Q.getText().toString(),opta.getText().toString(),optb.getText().toString(),optc.getText().toString(),optd.getText().toString(),option,imagethere,imgpath);
+						if(suc==false)
+						{
+							Toast.makeText(getApplicationContext(), "Question updated without adding image because the image was larger than 850 kB.", Toast.LENGTH_SHORT).show();
+						}
+						else
+						{
+							Toast.makeText(getApplicationContext(), "Question updated", Toast.LENGTH_SHORT).show();
+						}
+						Intent intent = new Intent(getApplicationContext(), Admin_chkq.class);
 						startActivity(intent);
 						finish();
 					}

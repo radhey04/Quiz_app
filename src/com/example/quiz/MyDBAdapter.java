@@ -1,6 +1,7 @@
 package com.example.quiz;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -25,6 +26,7 @@ public class MyDBAdapter {
 	
 	byte[] filepickedimg={};
 	boolean filepickflag=false;
+	long MAX_IMG_SIZE=850;			// 850 kB max
 	
 	public Integer N=1;			//The total count
 	
@@ -50,28 +52,41 @@ public class MyDBAdapter {
 		   db.close();
 	}	
 	
-	public void insertQ(String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,String photoPath)
+	public boolean isfilesizebad(String path)
 	{
+		File file = new File(path);
+		long length = file.length()/1024;
+		Log.d("Debug_myadapter","Image size is "+length);
+		if(length<MAX_IMG_SIZE)
+			return false;
+		else
+			return true;
+	}
+	
+	public boolean insertQ(String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,String photoPath)
+	{
+		boolean result=true;
 		byte[] img={};
 		Integer imagethere;
 		if(imgthere==true)
 		{
-			BitmapFactory.Options options = new BitmapFactory.Options();
-			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-			Bitmap icon = BitmapFactory.decodeFile(photoPath, options);
-			
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
-			img = bos.toByteArray();
-			
-			imagethere=1;
-			Integer imgsize=img.length/1024;
-			Log.d("Debug_myadapter","Image added "+imgsize);
-			if(imgsize>1600)
+			if(isfilesizebad(photoPath))
 			{
 				imagethere=0;
-				img=null;
 				Log.d("Debug_myadapter","No image added as too big an image provided");
+				result=false;
+			}
+			else
+			{
+				BitmapFactory.Options options = new BitmapFactory.Options();
+				options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+				Bitmap icon = BitmapFactory.decodeFile(photoPath, options);
+				
+				ByteArrayOutputStream bos = new ByteArrayOutputStream();
+				icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
+				img = bos.toByteArray();
+				
+				imagethere=1;
 			}
 		}
 		else
@@ -102,30 +117,34 @@ public class MyDBAdapter {
 			Log.d("Debug_mydbadapter","Error while inserting");
 		close();
 		N=N+1;								// Update N
+		return result;
 	}
 	
-	public void updateQprev(Integer qno,String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,String photoPath)
+	public boolean updateQprev(Integer qno,String quest,String opta,String optb,String optc,String optd,String option,Boolean imgthere,String photoPath)
 	{
+		boolean result=true;
 		byte[] img={};
 		Integer imagethere;
 		if(imgthere==true)
 		{
-			BitmapFactory.Options options = new BitmapFactory.Options();
-			options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-			Bitmap icon = BitmapFactory.decodeFile(photoPath, options);
-			
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
-			img = bos.toByteArray();
-			
-			imagethere=1;
-			Integer imgsize=img.length/1024;
-			Log.d("Debug_myadapter","Image added "+imgsize);
-			if(imgsize>1600)
+			if(isfilesizebad(photoPath))
 			{
 				imagethere=0;
-				img=null;
 				Log.d("Debug_myadapter","No image added as too big an image provided");
+				result=false;
+			}
+			else
+			{
+				BitmapFactory.Options options = new BitmapFactory.Options();
+				options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+				Bitmap icon = BitmapFactory.decodeFile(photoPath, options);
+				Log.d("Debug_myadapter","Converted into bitmap file");
+				
+				ByteArrayOutputStream bos = new ByteArrayOutputStream();
+				icon.compress(Bitmap.CompressFormat.PNG, 100, bos);
+				img = bos.toByteArray();
+				
+				imagethere=1;
 			}
 		}
 		else
@@ -155,6 +174,7 @@ public class MyDBAdapter {
 		else
 			Log.d("Debug_mydbadapter","Error while inserting");
 		close();
+		return result;
 	}
 	public void updateQ(Integer Qprev, Integer Qno, String quest,String opta,String optb,String optc,String optd,String option,Integer imagethere,byte[] img)
 	{
