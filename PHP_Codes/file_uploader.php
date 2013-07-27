@@ -21,7 +21,7 @@ if ( in_array($extension, $allowedExts) )
 			Deadline BIGINT,
 			File_Name CHAR(20)
 		)";
-		$con=mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
+		$con=mysqli_connect("http://students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
 		if (mysqli_connect_errno())
 		{
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
