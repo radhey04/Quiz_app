@@ -106,12 +106,13 @@ public class User_landing extends Activity {
 				ads.dropsheet();		// Clear the sheet
 				if(set.disablehttp==true)
 				{
-					Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Working in HTTP Disabled mode | Orientation Locked", Toast.LENGTH_LONG).show();
 					Log.d("Debug_user_landing","Bypassing the http authentication");
 					proceed();
 				}
 				else
 				{
+					Toast.makeText(getApplicationContext(), "Orientation Locked", Toast.LENGTH_LONG).show();
 					task.execute(url);
 				}
 				

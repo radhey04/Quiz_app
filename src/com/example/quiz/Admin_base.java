@@ -150,7 +150,7 @@ public class Admin_base extends Activity {
 						c.close();
 						DBhandling dbh = new DBhandling();
 						dbh.exportDB("Quiz",QuizName);									
-						Toast.makeText(getApplicationContext(), "Exported the question bank", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getApplicationContext(), "Exported the question bank to "+dbh.dirpath, Toast.LENGTH_SHORT).show();
 					}
 					else
 					{

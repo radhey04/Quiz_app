@@ -10,6 +10,8 @@ import android.os.Handler.Callback;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.View;
@@ -174,6 +176,14 @@ public class Mainquiz extends Activity {
 	    set=new SettingsDBAdapter(context);
 	    set.updatemem();								//Update the settings
 	    prev.setVisibility(4);							//Invisible
+	    
+	    int currentOrientation = getResources().getConfiguration().orientation;
+	    if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+	       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+	    }
+	    else {
+	       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+	    }
     }
     
     private Boolean isquizover()
@@ -181,8 +191,6 @@ public class Mainquiz extends Activity {
     	if(qno>totq)
     	{
     		Log.d("Debug","Quiz Over.");
-    		timer.cancel();
-    		timer.purge();
     		return true;
     	}
     	else
@@ -372,6 +380,8 @@ public class Mainquiz extends Activity {
 			    	{
 //			    		Toast.makeText(getApplicationContext(), "Quiz Over", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Quiz Over! Congrats");
+		        		timer.cancel();
+		        		timer.purge();
 		        		Intent i=new Intent(getApplicationContext(), User_publish.class);
 						startActivity(i);
 						finish();

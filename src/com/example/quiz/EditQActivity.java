@@ -152,7 +152,7 @@ public class EditQActivity extends Activity {
 				    	    public void onClick(DialogInterface dialog, int which) {			      	
 				    	    	newimg();
 				    	    }
-				    	});builder.setNegativeButton("Remove Image", new DialogInterface.OnClickListener() {
+				    	});builder.setNegativeButton("No Image", new DialogInterface.OnClickListener() {
 				    	    public void onClick(DialogInterface dialog, int which) {			      	
 				    	    	confirm();
 				    	    }
