@@ -28,7 +28,7 @@ public class User_publish extends Activity {
 
 	Context context=this;
 	SettingsDBAdapter set;
-	String url;
+	String url1;
 	Button retry;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +88,8 @@ public class User_publish extends Activity {
 		String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 		String Scre  = "Score="+score;
 		String Time_Limit = "TimeLimit="+TimeLimit;
-		
-		url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
+		url1 = set.URL+"app/score.php";
+		final String url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
 		task.execute(url);
 		
@@ -100,20 +100,8 @@ public class User_publish extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String student_ID = set.ID;
-				final String studentID = student_ID.replace(" ", "");
-				String quiz_Name = c.getString(2);
-				final String QuizName=quiz_Name.replace(" ", "");
-				final String score = ads.getscore().toString();
-				final String TimeLimit = c.getString(4)+"00";
-				
 				DownloadWebPageTask task = new DownloadWebPageTask();
 				
-				String Student_ID = "Student_ID='"+studentID+"'";
-				String Quiz_Name = "Quiz_Name='"+QuizName+"'";
-				String Scre  = "Score="+score;
-				String Time_Limit = "TimeLimit="+TimeLimit;
-				url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 				Log.d("DEBUG", url);
 				task.execute(url);
 			}
@@ -185,7 +173,7 @@ public class User_publish extends Activity {
 			}
 			else
 			{
-				Toast.makeText(context,  "Connection to the URL "+url+" could not be established", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "Connection to the URL "+url1+" could not be established", Toast.LENGTH_LONG).show();
 				retry.setVisibility(0);
 			}
 			
