@@ -78,7 +78,7 @@
     <string name="clear">Clear</string>
     <string name="mainquiz_prev">Previous</string>
     <string name="title_activity_fullscreen">Image for the Quiz</string>
-    <string name="dummy_button">Dummy Button</string>
+    <string name="minute">min(s)</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="mainquiz_img">Image</string>
     <string name="title_activity_filepicker">Pick the image</string>

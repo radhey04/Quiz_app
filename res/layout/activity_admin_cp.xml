@@ -135,5 +135,13 @@
         android:layout_marginTop="24dp"
         android:text="@string/admin_quest_upd" />
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText3"
+        android:layout_toRightOf="@+id/button2"
+        android:text="@string/minute" />
+
 </RelativeLayout>
 </ScrollView>
