@@ -87,8 +87,8 @@ public class User_publish extends Activity {
 		String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 		String Scre  = "Score="+score;
 		String Time_Limit = "TimeLimit="+TimeLimit;
-		url1= set.URL+"app/score.php";
-		String url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
+		url1= set.URL+"/score.php";
+		String url = set.URL+"/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
 		if(set.disablehttp==true)
 		{

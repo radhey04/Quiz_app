@@ -50,7 +50,7 @@ public class DBList extends ListActivity {
 		// setContentView(R.layout.list_fruit);
 		set=new SettingsDBAdapter(context);
 		set.updatemem();
-		url = set.URL+"app/listdir.php";
+		url = set.URL+"/listdir.php";
 		Log.d("debug", url);
 		task.execute(url);		
 	}
@@ -179,7 +179,7 @@ public class DBList extends ListActivity {
 							//Toast.makeText(getApplicationContext(),"You pressed yes", Toast.LENGTH_SHORT).show();
 							DownloadWebPage task1 = new DownloadWebPage();
 							
-							final String address = set.URL+"app/uploads/"+pressed;
+							final String address = set.URL+"/uploads/"+pressed;
 							Log.d("url to download from", "123"+address+"123");
 							task1.execute(address);
 						}

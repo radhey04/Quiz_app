@@ -99,8 +99,8 @@ public class User_landing extends Activity {
 				String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 								
 				Log.d("DEBUG", "Deadline:"+Deads);
-				url1= set.URL+"app/Authenticate.php";
-				String url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
+				url1= set.URL+"/Authenticate.php";
+				String url = set.URL+"/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				scoresDBAdapter ads=new scoresDBAdapter(context);
 				ads.dropsheet();		// Clear the sheet
