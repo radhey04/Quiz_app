@@ -88,8 +88,8 @@ public class User_publish extends Activity {
 		String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 		String Scre  = "Score="+score;
 		String Time_Limit = "TimeLimit="+TimeLimit;
-		url1 = set.URL+"app/score.php";
-		final String url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
+		url1 = set.URL+"score.php";
+		final String url = set.URL+"score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
 		task.execute(url);
 		
