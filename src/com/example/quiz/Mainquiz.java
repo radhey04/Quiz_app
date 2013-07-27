@@ -181,8 +181,6 @@ public class Mainquiz extends Activity {
     	if(qno>totq)
     	{
     		Log.d("Debug","Quiz Over.");
-    		timer.cancel();
-    		timer.purge();
     		return true;
     	}
     	else
@@ -367,13 +365,13 @@ public class Mainquiz extends Activity {
 			    	{
 			    		updateactivity();
 			    		Log.d("Debug","Question Answered");
-			    		timer.cancel();
-			    		timer.purge();
 			    	}
 			    	else
 			    	{
 //			    		Toast.makeText(getApplicationContext(), "Quiz Over", Toast.LENGTH_SHORT).show();
 		        		Log.d("Debug","Quiz Over! Congrats");
+		        		timer.cancel();
+			    		timer.purge();
 		        		Intent i=new Intent(getApplicationContext(), User_publish.class);
 						startActivity(i);
 						finish();
