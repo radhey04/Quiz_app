@@ -119,7 +119,7 @@ public class DBList extends ListActivity {
 										// TODO Auto-generated method stub
 										finish();
 									}
-								},2*1000);
+								},(long) (0.7*1000));
 								
 							}
 							else
