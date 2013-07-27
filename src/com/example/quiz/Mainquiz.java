@@ -10,6 +10,8 @@ import android.os.Handler.Callback;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.View;
@@ -48,6 +50,8 @@ public class Mainquiz extends Activity {
     MyDBAdapter ad;
     scoresDBAdapter ads;
     SettingsDBAdapter set;
+    
+    
     
     final Handler h = new Handler(new Callback() {
 
@@ -174,6 +178,14 @@ public class Mainquiz extends Activity {
 	    set=new SettingsDBAdapter(context);
 	    set.updatemem();								//Update the settings
 	    prev.setVisibility(4);							//Invisible
+	    
+	    int currentOrientation = getResources().getConfiguration().orientation;
+	    if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+	       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+	    }
+	    else {
+	       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+	    }
     }
     
     private Boolean isquizover()
