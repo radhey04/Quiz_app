@@ -66,7 +66,6 @@
         android:layout_below="@+id/checkBox3"
         android:layout_marginTop="20dip"
         android:text="@string/chkD" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -116,6 +115,15 @@
         android:layout_alignBottom="@+id/checkBox4"
         android:layout_alignLeft="@+id/textView4"
         android:text="@string/TextView" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/checkBox4"
+        android:layout_marginTop="87dp"
+        android:text="@string/mainquiz_next" />
 
     <Button
         android:id="@+id/button3"
