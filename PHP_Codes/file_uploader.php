@@ -21,7 +21,7 @@ if ( in_array($extension, $allowedExts) )
 			Deadline BIGINT,
 			File_Name CHAR(20)
 		)";
-		$con=mysqli_connect("localhost","root","","quiz");
+		$con=mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
 		if (mysqli_connect_errno())
 		{
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -42,8 +42,8 @@ if ( in_array($extension, $allowedExts) )
 		$StartTime = date("YmdHis");
 		if($StartTime<$Deads && $Quiz_Name!="''")
 		{
-			$con=mysqli_connect("localhost","root","","quiz");
-			mysqli_query($con,"INSERT INTO `quiz`.`tests` (`SNo`, `Quiz_Name`, `Deadline`, `File_Name`) VALUES (NULL, $Quiz_Name, $Deads, $File_Name)");
+			$con=mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
+			mysqli_query($con,"INSERT INTO `PlacementMockTest`.`tests` (`SNo`, `Quiz_Name`, `Deadline`, `File_Name`) VALUES (NULL, $Quiz_Name, $Deads, $File_Name)");
 			echo "The file ".  basename( $_FILES['file']['name']). 
 			" has been uploaded";
 			echo '<script type="text/javascript" language="javascript"> window.open("/app/uploads"); </script>';

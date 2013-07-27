@@ -29,7 +29,7 @@ public class User_landing extends Activity {
 	Context context=this;
 	Integer totq;
 	String timeleft;
-	String url;
+	String url1;
 	SettingsDBAdapter set;
 	@SuppressLint("SimpleDateFormat")
 	@Override
@@ -99,8 +99,8 @@ public class User_landing extends Activity {
 				String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 								
 				Log.d("DEBUG", "Deadline:"+Deads);
-				
-				url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
+				url1= set.URL+"app/Authenticate.php";
+				String url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				scoresDBAdapter ads=new scoresDBAdapter(context);
 				ads.dropsheet();		// Clear the sheet
@@ -167,7 +167,7 @@ public class User_landing extends Activity {
 			}
 			else
 			{
-				Toast.makeText(context,  "The website "+url+" cannot be reached", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "The website "+url1+" cannot be reached", Toast.LENGTH_LONG).show();
 			}
 			finish();
 		}

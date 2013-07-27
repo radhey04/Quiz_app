@@ -9,10 +9,10 @@
 </html>
 
 <?php
-$connection = mysqli_connect("localhost", "root", "", "quiz"); //The Blank string is the password
+$connection = mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
 //mysql_select_db('hrmwaitrose');
 $QuizName = $_GET["QuizName"];
-$query = "SELECT Student_ID, Name, Quiz_Name, Score FROM score where Quiz_Name = ($QuizName)"; //You don't need a ; like you do in SQL
+$query = "SELECT Student_ID, Name, Quiz_Name, Score FROM scores where Quiz_Name = ($QuizName)"; //You don't need a ; like you do in SQL
 $result = mysqli_query($connection,$query);
 
 echo "<table>"; // start a table tag in the HTML

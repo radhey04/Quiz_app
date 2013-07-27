@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect("localhost","root","","quiz");
+$con=mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -23,7 +23,7 @@ else
   echo "Error creating table: " . mysqli_error($con);
   }
 
-$con=mysqli_connect("localhost","root","","quiz");
+$con=mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
 // Check connection
 if (mysqli_connect_errno())
   {
@@ -34,7 +34,7 @@ $Quiz_Name = $_GET["Quiz_Name"];
 $Student_ID = $_GET["Student_ID"];
 $Name = $_GET["Name"];
 $Deadline = $_GET["Deadline"];
-$result = mysqli_query($con, "SELECT COUNT(Student_ID) FROM quiz.scores WHERE Student_ID = $Student_ID AND Quiz_Name = $Quiz_Name");
+$result = mysqli_query($con, "SELECT COUNT(Student_ID) FROM PlacementMockTest.scores WHERE Student_ID = $Student_ID AND Quiz_Name = $Quiz_Name");
 
 while($row = mysqli_fetch_array($result))
   {

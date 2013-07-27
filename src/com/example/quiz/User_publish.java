@@ -27,7 +27,7 @@ public class User_publish extends Activity {
 
 	Context context=this;
 	SettingsDBAdapter set;
-	
+	String url1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,7 +87,7 @@ public class User_publish extends Activity {
 		String Quiz_Name = "Quiz_Name='"+QuizName+"'";
 		String Scre  = "Score="+score;
 		String Time_Limit = "TimeLimit="+TimeLimit;
-		
+		url1= set.URL+"app/score.php";
 		String url = set.URL+"app/score.php?"+Student_ID+"&"+Scre+"&"+Time_Limit+"&"+Quiz_Name;
 		Log.d("DEBUG", url);
 		if(set.disablehttp==true)
@@ -162,7 +162,7 @@ public class User_publish extends Activity {
 			}
 			else
 			{
-				Toast.makeText(context,  "Connection to the server could not be established", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "Connection to "+url1+" could not be established", Toast.LENGTH_LONG).show();
 			}
 		}
 	}
