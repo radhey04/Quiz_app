@@ -83,19 +83,23 @@ public class DBList extends ListActivity {
 			            f.write(buffer, 0, len1);
 			        }
 			        f.close();
+			        MyDBAdapter ad=new MyDBAdapter(context);
+			        Log.d("DEBUG", "123Test123");
 			        Boolean suc=db.importDB("Quiz",path+"/Quiz.nab");
-					if(suc==true)
+			        Log.d("DEBUG", "123Test123");
+			        if(suc==true)
 					{
-						Toast.makeText(getApplicationContext(), "Loaded the quiz", Toast.LENGTH_SHORT).show();
-						MyDBAdapter ad=new MyDBAdapter(context);
+			        	Log.d("DEBUG", "234Test234");
 						if(ad.N==-1)
 						{
 							Log.d("Debug_user_base","No Question bank detected");
-							Toast.makeText(context,"No Question Bank Loaded", Toast.LENGTH_SHORT).show();
+							
 						}
 						else
 						{
+							Log.d("DEBUG", "Before Cursor");
 							Cursor cur=ad.getQBset();
+							Log.d("DEBUG", "After Cursor");
 							String qnos=cur.getString(3);
 							cur.close();
 							Integer qno=Integer.parseInt(qnos);
@@ -108,14 +112,14 @@ public class DBList extends ListActivity {
 							}
 							else
 							{
-								Toast.makeText(context,"Invalid Question Bank", Toast.LENGTH_SHORT).show();
+								//Toast.makeText(context, "Invalid Question Bank", Toast.LENGTH_SHORT);
 								Log.d("Debug_user_base","# of qnos didn't match. ad.N =>"+ad.N+"# promised =>"+qno);
 							}
 						}
 					}
 					else
 					{
-						Toast.makeText(getApplicationContext(), "Couldn't find the question bank.", Toast.LENGTH_SHORT).show();
+						//Toast.makeText(getApplicationContext(), "Couldn't find the question bank.", Toast.LENGTH_SHORT).show();
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
