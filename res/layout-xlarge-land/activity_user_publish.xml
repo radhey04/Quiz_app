@@ -66,20 +66,20 @@
         android:layout_centerHorizontal="true"/>
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView7"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="72dp"
-            android:text="@string/user_ps_publish" />
-
-        <Button
             android:id="@+id/RetryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView7"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:text="Retry connecting to server" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/RetryButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="89dp"
+            android:text="@string/user_ps_publish" />
     
 </RelativeLayout>
