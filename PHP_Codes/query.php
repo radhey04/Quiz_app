@@ -1,5 +1,8 @@
-<?php $con=mysqli_connect("localhost","root","","quiz"); $Quiz_Name=$_GET["QuizName"]; echo $Quiz_Name."<br>";
-$QuizName = "'".$Quiz_Name."'";echo $QuizName;
+<?php $con=mysqli_connect("localhost","root","","quiz");
+$Quiz_Name=$_GET["QuizName"];
+echo $Quiz_Name."<br>";
+$QuizName = "'".$Quiz_Name."'";
+echo $QuizName;
 $query = "SELECT Student_ID,Name,Score FROM quiz.scores WHERE Quiz_Name = $QuizName ORDER BY DESC";
 $result = mysqli_query($con, "SELECT Student_ID,Name,Score FROM quiz.scores WHERE Quiz_Name = $QuizName ORDER BY Score DESC");
 echo $query;
