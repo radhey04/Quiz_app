@@ -38,7 +38,7 @@ public class DBList extends ListActivity {
 	String pressed;
 	DBhandling db=new DBhandling();
 	SettingsDBAdapter set;
-	
+	String url;
 	int i=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class DBList extends ListActivity {
 		// setContentView(R.layout.list_fruit);
 		set=new SettingsDBAdapter(context);
 		set.updatemem();
-		String url = set.URL+"app/uploads";
+		url = set.URL+"app/listdir.php";
 		Log.d("debug", url);
 		task.execute(url);		
 	}
@@ -81,10 +81,13 @@ public class DBList extends ListActivity {
 			            f.write(buffer, 0, len1);
 			        }
 			        f.close();
+			        Log.d("DEBUG", "Importing "+path+"/"+pressed);
+			        db.importDB("Quiz",path+"/"+pressed);
 				} catch (Exception e) {
 					e.printStackTrace();
 					Log.d("DEBUG", "Exception");
 				}
+				finish();
 			}
 			Log.d("DEBUG", "Done dwp");
 			return response;
@@ -114,14 +117,9 @@ public class DBList extends ListActivity {
 					BufferedReader buffer = new BufferedReader(
 							new InputStreamReader(content));
 					String s = "";
-					String delim = ">";
 					while ((s = buffer.readLine()) != null) {
 						if(s.contains(".nab")){
-							String name = s.substring(96);
-							name.trim();
-							String token[] =name.split(delim);
-							Log.d("DEBUG", token[0].replace('"', ' '));
-							response += token[0].replace('"', ' ');
+							response += s;
 							response += "#";
 						}
 					}
@@ -144,12 +142,12 @@ public class DBList extends ListActivity {
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute"+result);
 			if(i==1){
-				Toast.makeText(context,  "Connection could not be established" , Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "Connection to "+url+" could not be established" , Toast.LENGTH_LONG).show();
 				finish();
 			}
 			
 			Log.d("DEBUG", result);
-			String[] FRUITS = result.split(" #");
+			String[] FRUITS = result.split("#");
 			
 			setListAdapter(new ArrayAdapter<String>(context, R.layout.activity_dblist,FRUITS));
 			ListView listView = getListView();
@@ -178,7 +176,7 @@ public class DBList extends ListActivity {
 							// if this button is clicked, close
 							// current activity
 							//MainActivity.this.finish();
-							Toast.makeText(getApplicationContext(),"You pressed yes", Toast.LENGTH_SHORT).show();
+							//Toast.makeText(getApplicationContext(),"You pressed yes", Toast.LENGTH_SHORT).show();
 							DownloadWebPage task1 = new DownloadWebPage();
 							
 							final String address = set.URL+"app/uploads/"+pressed;
@@ -190,7 +188,7 @@ public class DBList extends ListActivity {
 						public void onClick(DialogInterface dialog,int id) {
 							// if this button is clicked, just close
 							// the dialog box and do nothing
-							Toast.makeText(getApplicationContext(),"You pressed no", Toast.LENGTH_SHORT).show();
+							//Toast.makeText(getApplicationContext(),"You pressed no", Toast.LENGTH_SHORT).show();
 							dialog.cancel();
 						}
 					});

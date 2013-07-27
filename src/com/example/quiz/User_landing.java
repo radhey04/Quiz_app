@@ -29,6 +29,7 @@ public class User_landing extends Activity {
 	Context context=this;
 	Integer totq;
 	String timeleft;
+	String url;
 	SettingsDBAdapter set;
 	@SuppressLint("SimpleDateFormat")
 	@Override
@@ -99,7 +100,7 @@ public class User_landing extends Activity {
 								
 				Log.d("DEBUG", "Deadline:"+Deads);
 				
-				String url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
+				url = set.URL+"app/Authenticate.php?"+Student_ID+"&"+Name+"&"+Quiz_Name+"&"+Deads;
 				Log.d("debug", url);
 				scoresDBAdapter ads=new scoresDBAdapter(context);
 				ads.dropsheet();		// Clear the sheet
@@ -153,14 +154,19 @@ public class User_landing extends Activity {
 			{
 				proceed();
 			}
-			else if(result.equals("0"))
+			else if(result.equals("2"))
 			{
 				Toast.makeText(context,  "You have already taken the test. You being sent back to the previous page", Toast.LENGTH_LONG).show();
 				// Calling finish will take you back to admin.java
 			}
+			else if(result.equals("3"))
+			{
+				Toast.makeText(context,  "The test is past the deadline. You being sent back to the previous page", Toast.LENGTH_LONG).show();
+				// Calling finish will take you back to admin.java
+			}
 			else
 			{
-				Toast.makeText(context,  "The website cannot be reached", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "The website "+url+" cannot be reached", Toast.LENGTH_LONG).show();
 			}
 			finish();
 		}
