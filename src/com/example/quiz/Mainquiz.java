@@ -367,6 +367,8 @@ public class Mainquiz extends Activity {
 			    	{
 			    		updateactivity();
 			    		Log.d("Debug","Question Answered");
+			    		timer.cancel();
+			    		timer.purge();
 			    	}
 			    	else
 			    	{
