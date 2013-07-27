@@ -111,8 +111,8 @@ public class DBList extends ListActivity {
 								Intent i = new Intent(getApplicationContext(), User_landing.class);
 								startActivity(i);
 								
-								Timer timer_begin= new Timer();
-								timer_begin.schedule(new TimerTask() {
+								Timer timer_begin1= new Timer();
+								timer_begin1.schedule(new TimerTask() {
 									
 									@Override
 									public void run() {
@@ -121,8 +121,6 @@ public class DBList extends ListActivity {
 									}
 								},2*1000);
 								
-								timer_begin.cancel();
-								timer_begin.purge();
 							}
 							else
 							{
