@@ -142,6 +142,7 @@ public class User_landing extends Activity {
 			Log.d("DEBUG", "onPostExecute"+result);
 			if(result.equals("1"))
 			{
+				Toast.makeText(getApplicationContext(), "Orientation Locked", Toast.LENGTH_LONG).show();
 				proceed();
 			}
 			else if(result.equals("2"))
