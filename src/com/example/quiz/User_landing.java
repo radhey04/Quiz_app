@@ -46,25 +46,22 @@ public class User_landing extends Activity {
 		set.updatemem();
 		Cursor c = ad.getQBset();
 		String dates=c.getString(6);
-		/*
-		Date expiry=null;
+		Date origdate=null;
+		//Original format
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 	    try {
-	        expiry = formatter.parse(dates);
+	        origdate = formatter.parse(dates);
 	        Log.d("DEBUG","Reached before datef");
-		    datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());    
+	        //Recasted into this form ---v
+		    datef=new SimpleDateFormat("dd-MMM-yyyy").format(origdate.getTime());    
 		    Log.d("DEBUG","Cleared datef");		    
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        Log.d("DEBUG","Shit!");
 	        Toast.makeText(context, "Invalid Question Bank. Please contact your support for assistance.", Toast.LENGTH_LONG).show();
-		}*/
-	    Log.d("DEBUG","Reached before datef");
-	    //final String datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());
-	    final String datef = dates;
-	    Log.d("DEBUG","Cleared datef");
-	    
-		String details="Hi. The following are the details of " +
+		}
+
+	    String details="Hi. The following are the details of " +
 				"the quiz you are about to take.";
 		details=details.concat("\n\n Quiz Name: "+c.getString(2));
 		details=details.concat("\n\n # of Qs: "+c.getString(3));
