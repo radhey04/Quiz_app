@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Quiz (User Version)</string>
+    <string name="app_name">Quiz</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_admin">Quiz (User Version)</string>
@@ -92,5 +92,6 @@
     <string name="settings_url">Localhost URL</string>
     <string name="disablehttp">Disable HTTP</string>
     <string name="admin_update">Update</string>
+    <string name="connecting">Connecting to the server</string>
     
 </resources>

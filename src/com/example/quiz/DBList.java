@@ -47,6 +47,7 @@ public class DBList extends ListActivity {
 	DBhandling db=new DBhandling();
 	SettingsDBAdapter set;
 	String url;
+	ListView listview;
 	public static final int progress_bar_type = 0; 
 	private ProgressDialog pDialog;
 	
@@ -63,7 +64,10 @@ public class DBList extends ListActivity {
 		set.updatemem();
 		url = set.URL+"listdir.php";
 		Log.d("debug", url);
-		task.execute(url);		
+		Toast.makeText(context, "Connecting to the server. Timeout set for 20 seconds", Toast.LENGTH_SHORT).show();
+		listview = getListView();
+		listview.setTextFilterEnabled(true);
+		task.execute(url);
 	}
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
@@ -225,14 +229,13 @@ public class DBList extends ListActivity {
 			for (String url : urls) {
 				HttpGet httpGet = new HttpGet(url);
 				HttpParams httpParameters = new BasicHttpParams();
-				int timeoutConnection = 3000;
+				int timeoutConnection = 20000;
 				HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
 				int timeoutSocket = 5000;
 				HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
-
 				DefaultHttpClient client = new DefaultHttpClient(httpParameters);
-
-				try {
+				 
+				try {	
 					HttpResponse execute = client.execute(httpGet);
 					InputStream content = execute.getEntity().getContent();
 					Log.d("DEBUG", "trycatch block in dwp");
@@ -272,21 +275,19 @@ public class DBList extends ListActivity {
 				Toast.makeText(context,  "Connection to "+url+" could not be established" , Toast.LENGTH_LONG).show();
 				finish();
 			}
-			
-			Log.d("DEBUG", result);
-			if(result.equals(""))
+			else if(result.equals(""))
 			{
-				Toast.makeText(context, "No file present in the server", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "Wrong server", Toast.LENGTH_LONG).show();
 				finish();
 			}
+			
 			String[] FRUITS = result.split("#");
 			
 			setListAdapter(new ArrayAdapter<String>(context, R.layout.activity_dblist,FRUITS));
-			ListView listView = getListView();
-			listView.setTextFilterEnabled(true);
-			
+			//ListView listView = getListView();
+					
 			registerForContextMenu(getListView());  
-			listView.setOnItemClickListener(new OnItemClickListener() {
+			listview.setOnItemClickListener(new OnItemClickListener() {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					// When clicked, show a toast with the TextView text

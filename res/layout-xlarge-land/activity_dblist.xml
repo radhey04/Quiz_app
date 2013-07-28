@@ -4,5 +4,5 @@
     android:layout_height="fill_parent"
     android:textSize="20sp"
     android:padding="10dip"
-    >
+    android:text="@string/connecting">
 </TextView>
