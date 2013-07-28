@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Timer;
@@ -275,6 +274,11 @@ public class DBList extends ListActivity {
 			}
 			
 			Log.d("DEBUG", result);
+			if(result.equals(""))
+			{
+				Toast.makeText(context, "No file present in the server", Toast.LENGTH_LONG).show();
+				finish();
+			}
 			String[] FRUITS = result.split("#");
 			
 			setListAdapter(new ArrayAdapter<String>(context, R.layout.activity_dblist,FRUITS));
