@@ -79,7 +79,7 @@ public class SettingsDBAdapter {
 		else
 			disablehttp=false;
 		Log.d("Debug_settings","New values");
-		Log.d("Debug_settings",Name+" "+ID+" "+" "+ShowTimer.toString());	    	
+		Log.d("Debug_settings",Name+" "+ID+" "+ShowTimer.toString()+disablehttp.toString()+" "+URL);
 		close();
 	}
 	
