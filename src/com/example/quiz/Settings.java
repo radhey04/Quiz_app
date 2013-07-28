@@ -15,7 +15,7 @@ public class Settings extends Activity {
 
 	Context context=this;
 	
-	private Integer Timer = 0;
+	private Integer Timer = 0,dh=0;
 	String Name="";
 	String ID="";
 	String URL="";
@@ -108,8 +108,8 @@ public class Settings extends Activity {
 					if(!URL.endsWith("/")) {
 						URL=URL+"/";  //Ensuring that the URL ends with a Backslash
 					}
-					// The settings db is now consistent with the master code
-					set.updateset(Name, ID, Timer,0,URL);
+					// The settings db is now consistent with the master code..dh is always zero
+					set.updateset(Name, ID, Timer,dh,URL);
 					Toast.makeText(getApplicationContext(), "Settings updated", Toast.LENGTH_SHORT).show();
 					Intent i=new Intent(getApplicationContext(), Admin.class);
 					startActivity(i);
