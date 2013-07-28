@@ -46,7 +46,7 @@ public class User_landing extends Activity {
 		set.updatemem();
 		Cursor c = ad.getQBset();
 		String dates=c.getString(6);
-		
+		/*
 		Date expiry=null;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 	    try {
@@ -58,7 +58,11 @@ public class User_landing extends Activity {
 	        e.printStackTrace();
 	        Log.d("DEBUG","Shit!");
 	        Toast.makeText(context, "Invalid Question Bank. Please contact your support for assistance.", Toast.LENGTH_LONG).show();
-		}
+		}*/
+	    Log.d("DEBUG","Reached before datef");
+	    //final String datef=new SimpleDateFormat("dd-MMM-yyyy").format(expiry.getTime());
+	    final String datef = dates;
+	    Log.d("DEBUG","Cleared datef");
 	    
 		String details="Hi. The following are the details of " +
 				"the quiz you are about to take.";

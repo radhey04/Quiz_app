@@ -64,7 +64,7 @@ public class Settings extends Activity {
 		}
 		if(set.URL.equals(""))
 		{
-			url.setText("http://10.21.2.246/");
+			url.setText("http://students.iitm.ac.in/mocktest/");
 		}
 		else
 		{
