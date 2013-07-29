@@ -118,6 +118,10 @@ public class Settings extends Activity {
 				{
 					Toast.makeText(context, "You can't leave the URL field empty if you are not disabling HTTP!!!", Toast.LENGTH_SHORT).show();
 				}
+				else if(!isValidUrl(URL))
+				{
+					Toast.makeText(context, "Enter a valid URL", Toast.LENGTH_SHORT).show();
+				}
 				else
 				{
 					if(!URL.endsWith("/")) {
@@ -131,5 +135,26 @@ public class Settings extends Activity {
 				}
 			}
 		});
+	}
+	boolean isValidUrl(String url)
+	{
+		boolean validity=true;
+		if(url.contains(" "))
+					validity=false;
+		else if(url.contains("$"))
+				validity=false;
+		else if(url.contains("^"))
+				validity=false;
+		else if(url.contains("*"))
+				validity=false;
+		else if(url.contains("\n"))
+			validity=false;
+		else if(url.contains("^"))
+			validity=false;
+		else if(url.contains("("))
+			validity=false;
+		else if(url.contains(")"))
+			validity=false;
+		return validity;
 	}
 }
