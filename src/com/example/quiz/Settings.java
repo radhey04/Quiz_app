@@ -1,11 +1,15 @@
 package com.example.quiz;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -36,6 +40,8 @@ public class Settings extends Activity {
 		//Made the checkbox invisible..use master's copy of settings* - all 3 files if you want to revert
 		final EditText url = (EditText) findViewById(R.id.editText3);
 		Button sub = (Button) findViewById(R.id.button1);
+		Pattern p = Pattern.compile("[^a-z0-9/ ]", Pattern.CASE_INSENSITIVE);
+		final Matcher m = p.matcher(URL);
 		set.updatemem();
 		timer.setChecked(true);
 		if(set.Name.equals(""))
@@ -103,11 +109,16 @@ public class Settings extends Activity {
 				{
 					Toast.makeText(context, "You can't leave the URL field empty!!!", Toast.LENGTH_SHORT).show();
 				}
+				else if(!isValidUrl(URL))
+				{
+					Toast.makeText(context, "Enter a valid URL", Toast.LENGTH_SHORT).show();
+				}
 				else
 				{
 					if(!URL.endsWith("/")) {
 						URL=URL+"/";  //Ensuring that the URL ends with a Backslash
 					}
+					
 					// The settings db is now consistent with the master code..dh is always zero
 					set.updateset(Name, ID, Timer,dh,URL);
 					Toast.makeText(getApplicationContext(), "Settings updated", Toast.LENGTH_SHORT).show();
@@ -117,5 +128,26 @@ public class Settings extends Activity {
 				}
 			}
 		});
+	}
+	boolean isValidUrl(String url)
+	{
+		boolean validity=true;
+		if(url.contains(" "))
+					validity=false;
+		else if(url.contains("$"))
+				validity=false;
+		else if(url.contains("^"))
+				validity=false;
+		else if(url.contains("*"))
+				validity=false;
+		else if(url.contains("\n"))
+			validity=false;
+		else if(url.contains("^"))
+			validity=false;
+		else if(url.contains("("))
+			validity=false;
+		else if(url.contains(")"))
+			validity=false;
+		return validity;
 	}
 }
