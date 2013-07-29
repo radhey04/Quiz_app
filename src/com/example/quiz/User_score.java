@@ -6,9 +6,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
-import android.graphics.Point;
+//import android.graphics.Point;
+//import android.view.Display;
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,10 +27,10 @@ public class User_score extends Activity {
 		super.onCreate(savedInstanceState);
 
 // Getting the window sizes
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
+//        Display display = getWindowManager().getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+        int width = 320;//size.x;
         int fonts = 40;
         
         TableRow.LayoutParams params = new TableRow.LayoutParams(width,fonts);
@@ -44,7 +44,7 @@ public class User_score extends Activity {
         params.gravity=Gravity.CENTER;
         
         text.setLayoutParams(params);
-        text.setText("Your Marksheet (Most Recent on top)");
+        text.setText("Your Marksheet (Recent 5)");
         Log.d("Debug","Tablelayout1");
         row.addView(text);
         Log.d("Debug","Tablelayout11");
