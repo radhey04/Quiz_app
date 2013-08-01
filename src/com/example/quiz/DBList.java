@@ -272,7 +272,7 @@ public class DBList extends ListActivity {
 		protected void onPostExecute(String result) {
 			Log.d("DEBUG", "onPostExecute"+result);
 			if(i==1){
-				Toast.makeText(context,  "Connection to "+url+" could not be established" , Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "Connection could not be established" , Toast.LENGTH_LONG).show();
 				finish();
 			}
 			else if(result.equals(""))

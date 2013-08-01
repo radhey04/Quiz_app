@@ -160,7 +160,7 @@ public class User_landing extends Activity {
 			}
 			else
 			{
-				Toast.makeText(context,  "The website "+url1+" cannot be reached", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "The website cannot be reached", Toast.LENGTH_LONG).show();
 			}
 			finish();
 		}

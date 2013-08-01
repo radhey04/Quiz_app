@@ -173,7 +173,7 @@ public class User_publish extends Activity {
 			}
 			else
 			{
-				Toast.makeText(context,  "Connection to the URL "+url1+" could not be established", Toast.LENGTH_LONG).show();
+				Toast.makeText(context,  "Connection could not be established", Toast.LENGTH_LONG).show();
 				retry.setVisibility(0);
 			}
 			
