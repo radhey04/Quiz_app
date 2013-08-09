@@ -1,5 +1,5 @@
-Quiz (An Android Application for Mock Test-taking)
-==================================================
+Quiz (An Android App for Mock Test-taking)
+==========================================
 
 This Android application for conducting mock tests on Android smartphones was 
 built by a team of 3 students from the Dept. of Electrical Engineering, IIT 
