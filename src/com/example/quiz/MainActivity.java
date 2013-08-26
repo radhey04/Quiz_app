@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				set=new SettingsDBAdapter(context);
 				set.updatemem();
 				if(set.Name.equals(""))

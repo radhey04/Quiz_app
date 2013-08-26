@@ -182,7 +182,6 @@ public class DBList extends ListActivity {
 									
 									@Override
 									public void run() {
-										// TODO Auto-generated method stub
 										dismissDialog(progress_bar_type);
 										finish();
 									}

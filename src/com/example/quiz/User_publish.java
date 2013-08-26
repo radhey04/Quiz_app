@@ -99,7 +99,6 @@ public class User_publish extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				DownloadWebPageTask task = new DownloadWebPageTask();
 				
 				Log.d("DEBUG", url);

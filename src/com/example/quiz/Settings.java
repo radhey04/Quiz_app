@@ -94,7 +94,6 @@ public class Settings extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Pass=pass.getText().toString();
 				// Make the string empty.
 				if(Pass.isEmpty()==false)
@@ -112,7 +111,7 @@ public class Settings extends Activity {
 			    	builder.setIcon(android.R.drawable.ic_dialog_alert);
 			    	builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			    	    public void onClick(DialogInterface dialog, int which) {
-							//Nikhil's authenticate request code comes here
+							//TODO:Nikhil's authenticate request code comes here
 			    	    }
 			    	});
 			    	builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -154,8 +153,9 @@ public class Settings extends Activity {
 					if(!URL.endsWith("/")) {
 						URL=URL+"/";  //Ensuring that the URL ends with a Backslash
 					}
-					
 					// The settings db is now consistent with the master code..dh is always zero
+					// TODO: Authenticate the password here and call below functions only if 
+					// successful authentication
 					set.updateset(Name, ID, Timer,dh,URL,Pass);
 					Toast.makeText(getApplicationContext(), "Settings updated", Toast.LENGTH_SHORT).show();
 					Intent i=new Intent(getApplicationContext(), Admin.class);

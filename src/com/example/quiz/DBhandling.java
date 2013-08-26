@@ -36,9 +36,7 @@ public class DBhandling extends Activity{
     @SuppressWarnings("resource")
     public boolean importDB(String DatabaseName,String newpath) 
     {
-        // TODO Auto-generated method stub
-
-        File sd = Environment.getExternalStorageDirectory();
+    	File sd = Environment.getExternalStorageDirectory();
         File data  = Environment.getDataDirectory();
         String PackageName="com.example.quiz";
             
@@ -81,9 +79,7 @@ public class DBhandling extends Activity{
     @SuppressWarnings("resource")
 	public void exportDB(String DatabaseName,String QuizName) 
     {
-        // TODO Auto-generated method stub
-
-        try {
+    	try {
             File sd = Environment.getExternalStorageDirectory();
             File data = Environment.getDataDirectory();
             String PackageName="com.example.quiz";
