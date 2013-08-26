@@ -38,12 +38,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/editText4"
         android:layout_marginTop="30dip"
         android:ems="10" 
         android:hint="@string/settings_url"
         android:textColorHint="#555"/>
     
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="30dip"
+        android:ems="5" 
+        android:hint="@string/settings_pass"
+        android:inputType="numberPassword"
+        android:textColorHint="#555"/>
+        
     <CheckBox
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
@@ -69,5 +81,14 @@
         android:layout_below="@+id/checkBox2"
         android:layout_marginTop="64dip"
         android:text="@string/submit" />
+    
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox2"
+        android:layout_alignBottom="@+id/editText4"
+        android:layout_marginTop="64dip"
+        android:text="@string/settings_gen" />
     
 </RelativeLayout>

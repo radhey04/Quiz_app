@@ -40,10 +40,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/editText4"
         android:layout_marginTop="10dip"
         android:ems="10" 
         android:hint="@string/settings_url"
+        android:textColorHint="#555"/>
+    
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="10dip"
+        android:ems="5" 
+        android:hint="@string/settings_pass"
+        android:inputType="numberPassword"
         android:textColorHint="#555"/>
     
     <CheckBox
@@ -73,5 +85,13 @@
 		android:layout_marginTop="20dip"
         android:text="@string/submit" />
     
+    <Button
+    	android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox2"
+		android:layout_alignBottom="@+id/editText4"
+		android:layout_marginTop="20dip"
+        android:text="@string/settings_gen" />
     
 </RelativeLayout>
