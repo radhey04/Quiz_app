@@ -20,6 +20,7 @@ public class SettingsDBAdapter {
 	public String Name="";
 	public String ID="";
 	public String URL="";
+	public String Pass="";
 	public Boolean ShowTimer=true;
 	public Boolean disablehttp=true;
 	
@@ -40,7 +41,7 @@ public class SettingsDBAdapter {
 	         db.close();
 	   }	
 	
-	public void updateset(String Name_upd,String ID_upd, Integer Timer, Integer dh, String url)
+	public void updateset(String Name_upd,String ID_upd, Integer Timer, Integer dh, String url,String pass)
 	{
 		// ContentValues which is like bundle
 		Log.d("Debug_settings","Updating settings");
@@ -53,6 +54,7 @@ public class SettingsDBAdapter {
 		bag.put("Timer", Timer);
 		bag.put("disablehttp", dh);
 		bag.put("url", url);
+		bag.put("Pass",pass);
 		//Insert into the table qbank the contents of the bag.
 		open();
 		Cursor c1=getAllSet();
@@ -70,6 +72,7 @@ public class SettingsDBAdapter {
 		Name=Name_upd;
 		ID=ID_upd;
 		URL=url;
+		Pass=pass;
 		if(Timer==1)
 			ShowTimer=true;
 		else
@@ -95,6 +98,7 @@ public class SettingsDBAdapter {
 			ShowTimer=true;
 			disablehttp=false;
 			URL="";
+			Pass="";
 			Log.d("Debug_settings","Table empty");
 		}
 		else
@@ -105,6 +109,7 @@ public class SettingsDBAdapter {
 			Integer timer=ca.getInt(3);
 			Integer dh=ca.getInt(4);
 			URL=ca.getString(5);
+			Pass=ca.getString(6);
 			if(timer==1)
 				ShowTimer=true;
 			else

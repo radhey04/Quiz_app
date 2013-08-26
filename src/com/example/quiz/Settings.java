@@ -1,15 +1,13 @@
 package com.example.quiz;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -23,6 +21,7 @@ public class Settings extends Activity {
 	String Name="";
 	String ID="";
 	String URL="";
+	String Pass="";
 	
 	SettingsDBAdapter set;
 	@Override
@@ -34,14 +33,19 @@ public class Settings extends Activity {
 		
 		final EditText name = (EditText) findViewById(R.id.editText1);
 		final EditText id = (EditText) findViewById(R.id.editText2);
+		final EditText url = (EditText) findViewById(R.id.editText3);
+		final EditText pass = (EditText) findViewById(R.id.editText4);
+		
 		final CheckBox timer = (CheckBox) findViewById(R.id.checkBox1);
 		final CheckBox httpdisb = (CheckBox) findViewById(R.id.checkBox2);
-		httpdisb.setVisibility(4);
 		//Made the checkbox invisible..use master's copy of settings* - all 3 files if you want to revert
-		final EditText url = (EditText) findViewById(R.id.editText3);
+		httpdisb.setVisibility(4);
+		
 		Button sub = (Button) findViewById(R.id.button1);
-		Pattern p = Pattern.compile("[^a-z0-9/ ]", Pattern.CASE_INSENSITIVE);
-		final Matcher m = p.matcher(URL);
+		Button gen = (Button) findViewById(R.id.button2);
+		
+		final AlertDialog.Builder builder= new AlertDialog.Builder(context);
+
 		set.updatemem();
 		timer.setChecked(true);
 		if(set.Name.equals(""))
@@ -76,7 +80,50 @@ public class Settings extends Activity {
 		{
 			url.setText(set.URL);
 		}
-		//Shifted the commented section here below
+		if(set.Pass.equals(""))
+		{
+			pass.setText("");
+			pass.setHint("Password");
+		}
+		else
+		{
+			pass.setText(set.Pass);
+		}//Shifted the commented section here below
+		
+		gen.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Pass=pass.getText().toString();
+				// Make the string empty.
+				if(Pass.isEmpty()==false)
+				{
+					Toast.makeText(context,"You seem to have provided me with some password. Kindly remove that.", Toast.LENGTH_SHORT).show();
+				}
+				else
+				{
+					builder.setTitle("Generate Password?");
+					builder.setMessage("You need a password to access the application. If you " +
+							"haven't requested one for yourself yet, click on yes to ask for one. " +
+							"A numeric password will be sent to your smail account. If you have " +
+							"already registered once, the system will NOT generate a new password. " +
+							"Contact your branch councillor for assistance.");
+			    	builder.setIcon(android.R.drawable.ic_dialog_alert);
+			    	builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			    	    public void onClick(DialogInterface dialog, int which) {
+							//Nikhil's authenticate request code comes here
+			    	    }
+			    	});
+			    	builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			    	    public void onClick(DialogInterface dialog, int which) {
+			    	    	Toast.makeText(context,"Please provide your correct password.", Toast.LENGTH_SHORT).show();
+						}
+			    	});
+			    	builder.show();
+				}
+			}
+		});
 		
 		sub.setOnClickListener(new OnClickListener() {
 			
@@ -86,6 +133,7 @@ public class Settings extends Activity {
 				Name = name.getText().toString();
 				ID = id.getText().toString();
 				URL=url.getText().toString();
+				Pass=pass.getText().toString();
 				if(timer.isChecked()) {
 					Timer = 1;
 				}
@@ -93,25 +141,13 @@ public class Settings extends Activity {
 				{
 					Timer = 0;
 				}
-				if(Name.equals("") && ID.equals("")&&URL.equals(""))
+				if(Name.equals("") || ID.equals("") || URL.equals("") || Pass.equals(""))
 				{
-					Toast.makeText(context, "You can't leave the fields empty!!!", Toast.LENGTH_SHORT).show();			
-				}
-				else if(Name.equals(""))
-				{
-					Toast.makeText(context, "You can't leave the Name field empty!!!", Toast.LENGTH_SHORT).show();			
-				}
-				else if(ID.equals(""))
-				{
-					Toast.makeText(context, "You can't leave the ID field empty!!!", Toast.LENGTH_SHORT).show();			
-				}
-				else if(URL.equals("") )
-				{
-					Toast.makeText(context, "You can't leave the URL field empty!!!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, "You can't leave any field empty!!!", Toast.LENGTH_SHORT).show();			
 				}
 				else if(!isValidUrl(URL))
 				{
-					Toast.makeText(context, "Enter a valid URL", Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, "Please enter a valid URL!!!", Toast.LENGTH_SHORT).show();
 				}
 				else
 				{
@@ -120,7 +156,7 @@ public class Settings extends Activity {
 					}
 					
 					// The settings db is now consistent with the master code..dh is always zero
-					set.updateset(Name, ID, Timer,dh,URL);
+					set.updateset(Name, ID, Timer,dh,URL,Pass);
 					Toast.makeText(getApplicationContext(), "Settings updated", Toast.LENGTH_SHORT).show();
 					Intent i=new Intent(getApplicationContext(), Admin.class);
 					startActivity(i);

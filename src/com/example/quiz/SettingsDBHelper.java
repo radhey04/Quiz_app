@@ -17,14 +17,12 @@ public class SettingsDBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// id is an integer as the primary key and autoincrement
 		// Default value of id starting from 0, I suppose
-        String createQuery = "CREATE TABLE sett (sno integer primary key, Name, ID, Timer, disablehttp, url);";                 
+        String createQuery = "CREATE TABLE sett (sno integer primary key, Name, ID, Timer, disablehttp, url, pass);";                 
         db.execSQL(createQuery);		
-		
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// Write the version control code. :) If you want.
-		
 	}
 }
