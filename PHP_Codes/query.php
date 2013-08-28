@@ -1,11 +1,17 @@
-<?php 
-$con=mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
+<?PHP
+session_start();
+if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+	header ("Location: login.php");
+}
+
+?>
+<?php $con=mysqli_connect("localhost","root","","quiz");
 $Quiz_Name=$_GET["QuizName"];
 echo $Quiz_Name."<br>";
 $QuizName = "'".$Quiz_Name."'";
 echo $QuizName;
-$query = "SELECT Student_ID,Name,Score FROM PlacementMockTest.scores WHERE Quiz_Name = $QuizName ORDER BY DESC";
-$result = mysqli_query($con, "SELECT Student_ID,Name,Score FROM PlacementMockTest.scores WHERE Quiz_Name = $QuizName ORDER BY Score DESC");
+$query = "SELECT Student_ID,Name,Score FROM quiz.scores WHERE Quiz_Name = $QuizName ORDER BY DESC";
+$result = mysqli_query($con, "SELECT Student_ID,Name,Score FROM quiz.scores WHERE Quiz_Name = $QuizName ORDER BY Score DESC");
 echo $query;
 echo "<table border='1'>
 <tr>

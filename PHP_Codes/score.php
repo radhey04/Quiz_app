@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect("students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
+$con=mysqli_connect("localhost","root","","quiz");
 // Check connection
 if (mysqli_connect_errno())
   {

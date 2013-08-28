@@ -1,11 +1,12 @@
+
 <html>
 <head>
 <title>Title of the document</title>
 </head>
 
 <form action="extend.php" method="post" onsubmit="return validateForm()" >
-Which Quiz do you want to extend? <input type="text" name="QuizName"><br>
-What is the new deadline? <input type="date" name="Deadline"><br>
+Which Quiz do you want to extend? <input type="text" name='QuizName' value="<?PHP print $Quiz_Name;?>"><br>
+What is the new deadline? <input type="date" name='Deadline' value="<?PHP print $Deadline;?>"><br>
 <input type="submit" value="Extend test" />
 </form>
 

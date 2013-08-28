@@ -1,3 +1,10 @@
+<?PHP
+session_start();
+if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+	header ("Location: login.php");
+}
+
+?>
 <?php
 $allowedExts = array("nab");
 $extension = end(explode(".", $_FILES["file"]["name"]));
@@ -21,7 +28,7 @@ if ( in_array($extension, $allowedExts) )
 			Deadline BIGINT,
 			File_Name CHAR(20)
 		)";
-		$con=mysqli_connect("http://students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
+		$con=mysqli_connect("https://students.iitm.ac.in","placementmt","PMockTest13-14","PlacementMockTest");
 		if (mysqli_connect_errno())
 		{
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
